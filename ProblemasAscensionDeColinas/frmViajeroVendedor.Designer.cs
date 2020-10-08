@@ -38,23 +38,23 @@
             this.btnAgregarCiudad = new System.Windows.Forms.Button();
             this.pnPaso1 = new System.Windows.Forms.Panel();
             this.pnPaso2 = new System.Windows.Forms.Panel();
+            this.nupValorItem = new System.Windows.Forms.NumericUpDown();
+            this.lbValorItem = new System.Windows.Forms.Label();
+            this.cbCiudadDestino = new System.Windows.Forms.ComboBox();
+            this.cbCiudadOrigen = new System.Windows.Forms.ComboBox();
+            this.lbA = new System.Windows.Forms.Label();
             this.btnAgregarConexion = new System.Windows.Forms.Button();
             this.lbTitlePaso2 = new System.Windows.Forms.Label();
             this.btnContinuarPaso2 = new System.Windows.Forms.Button();
             this.btnEliminarTodasConexiones = new System.Windows.Forms.Button();
             this.btnEliminarConexion = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.cbCiudadOrigen = new System.Windows.Forms.ComboBox();
-            this.lbA = new System.Windows.Forms.Label();
-            this.cbCiudadDestino = new System.Windows.Forms.ComboBox();
-            this.nupValorItem = new System.Windows.Forms.NumericUpDown();
-            this.lbValorItem = new System.Windows.Forms.Label();
             this.pnPaso3 = new System.Windows.Forms.Panel();
+            this.btnRegresarPaso2 = new System.Windows.Forms.Button();
+            this.btnCalcular = new System.Windows.Forms.Button();
             this.cbCiudadInicial = new System.Windows.Forms.ComboBox();
             this.lbPaso3 = new System.Windows.Forms.Label();
             this.btnRegresarPaso1 = new System.Windows.Forms.Button();
-            this.btnCalcular = new System.Windows.Forms.Button();
-            this.btnRegresarPaso2 = new System.Windows.Forms.Button();
             this.pnPaso1.SuspendLayout();
             this.pnPaso2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupValorItem)).BeginInit();
@@ -64,9 +64,10 @@
             // btnEliminarCiudad
             // 
             this.btnEliminarCiudad.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminarCiudad.Location = new System.Drawing.Point(10, 290);
+            this.btnEliminarCiudad.Location = new System.Drawing.Point(8, 236);
+            this.btnEliminarCiudad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnEliminarCiudad.Name = "btnEliminarCiudad";
-            this.btnEliminarCiudad.Size = new System.Drawing.Size(121, 56);
+            this.btnEliminarCiudad.Size = new System.Drawing.Size(91, 46);
             this.btnEliminarCiudad.TabIndex = 29;
             this.btnEliminarCiudad.Text = "Eliminar\r\n Ciudad";
             this.btnEliminarCiudad.UseVisualStyleBackColor = true;
@@ -74,9 +75,10 @@
             // btnEliminarTodosItems
             // 
             this.btnEliminarTodosItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminarTodosItems.Location = new System.Drawing.Point(210, 290);
+            this.btnEliminarTodosItems.Location = new System.Drawing.Point(140, 236);
+            this.btnEliminarTodosItems.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnEliminarTodosItems.Name = "btnEliminarTodosItems";
-            this.btnEliminarTodosItems.Size = new System.Drawing.Size(137, 56);
+            this.btnEliminarTodosItems.Size = new System.Drawing.Size(121, 46);
             this.btnEliminarTodosItems.TabIndex = 28;
             this.btnEliminarTodosItems.Text = "Eliminar Todas Las Ciudades";
             this.btnEliminarTodosItems.UseVisualStyleBackColor = true;
@@ -85,18 +87,24 @@
             // 
             this.listbCiudades.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listbCiudades.FormattingEnabled = true;
-            this.listbCiudades.ItemHeight = 20;
-            this.listbCiudades.Location = new System.Drawing.Point(8, 92);
+            this.listbCiudades.ItemHeight = 16;
+            this.listbCiudades.Items.AddRange(new object[] {
+            "Guadalajara",
+            "Monterrey",
+            "Ciudad de México"});
+            this.listbCiudades.Location = new System.Drawing.Point(6, 75);
+            this.listbCiudades.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listbCiudades.Name = "listbCiudades";
-            this.listbCiudades.Size = new System.Drawing.Size(339, 184);
+            this.listbCiudades.Size = new System.Drawing.Size(255, 148);
             this.listbCiudades.TabIndex = 27;
             // 
             // btnContinuarPaso1
             // 
             this.btnContinuarPaso1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnContinuarPaso1.Location = new System.Drawing.Point(230, 379);
+            this.btnContinuarPaso1.Location = new System.Drawing.Point(172, 308);
+            this.btnContinuarPaso1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnContinuarPaso1.Name = "btnContinuarPaso1";
-            this.btnContinuarPaso1.Size = new System.Drawing.Size(119, 32);
+            this.btnContinuarPaso1.Size = new System.Drawing.Size(89, 26);
             this.btnContinuarPaso1.TabIndex = 26;
             this.btnContinuarPaso1.Text = "Continuar ";
             this.btnContinuarPaso1.UseVisualStyleBackColor = true;
@@ -105,9 +113,10 @@
             // lbTitlePaso1
             // 
             this.lbTitlePaso1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTitlePaso1.Location = new System.Drawing.Point(4, 11);
+            this.lbTitlePaso1.Location = new System.Drawing.Point(3, 9);
+            this.lbTitlePaso1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbTitlePaso1.Name = "lbTitlePaso1";
-            this.lbTitlePaso1.Size = new System.Drawing.Size(168, 30);
+            this.lbTitlePaso1.Size = new System.Drawing.Size(224, 24);
             this.lbTitlePaso1.TabIndex = 20;
             this.lbTitlePaso1.Text = "Paso 1: Ciudades";
             // 
@@ -115,26 +124,29 @@
             // 
             this.lbTituloPrincipal.AutoSize = true;
             this.lbTituloPrincipal.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTituloPrincipal.Location = new System.Drawing.Point(368, 23);
+            this.lbTituloPrincipal.Location = new System.Drawing.Point(276, 19);
+            this.lbTituloPrincipal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbTituloPrincipal.Name = "lbTituloPrincipal";
-            this.lbTituloPrincipal.Size = new System.Drawing.Size(416, 31);
+            this.lbTituloPrincipal.Size = new System.Drawing.Size(344, 26);
             this.lbTituloPrincipal.TabIndex = 17;
             this.lbTituloPrincipal.Text = "Problema del Viajero Vendedor";
             // 
             // txtCiudad
             // 
             this.txtCiudad.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCiudad.Location = new System.Drawing.Point(8, 54);
+            this.txtCiudad.Location = new System.Drawing.Point(6, 44);
+            this.txtCiudad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtCiudad.Name = "txtCiudad";
-            this.txtCiudad.Size = new System.Drawing.Size(196, 28);
+            this.txtCiudad.Size = new System.Drawing.Size(148, 24);
             this.txtCiudad.TabIndex = 30;
             // 
             // btnAgregarCiudad
             // 
             this.btnAgregarCiudad.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarCiudad.Location = new System.Drawing.Point(210, 50);
+            this.btnAgregarCiudad.Location = new System.Drawing.Point(158, 41);
+            this.btnAgregarCiudad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAgregarCiudad.Name = "btnAgregarCiudad";
-            this.btnAgregarCiudad.Size = new System.Drawing.Size(139, 32);
+            this.btnAgregarCiudad.Size = new System.Drawing.Size(104, 26);
             this.btnAgregarCiudad.TabIndex = 31;
             this.btnAgregarCiudad.Text = "Agregar Ciudad";
             this.btnAgregarCiudad.UseVisualStyleBackColor = true;
@@ -148,9 +160,10 @@
             this.pnPaso1.Controls.Add(this.btnEliminarCiudad);
             this.pnPaso1.Controls.Add(this.txtCiudad);
             this.pnPaso1.Controls.Add(this.listbCiudades);
-            this.pnPaso1.Location = new System.Drawing.Point(12, 86);
+            this.pnPaso1.Location = new System.Drawing.Point(9, 70);
+            this.pnPaso1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnPaso1.Name = "pnPaso1";
-            this.pnPaso1.Size = new System.Drawing.Size(363, 431);
+            this.pnPaso1.Size = new System.Drawing.Size(272, 350);
             this.pnPaso1.TabIndex = 32;
             // 
             // pnPaso2
@@ -167,17 +180,77 @@
             this.pnPaso2.Controls.Add(this.btnEliminarConexion);
             this.pnPaso2.Controls.Add(this.listBox1);
             this.pnPaso2.Enabled = false;
-            this.pnPaso2.Location = new System.Drawing.Point(381, 86);
+            this.pnPaso2.Location = new System.Drawing.Point(286, 70);
+            this.pnPaso2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnPaso2.Name = "pnPaso2";
-            this.pnPaso2.Size = new System.Drawing.Size(422, 431);
+            this.pnPaso2.Size = new System.Drawing.Size(316, 350);
             this.pnPaso2.TabIndex = 33;
+            // 
+            // nupValorItem
+            // 
+            this.nupValorItem.DecimalPlaces = 2;
+            this.nupValorItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nupValorItem.Location = new System.Drawing.Point(79, 78);
+            this.nupValorItem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.nupValorItem.Name = "nupValorItem";
+            this.nupValorItem.Size = new System.Drawing.Size(90, 23);
+            this.nupValorItem.TabIndex = 36;
+            // 
+            // lbValorItem
+            // 
+            this.lbValorItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbValorItem.Location = new System.Drawing.Point(11, 80);
+            this.lbValorItem.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbValorItem.Name = "lbValorItem";
+            this.lbValorItem.Size = new System.Drawing.Size(76, 24);
+            this.lbValorItem.TabIndex = 35;
+            this.lbValorItem.Text = "Distancia";
+            // 
+            // cbCiudadDestino
+            // 
+            this.cbCiudadDestino.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbCiudadDestino.FormattingEnabled = true;
+            this.cbCiudadDestino.Items.AddRange(new object[] {
+            "Guadalajara",
+            "Monterrey",
+            "Ciudad de México"});
+            this.cbCiudadDestino.Location = new System.Drawing.Point(173, 46);
+            this.cbCiudadDestino.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbCiudadDestino.Name = "cbCiudadDestino";
+            this.cbCiudadDestino.Size = new System.Drawing.Size(130, 23);
+            this.cbCiudadDestino.TabIndex = 34;
+            // 
+            // cbCiudadOrigen
+            // 
+            this.cbCiudadOrigen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbCiudadOrigen.FormattingEnabled = true;
+            this.cbCiudadOrigen.Items.AddRange(new object[] {
+            "Guadalajara",
+            "Monterrey",
+            "Ciudad de México"});
+            this.cbCiudadOrigen.Location = new System.Drawing.Point(6, 46);
+            this.cbCiudadOrigen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbCiudadOrigen.Name = "cbCiudadOrigen";
+            this.cbCiudadOrigen.Size = new System.Drawing.Size(137, 23);
+            this.cbCiudadOrigen.TabIndex = 32;
+            // 
+            // lbA
+            // 
+            this.lbA.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbA.Location = new System.Drawing.Point(146, 48);
+            this.lbA.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbA.Name = "lbA";
+            this.lbA.Size = new System.Drawing.Size(23, 24);
+            this.lbA.TabIndex = 33;
+            this.lbA.Text = "a";
             // 
             // btnAgregarConexion
             // 
             this.btnAgregarConexion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarConexion.Location = new System.Drawing.Point(268, 92);
+            this.btnAgregarConexion.Location = new System.Drawing.Point(201, 75);
+            this.btnAgregarConexion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAgregarConexion.Name = "btnAgregarConexion";
-            this.btnAgregarConexion.Size = new System.Drawing.Size(139, 32);
+            this.btnAgregarConexion.Size = new System.Drawing.Size(104, 26);
             this.btnAgregarConexion.TabIndex = 31;
             this.btnAgregarConexion.Text = "Agregar ";
             this.btnAgregarConexion.UseVisualStyleBackColor = true;
@@ -185,18 +258,20 @@
             // lbTitlePaso2
             // 
             this.lbTitlePaso2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTitlePaso2.Location = new System.Drawing.Point(4, 11);
+            this.lbTitlePaso2.Location = new System.Drawing.Point(3, 9);
+            this.lbTitlePaso2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbTitlePaso2.Name = "lbTitlePaso2";
-            this.lbTitlePaso2.Size = new System.Drawing.Size(185, 30);
+            this.lbTitlePaso2.Size = new System.Drawing.Size(251, 24);
             this.lbTitlePaso2.TabIndex = 20;
             this.lbTitlePaso2.Text = "Paso 2: Conexiones";
             // 
             // btnContinuarPaso2
             // 
             this.btnContinuarPaso2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnContinuarPaso2.Location = new System.Drawing.Point(288, 379);
+            this.btnContinuarPaso2.Location = new System.Drawing.Point(213, 308);
+            this.btnContinuarPaso2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnContinuarPaso2.Name = "btnContinuarPaso2";
-            this.btnContinuarPaso2.Size = new System.Drawing.Size(119, 32);
+            this.btnContinuarPaso2.Size = new System.Drawing.Size(89, 26);
             this.btnContinuarPaso2.TabIndex = 26;
             this.btnContinuarPaso2.Text = "Continuar ";
             this.btnContinuarPaso2.UseVisualStyleBackColor = true;
@@ -204,10 +279,11 @@
             // 
             // btnEliminarTodasConexiones
             // 
-            this.btnEliminarTodasConexiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminarTodasConexiones.Location = new System.Drawing.Point(145, 355);
+            this.btnEliminarTodasConexiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminarTodasConexiones.Location = new System.Drawing.Point(101, 288);
+            this.btnEliminarTodasConexiones.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnEliminarTodasConexiones.Name = "btnEliminarTodasConexiones";
-            this.btnEliminarTodasConexiones.Size = new System.Drawing.Size(137, 56);
+            this.btnEliminarTodasConexiones.Size = new System.Drawing.Size(110, 46);
             this.btnEliminarTodasConexiones.TabIndex = 28;
             this.btnEliminarTodasConexiones.Text = "Eliminar Todas Las Conexiones";
             this.btnEliminarTodasConexiones.UseVisualStyleBackColor = true;
@@ -215,9 +291,10 @@
             // btnEliminarConexion
             // 
             this.btnEliminarConexion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminarConexion.Location = new System.Drawing.Point(8, 355);
+            this.btnEliminarConexion.Location = new System.Drawing.Point(6, 288);
+            this.btnEliminarConexion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnEliminarConexion.Name = "btnEliminarConexion";
-            this.btnEliminarConexion.Size = new System.Drawing.Size(121, 56);
+            this.btnEliminarConexion.Size = new System.Drawing.Size(91, 46);
             this.btnEliminarConexion.TabIndex = 29;
             this.btnEliminarConexion.Text = "Eliminar\r\n Conexión";
             this.btnEliminarConexion.UseVisualStyleBackColor = true;
@@ -226,56 +303,14 @@
             // 
             this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 20;
-            this.listBox1.Location = new System.Drawing.Point(8, 138);
+            this.listBox1.ItemHeight = 16;
+            this.listBox1.Items.AddRange(new object[] {
+            "Monterrey - Guadalajara : 1500"});
+            this.listBox1.Location = new System.Drawing.Point(6, 112);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(399, 184);
+            this.listBox1.Size = new System.Drawing.Size(300, 148);
             this.listBox1.TabIndex = 27;
-            // 
-            // cbCiudadOrigen
-            // 
-            this.cbCiudadOrigen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbCiudadOrigen.FormattingEnabled = true;
-            this.cbCiudadOrigen.Location = new System.Drawing.Point(8, 56);
-            this.cbCiudadOrigen.Name = "cbCiudadOrigen";
-            this.cbCiudadOrigen.Size = new System.Drawing.Size(181, 26);
-            this.cbCiudadOrigen.TabIndex = 32;
-            // 
-            // lbA
-            // 
-            this.lbA.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbA.Location = new System.Drawing.Point(195, 59);
-            this.lbA.Name = "lbA";
-            this.lbA.Size = new System.Drawing.Size(31, 30);
-            this.lbA.TabIndex = 33;
-            this.lbA.Text = "a";
-            // 
-            // cbCiudadDestino
-            // 
-            this.cbCiudadDestino.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbCiudadDestino.FormattingEnabled = true;
-            this.cbCiudadDestino.Location = new System.Drawing.Point(231, 56);
-            this.cbCiudadDestino.Name = "cbCiudadDestino";
-            this.cbCiudadDestino.Size = new System.Drawing.Size(172, 26);
-            this.cbCiudadDestino.TabIndex = 34;
-            // 
-            // nupValorItem
-            // 
-            this.nupValorItem.DecimalPlaces = 2;
-            this.nupValorItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nupValorItem.Location = new System.Drawing.Point(105, 96);
-            this.nupValorItem.Name = "nupValorItem";
-            this.nupValorItem.Size = new System.Drawing.Size(120, 26);
-            this.nupValorItem.TabIndex = 36;
-            // 
-            // lbValorItem
-            // 
-            this.lbValorItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbValorItem.Location = new System.Drawing.Point(15, 98);
-            this.lbValorItem.Name = "lbValorItem";
-            this.lbValorItem.Size = new System.Drawing.Size(102, 30);
-            this.lbValorItem.TabIndex = 35;
-            this.lbValorItem.Text = "Distancia";
             // 
             // pnPaso3
             // 
@@ -285,71 +320,83 @@
             this.pnPaso3.Controls.Add(this.lbPaso3);
             this.pnPaso3.Controls.Add(this.btnRegresarPaso1);
             this.pnPaso3.Enabled = false;
-            this.pnPaso3.Location = new System.Drawing.Point(819, 86);
+            this.pnPaso3.Location = new System.Drawing.Point(614, 70);
+            this.pnPaso3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnPaso3.Name = "pnPaso3";
-            this.pnPaso3.Size = new System.Drawing.Size(250, 431);
+            this.pnPaso3.Size = new System.Drawing.Size(188, 350);
             this.pnPaso3.TabIndex = 37;
+            // 
+            // btnRegresarPaso2
+            // 
+            this.btnRegresarPaso2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegresarPaso2.Location = new System.Drawing.Point(6, 308);
+            this.btnRegresarPaso2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnRegresarPaso2.Name = "btnRegresarPaso2";
+            this.btnRegresarPaso2.Size = new System.Drawing.Size(174, 26);
+            this.btnRegresarPaso2.TabIndex = 33;
+            this.btnRegresarPaso2.Text = "Regresar a Paso 2";
+            this.btnRegresarPaso2.UseVisualStyleBackColor = true;
+            this.btnRegresarPaso2.Click += new System.EventHandler(this.btnRegresarPaso2_Click);
+            // 
+            // btnCalcular
+            // 
+            this.btnCalcular.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCalcular.Location = new System.Drawing.Point(51, 112);
+            this.btnCalcular.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCalcular.Name = "btnCalcular";
+            this.btnCalcular.Size = new System.Drawing.Size(91, 26);
+            this.btnCalcular.TabIndex = 29;
+            this.btnCalcular.Text = "Calcular";
+            this.btnCalcular.UseVisualStyleBackColor = true;
             // 
             // cbCiudadInicial
             // 
             this.cbCiudadInicial.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCiudadInicial.FormattingEnabled = true;
-            this.cbCiudadInicial.Location = new System.Drawing.Point(8, 59);
+            this.cbCiudadInicial.Items.AddRange(new object[] {
+            "[Aleatoria]",
+            "Guadalajara",
+            "Monterrey",
+            "Ciudad de México"});
+            this.cbCiudadInicial.Location = new System.Drawing.Point(6, 48);
+            this.cbCiudadInicial.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbCiudadInicial.Name = "cbCiudadInicial";
-            this.cbCiudadInicial.Size = new System.Drawing.Size(227, 28);
+            this.cbCiudadInicial.Size = new System.Drawing.Size(171, 25);
             this.cbCiudadInicial.TabIndex = 32;
             // 
             // lbPaso3
             // 
             this.lbPaso3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPaso3.Location = new System.Drawing.Point(4, 11);
+            this.lbPaso3.Location = new System.Drawing.Point(3, 9);
+            this.lbPaso3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbPaso3.Name = "lbPaso3";
-            this.lbPaso3.Size = new System.Drawing.Size(219, 30);
+            this.lbPaso3.Size = new System.Drawing.Size(185, 24);
             this.lbPaso3.TabIndex = 20;
             this.lbPaso3.Text = "Paso 3: Ciudad Inicial";
             // 
             // btnRegresarPaso1
             // 
             this.btnRegresarPaso1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegresarPaso1.Location = new System.Drawing.Point(8, 314);
+            this.btnRegresarPaso1.Location = new System.Drawing.Point(6, 255);
+            this.btnRegresarPaso1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnRegresarPaso1.Name = "btnRegresarPaso1";
-            this.btnRegresarPaso1.Size = new System.Drawing.Size(232, 32);
+            this.btnRegresarPaso1.Size = new System.Drawing.Size(174, 26);
             this.btnRegresarPaso1.TabIndex = 26;
             this.btnRegresarPaso1.Text = "Regresar a Paso 1";
             this.btnRegresarPaso1.UseVisualStyleBackColor = true;
             this.btnRegresarPaso1.Click += new System.EventHandler(this.btnRegresarPaso1_Click);
             // 
-            // btnCalcular
-            // 
-            this.btnCalcular.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCalcular.Location = new System.Drawing.Point(68, 138);
-            this.btnCalcular.Name = "btnCalcular";
-            this.btnCalcular.Size = new System.Drawing.Size(121, 32);
-            this.btnCalcular.TabIndex = 29;
-            this.btnCalcular.Text = "Calcular";
-            this.btnCalcular.UseVisualStyleBackColor = true;
-            // 
-            // btnRegresarPaso2
-            // 
-            this.btnRegresarPaso2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegresarPaso2.Location = new System.Drawing.Point(8, 379);
-            this.btnRegresarPaso2.Name = "btnRegresarPaso2";
-            this.btnRegresarPaso2.Size = new System.Drawing.Size(232, 32);
-            this.btnRegresarPaso2.TabIndex = 33;
-            this.btnRegresarPaso2.Text = "Regresar a Paso 2";
-            this.btnRegresarPaso2.UseVisualStyleBackColor = true;
-            this.btnRegresarPaso2.Click += new System.EventHandler(this.btnRegresarPaso2_Click);
-            // 
             // frmViajeroVendedor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Thistle;
-            this.ClientSize = new System.Drawing.Size(1096, 532);
+            this.ClientSize = new System.Drawing.Size(822, 432);
             this.Controls.Add(this.pnPaso3);
             this.Controls.Add(this.pnPaso2);
             this.Controls.Add(this.pnPaso1);
             this.Controls.Add(this.lbTituloPrincipal);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.Name = "frmViajeroVendedor";
             this.ShowIcon = false;

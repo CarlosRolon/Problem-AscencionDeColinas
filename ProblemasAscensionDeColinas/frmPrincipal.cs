@@ -28,5 +28,11 @@ namespace ProblemasAscensionDeColinas
             frmViajeroVendedor viajeroVendedor = new frmViajeroVendedor();
             viajeroVendedor.ShowDialog();
         }
+
+        private void btnLimiteFuncion_Click(object sender, EventArgs e)
+        {
+            frmFuncionMinimo funcionMinimo = new frmFuncionMinimo();
+            funcionMinimo.ShowDialog();
+        }
     }
 }
