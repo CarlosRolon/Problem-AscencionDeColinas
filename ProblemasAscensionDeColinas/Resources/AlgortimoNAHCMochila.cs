@@ -37,12 +37,13 @@ namespace ProblemasAscensionDeColinas.Resources
 
                 if ( new_best.pesoEnMochila <= new_best.pesoMaximoPermitido)
                 {
-                    if (fnew_best > fbest_evaluated)
+                    if (fnew_best >= fbest_evaluated)
                     {
                         best_evaluated = (MochilaClass)new_best.Clone();
                         fbest_evaluated = fnew_best;
                     }
                 }
+               
 
             } while (iteracion <= maximoIteraciones);
 
