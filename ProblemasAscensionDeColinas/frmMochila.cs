@@ -46,7 +46,7 @@ namespace ProblemasAscensionDeColinas
 
 
 
-            AlgortimoNAHC algortimoNAHC = new AlgortimoNAHC(mochila);
+            AlgortimoNAHCMochila algortimoNAHC = new AlgortimoNAHCMochila(mochila);
             MochilaClass solucion = algortimoNAHC.optimizarSolucion( (int) nupNumeroIteraciones.Value  );
 
             rtbSolucion.Text =

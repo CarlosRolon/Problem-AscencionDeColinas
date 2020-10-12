@@ -50,13 +50,14 @@
             this.btnEliminarConexion = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.pnPaso3 = new System.Windows.Forms.Panel();
+            this.nupNumeroIteraciones = new System.Windows.Forms.NumericUpDown();
+            this.lbNumeroIteraciones = new System.Windows.Forms.Label();
             this.btnRegresarPaso2 = new System.Windows.Forms.Button();
             this.btnCalcular = new System.Windows.Forms.Button();
             this.cbCiudadInicial = new System.Windows.Forms.ComboBox();
             this.lbPaso3 = new System.Windows.Forms.Label();
             this.btnRegresarPaso1 = new System.Windows.Forms.Button();
-            this.nupNumeroIteraciones = new System.Windows.Forms.NumericUpDown();
-            this.lbNumeroIteraciones = new System.Windows.Forms.Label();
+            this.btnRegresar = new System.Windows.Forms.Button();
             this.pnPaso1.SuspendLayout();
             this.pnPaso2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupValorItem)).BeginInit();
@@ -74,6 +75,7 @@
             this.btnEliminarCiudad.TabIndex = 29;
             this.btnEliminarCiudad.Text = "Eliminar\r\n Ciudad";
             this.btnEliminarCiudad.UseVisualStyleBackColor = true;
+            this.btnEliminarCiudad.Click += new System.EventHandler(this.btnEliminarCiudad_Click);
             // 
             // btnEliminarTodosItems
             // 
@@ -85,16 +87,13 @@
             this.btnEliminarTodosItems.TabIndex = 28;
             this.btnEliminarTodosItems.Text = "Eliminar Todas Las Ciudades";
             this.btnEliminarTodosItems.UseVisualStyleBackColor = true;
+            this.btnEliminarTodosItems.Click += new System.EventHandler(this.btnEliminarTodosItems_Click);
             // 
             // listbCiudades
             // 
             this.listbCiudades.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listbCiudades.FormattingEnabled = true;
             this.listbCiudades.ItemHeight = 20;
-            this.listbCiudades.Items.AddRange(new object[] {
-            "Guadalajara",
-            "Monterrey",
-            "Ciudad de México"});
             this.listbCiudades.Location = new System.Drawing.Point(8, 92);
             this.listbCiudades.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listbCiudades.Name = "listbCiudades";
@@ -151,6 +150,7 @@
             this.btnAgregarCiudad.TabIndex = 31;
             this.btnAgregarCiudad.Text = "Agregar Ciudad";
             this.btnAgregarCiudad.UseVisualStyleBackColor = true;
+            this.btnAgregarCiudad.Click += new System.EventHandler(this.btnAgregarCiudad_Click);
             // 
             // pnPaso1
             // 
@@ -169,6 +169,7 @@
             // 
             // pnPaso2
             // 
+            this.pnPaso2.Controls.Add(this.btnRegresar);
             this.pnPaso2.Controls.Add(this.nupValorItem);
             this.pnPaso2.Controls.Add(this.lbValorItem);
             this.pnPaso2.Controls.Add(this.cbCiudadDestino);
@@ -253,6 +254,7 @@
             this.btnAgregarConexion.TabIndex = 31;
             this.btnAgregarConexion.Text = "Agregar ";
             this.btnAgregarConexion.UseVisualStyleBackColor = true;
+            this.btnAgregarConexion.Click += new System.EventHandler(this.btnAgregarConexion_Click);
             // 
             // lbTitlePaso2
             // 
@@ -326,6 +328,34 @@
             this.pnPaso3.Size = new System.Drawing.Size(251, 431);
             this.pnPaso3.TabIndex = 37;
             // 
+            // nupNumeroIteraciones
+            // 
+            this.nupNumeroIteraciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nupNumeroIteraciones.Location = new System.Drawing.Point(69, 241);
+            this.nupNumeroIteraciones.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.nupNumeroIteraciones.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nupNumeroIteraciones.Name = "nupNumeroIteraciones";
+            this.nupNumeroIteraciones.Size = new System.Drawing.Size(120, 26);
+            this.nupNumeroIteraciones.TabIndex = 36;
+            this.nupNumeroIteraciones.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // lbNumeroIteraciones
+            // 
+            this.lbNumeroIteraciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNumeroIteraciones.Location = new System.Drawing.Point(3, 196);
+            this.lbNumeroIteraciones.Name = "lbNumeroIteraciones";
+            this.lbNumeroIteraciones.Size = new System.Drawing.Size(245, 34);
+            this.lbNumeroIteraciones.TabIndex = 35;
+            this.lbNumeroIteraciones.Text = "Número de Iteraciones";
+            // 
             // btnRegresarPaso2
             // 
             this.btnRegresarPaso2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -385,33 +415,17 @@
             this.btnRegresarPaso1.UseVisualStyleBackColor = true;
             this.btnRegresarPaso1.Click += new System.EventHandler(this.btnRegresarPaso1_Click);
             // 
-            // nupNumeroIteraciones
+            // btnRegresar
             // 
-            this.nupNumeroIteraciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nupNumeroIteraciones.Location = new System.Drawing.Point(69, 241);
-            this.nupNumeroIteraciones.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.nupNumeroIteraciones.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nupNumeroIteraciones.Name = "nupNumeroIteraciones";
-            this.nupNumeroIteraciones.Size = new System.Drawing.Size(120, 26);
-            this.nupNumeroIteraciones.TabIndex = 36;
-            this.nupNumeroIteraciones.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // lbNumeroIteraciones
-            // 
-            this.lbNumeroIteraciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNumeroIteraciones.Location = new System.Drawing.Point(3, 196);
-            this.lbNumeroIteraciones.Name = "lbNumeroIteraciones";
-            this.lbNumeroIteraciones.Size = new System.Drawing.Size(245, 34);
-            this.lbNumeroIteraciones.TabIndex = 35;
-            this.lbNumeroIteraciones.Text = "Número de Iteraciones";
+            this.btnRegresar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegresar.Location = new System.Drawing.Point(284, 329);
+            this.btnRegresar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnRegresar.Name = "btnRegresar";
+            this.btnRegresar.Size = new System.Drawing.Size(119, 32);
+            this.btnRegresar.TabIndex = 37;
+            this.btnRegresar.Text = "Regresar";
+            this.btnRegresar.UseVisualStyleBackColor = true;
+            this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
             // 
             // frmViajeroVendedor
             // 
@@ -470,5 +484,6 @@
         private System.Windows.Forms.Button btnRegresarPaso1;
         private System.Windows.Forms.NumericUpDown nupNumeroIteraciones;
         private System.Windows.Forms.Label lbNumeroIteraciones;
+        private System.Windows.Forms.Button btnRegresar;
     }
 }

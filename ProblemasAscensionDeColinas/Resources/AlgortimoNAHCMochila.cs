@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace ProblemasAscensionDeColinas.Resources
 {
-    public class AlgortimoNAHC
+    public class AlgortimoNAHCMochila
     {
         MochilaClass mochila;
 
-        public AlgortimoNAHC(MochilaClass mochila)
+        public AlgortimoNAHCMochila(MochilaClass mochila)
         {
             this.mochila = mochila;
         }
