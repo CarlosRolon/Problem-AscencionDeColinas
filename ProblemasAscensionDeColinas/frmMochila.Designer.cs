@@ -43,6 +43,8 @@
             this.btnEliminarItem = new System.Windows.Forms.Button();
             this.nupNumeroIteraciones = new System.Windows.Forms.NumericUpDown();
             this.lbNumeroIteraciones = new System.Windows.Forms.Label();
+            this.rtbSolucion = new System.Windows.Forms.RichTextBox();
+            this.lbSolucion = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nupPesoMaximo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupPesoItem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupValorItem)).BeginInit();
@@ -70,10 +72,14 @@
             // 
             // nupPesoMaximo
             // 
-            this.nupPesoMaximo.DecimalPlaces = 2;
             this.nupPesoMaximo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nupPesoMaximo.Location = new System.Drawing.Point(236, 129);
             this.nupPesoMaximo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.nupPesoMaximo.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.nupPesoMaximo.Name = "nupPesoMaximo";
             this.nupPesoMaximo.Size = new System.Drawing.Size(120, 26);
             this.nupPesoMaximo.TabIndex = 6;
@@ -98,10 +104,14 @@
             // 
             // nupPesoItem
             // 
-            this.nupPesoItem.DecimalPlaces = 2;
             this.nupPesoItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nupPesoItem.Location = new System.Drawing.Point(103, 220);
             this.nupPesoItem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.nupPesoItem.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.nupPesoItem.Name = "nupPesoItem";
             this.nupPesoItem.Size = new System.Drawing.Size(120, 26);
             this.nupPesoItem.TabIndex = 9;
@@ -117,10 +127,14 @@
             // 
             // nupValorItem
             // 
-            this.nupValorItem.DecimalPlaces = 2;
             this.nupValorItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nupValorItem.Location = new System.Drawing.Point(323, 220);
             this.nupValorItem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.nupValorItem.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.nupValorItem.Name = "nupValorItem";
             this.nupValorItem.Size = new System.Drawing.Size(120, 26);
             this.nupValorItem.TabIndex = 11;
@@ -135,6 +149,7 @@
             this.btnAgregarItem.TabIndex = 12;
             this.btnAgregarItem.Text = "Agregar Item";
             this.btnAgregarItem.UseVisualStyleBackColor = true;
+            this.btnAgregarItem.Click += new System.EventHandler(this.btnAgregarItem_Click);
             // 
             // btnCalcular
             // 
@@ -146,15 +161,13 @@
             this.btnCalcular.TabIndex = 13;
             this.btnCalcular.Text = "Calcular";
             this.btnCalcular.UseVisualStyleBackColor = true;
+            this.btnCalcular.Click += new System.EventHandler(this.btnCalcular_Click);
             // 
             // listbItems
             // 
             this.listbItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listbItems.FormattingEnabled = true;
             this.listbItems.ItemHeight = 20;
-            this.listbItems.Items.AddRange(new object[] {
-            "Item 1: Peso 5 - Valor 10",
-            "Item 2: Peso 7 - Valor 3"});
             this.listbItems.Location = new System.Drawing.Point(103, 289);
             this.listbItems.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listbItems.Name = "listbItems";
@@ -171,6 +184,7 @@
             this.btnEliminarTodosItems.TabIndex = 15;
             this.btnEliminarTodosItems.Text = "Eliminar Todos Items";
             this.btnEliminarTodosItems.UseVisualStyleBackColor = true;
+            this.btnEliminarTodosItems.Click += new System.EventHandler(this.btnEliminarTodosItems_Click);
             // 
             // btnEliminarItem
             // 
@@ -182,12 +196,18 @@
             this.btnEliminarItem.TabIndex = 16;
             this.btnEliminarItem.Text = "Eliminar Item";
             this.btnEliminarItem.UseVisualStyleBackColor = true;
+            this.btnEliminarItem.Click += new System.EventHandler(this.btnEliminarItem_Click);
             // 
             // nupNumeroIteraciones
             // 
             this.nupNumeroIteraciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nupNumeroIteraciones.Location = new System.Drawing.Point(449, 471);
             this.nupNumeroIteraciones.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.nupNumeroIteraciones.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.nupNumeroIteraciones.Minimum = new decimal(new int[] {
             1,
             0,
@@ -211,12 +231,34 @@
             this.lbNumeroIteraciones.TabIndex = 35;
             this.lbNumeroIteraciones.Text = "Número de Iteraciones";
             // 
+            // rtbSolucion
+            // 
+            this.rtbSolucion.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.rtbSolucion.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtbSolucion.Location = new System.Drawing.Point(12, 573);
+            this.rtbSolucion.Name = "rtbSolucion";
+            this.rtbSolucion.ReadOnly = true;
+            this.rtbSolucion.Size = new System.Drawing.Size(450, 100);
+            this.rtbSolucion.TabIndex = 37;
+            this.rtbSolucion.Text = "";
+            // 
+            // lbSolucion
+            // 
+            this.lbSolucion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSolucion.Location = new System.Drawing.Point(8, 540);
+            this.lbSolucion.Name = "lbSolucion";
+            this.lbSolucion.Size = new System.Drawing.Size(245, 30);
+            this.lbSolucion.TabIndex = 38;
+            this.lbSolucion.Text = "Solución";
+            // 
             // frmMochila
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MistyRose;
-            this.ClientSize = new System.Drawing.Size(581, 553);
+            this.ClientSize = new System.Drawing.Size(582, 703);
+            this.Controls.Add(this.lbSolucion);
+            this.Controls.Add(this.rtbSolucion);
             this.Controls.Add(this.nupNumeroIteraciones);
             this.Controls.Add(this.lbNumeroIteraciones);
             this.Controls.Add(this.nupPesoMaximo);
@@ -264,5 +306,7 @@
         private System.Windows.Forms.Button btnEliminarItem;
         private System.Windows.Forms.NumericUpDown nupNumeroIteraciones;
         private System.Windows.Forms.Label lbNumeroIteraciones;
+        private System.Windows.Forms.RichTextBox rtbSolucion;
+        private System.Windows.Forms.Label lbSolucion;
     }
 }

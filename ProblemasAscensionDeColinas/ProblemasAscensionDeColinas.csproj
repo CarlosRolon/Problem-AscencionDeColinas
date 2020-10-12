@@ -70,6 +70,8 @@
     <Compile Include="frmViajeroVendedor.Designer.cs">
       <DependentUpon>frmViajeroVendedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Resources\AlgortimoNAHC.cs" />
+    <Compile Include="Resources\MochilaClass.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmFuncionMinimo.resx">
