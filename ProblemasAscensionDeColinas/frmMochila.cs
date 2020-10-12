@@ -113,9 +113,6 @@ namespace ProblemasAscensionDeColinas
             UpdateItemsListBox();
         }
 
-        private void btnCalcular_Click(object sender, EventArgs e)
-        {
-
-        }
+      
     }
 }
