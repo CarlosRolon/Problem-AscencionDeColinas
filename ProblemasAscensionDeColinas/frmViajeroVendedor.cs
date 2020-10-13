@@ -15,11 +15,13 @@ namespace ProblemasAscensionDeColinas
     public partial class frmViajeroVendedor : Form
     {
         ViajeroClass viajero;
+        Viajero viajeroSolucion;
 
         public frmViajeroVendedor()
         {
             InitializeComponent();
             viajero = new ViajeroClass();
+            viajeroSolucion = new Viajero();
         }
 
         private void btnContinuarPaso1_Click(object sender, EventArgs e)
@@ -122,11 +124,17 @@ namespace ProblemasAscensionDeColinas
             openFileDialog1.ShowDialog();
             string fileNameCSV = openFileDialog1.FileName;
             textBoxFilePad.Text = fileNameCSV;
+
+            
+
         }
        
         private void CargarCSV_Click(object sender, EventArgs e)
         {
-            int[,] matriz = MakeMatrizAdyacencia(textBoxFilePad.Text);            
+            int[,] matriz = MakeMatrizAdyacencia(textBoxFilePad.Text);
+            viajeroSolucion.matrizAdyacencia = matriz;
+            
+
         }
 
         private int[,] MakeMatrizAdyacencia(string filePad)
@@ -136,7 +144,7 @@ namespace ProblemasAscensionDeColinas
 
             using (var reader = new StreamReader(filePad))
             {
-                numCiudades = Int32.Parse(reader.ReadLine())+1;
+                numCiudades = Int32.Parse(reader.ReadLine());
                 matrizAdyacencia = new int[numCiudades, numCiudades];
 
                 for (int i = 0; i < numCiudades; i++)
@@ -153,8 +161,8 @@ namespace ProblemasAscensionDeColinas
                     var line = reader.ReadLine();
                     var values = line.Split(',');
 
-                    ciudadInicio = Int32.Parse(values[0]);
-                    ciudadLlegada = Int32.Parse(values[1]);
+                    ciudadInicio = Int32.Parse(values[0])-1;
+                    ciudadLlegada = Int32.Parse(values[1])-1;
                     pesoConexion = Int32.Parse(values[2]);
 
                     matrizAdyacencia[ciudadInicio, ciudadLlegada] = pesoConexion;
@@ -163,6 +171,11 @@ namespace ProblemasAscensionDeColinas
                 }
             }
             return matrizAdyacencia;
+        }
+
+        private void btnCalcular_Click(object sender, EventArgs e)
+        {
+            viajeroSolucion.generarRutaValida();
         }
     }
 }
