@@ -100,6 +100,11 @@
             this.nupNumeroIteraciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nupNumeroIteraciones.Location = new System.Drawing.Point(364, 104);
             this.nupNumeroIteraciones.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.nupNumeroIteraciones.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
             this.nupNumeroIteraciones.Minimum = new decimal(new int[] {
             1,
             0,

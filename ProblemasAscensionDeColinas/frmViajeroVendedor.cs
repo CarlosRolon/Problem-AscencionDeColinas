@@ -16,18 +16,21 @@ namespace ProblemasAscensionDeColinas
     {
         AlgoritmoNAHCViajero algoritmoNAHCViajero;
         Viajero viajero;
+        bool subioMatrix;
 
         public frmViajeroVendedor()
         {
             InitializeComponent();
             viajero = new Viajero();
             algoritmoNAHCViajero = new AlgoritmoNAHCViajero();
+            subioMatrix = false;
         }
 
  
 
         private void ButtonExplorar_Click(object sender, EventArgs e)
         {
+            subioMatrix = false;
             openFileDialog1.ShowDialog();
             string fileNameCSV = openFileDialog1.FileName;
             textBoxFilePad.Text = fileNameCSV;
@@ -40,6 +43,7 @@ namespace ProblemasAscensionDeColinas
                 int[,] matriz = MakeMatrizAdyacencia(textBoxFilePad.Text);
                 viajero.matrizAdyacencia = matriz;
                 MessageBox.Show("Se ha cargado correctamente", " COMPLETADO  ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                subioMatrix = true;
             }
             catch (Exception es)
             {
@@ -86,11 +90,11 @@ namespace ProblemasAscensionDeColinas
 
         private void btnCalcular_Click(object sender, EventArgs e)
         {
-            /*if (viajero.matrizAdyacencia.GetLength(0) == null)
+            if (!subioMatrix)
             {
                 MessageBox.Show("Favor de Agregar Matriz de Adyacencia","ERROR ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
-            }*/
+            }
 
             viajero = algoritmoNAHCViajero.optimizarFuncion(viajero, (int)nupNumeroIteraciones.Value);
 
