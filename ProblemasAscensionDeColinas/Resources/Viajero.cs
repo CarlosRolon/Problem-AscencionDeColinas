@@ -10,9 +10,9 @@ namespace ProblemasAscensionDeColinas.Resources
     {
         public int[,] matrizAdyacencia { get; set; }
 
-        public Queue<int> ciudadesVisitadas { get; set; }
+        public Stack<int> ciudadesVisitadas { get; set; }
 
-        public List<int> ruta { get; set; }
+        public List<int> rutaSolucion { get; set; }
 
         public int distanciaRecorrida { get; private set; }
 
@@ -25,27 +25,33 @@ namespace ProblemasAscensionDeColinas.Resources
         {
             for (int i = 0; i < posiciones; i++)
             {
-                ciudadesVisitadas.Dequeue();
+                ciudadesVisitadas.Pop();
             }
         }
 
         public void generarRutaValida() {
             Random r = new Random();
-            int ciudadDestino , ciudadActual;
+            int ciudadDestino , ciudadActual , ciudadInicial;
             ciudadesVisitadas.Clear();
-            //ciudadesVisitadas.Enqueue(r.Next(0, ciudadesVisitadas.Count));
+            ciudadInicial = r.Next(0, matrizAdyacencia.Length);
+            ciudadesVisitadas.Push( ciudadInicial);
             do
             {
                 ciudadActual = ciudadesVisitadas.Peek();
                 do
                 {
-                   ciudadDestino = r.Next(0, ciudadesVisitadas.Count);
-                } while ( ciudadesVisitadas.Contains(ciudadDestino) && matrizAdyacencia[ciudadActual, ciudadDestino] <= 0  );
+                   ciudadDestino = r.Next(0, matrizAdyacencia.Length);
+                } while ( ciudadesVisitadas.Contains(ciudadDestino) || matrizAdyacencia[ciudadActual, ciudadDestino] <= 0  );
 
                 distanciaRecorrida += matrizAdyacencia[ ciudadActual, ciudadDestino];
-                ciudadesVisitadas.Enqueue(ciudadDestino);
+                ciudadesVisitadas.Push(ciudadDestino);
 
             } while (ciudadesVisitadas.Count < matrizAdyacencia.Length);
+
+            if (matrizAdyacencia[ciudadesVisitadas.Peek(), ciudadInicial] > 0)
+            {
+                distanciaRecorrida += matrizAdyacencia[ciudadesVisitadas.Peek(), ciudadInicial];
+            }
 
         }
 
