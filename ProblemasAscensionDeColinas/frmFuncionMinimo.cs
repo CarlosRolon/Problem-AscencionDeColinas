@@ -29,9 +29,9 @@ namespace ProblemasAscensionDeColinas
             System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default;
         }
 
-        public int [] GeneracionAleatoriaEstadoInicial()
+        public float [] GeneracionAleatoriaEstadoInicial()
         {
-            int[] listaDeValoresDeX = new int[(int)NumDimensiones.Value];                          
+            float[] listaDeValoresDeX = new float[(int)NumDimensiones.Value];                          
             Random rand = new Random();
             for (int i = 0; i < listaDeValoresDeX.Length; i++)
             {

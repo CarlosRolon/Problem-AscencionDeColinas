@@ -69,7 +69,7 @@ namespace ProblemasAscensionDeColinas.Resources
                 {
                     ciudadActual = ciudadesVisitadas.Peek();
                     List<int> vecinos = CiudadesVecinas(ciudadActual);
-                    do
+                   do
                     {
 
                         if (vecinos.Count <= 0)
@@ -168,10 +168,6 @@ namespace ProblemasAscensionDeColinas.Resources
             }
         }
 
-
-
-
-
         private List<int> CiudadesVecinas(int ciudadActual)
         {
             List<int> vecinos = new List<int>();
@@ -184,7 +180,6 @@ namespace ProblemasAscensionDeColinas.Resources
             }
             return vecinos;
         }
-
 
         public object Clone()
         {
