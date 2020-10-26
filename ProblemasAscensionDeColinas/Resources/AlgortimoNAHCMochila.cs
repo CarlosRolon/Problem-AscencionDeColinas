@@ -25,27 +25,49 @@ namespace ProblemasAscensionDeColinas.Resources
             
             best_evaluated = generarSolucionAleatorio(mochila);
             fbest_evaluated = best_evaluated.valorEnMochila;
-            iteracion = 0;
+            
+            float temp_min = 0.001f;
+            float temp_ini = 100; //Poner entrada del usuario
+            float a = 0.80f; //Poner entrada del usuario
+            float delta = 0;
             do
             {
-                iteracion++;
-                locus =  new Random().Next(0, best_evaluated.objetosPosibles.Count);
-
-                new_best = (MochilaClass)best_evaluated.Clone();
-                new_best.mutarObjetoEnMochila(locus);
-                fnew_best = new_best.valorEnMochila;
-
-                if ( new_best.pesoEnMochila <= new_best.pesoMaximoPermitido)
+                iteracion = 0;
+                do
                 {
-                    if (fnew_best >= fbest_evaluated)
-                    {
-                        best_evaluated = (MochilaClass)new_best.Clone();
-                        fbest_evaluated = fnew_best;
-                    }
-                }
-               
+                    iteracion++;
+                    //cambiar nombres
+                    locus = new Random().Next(0, best_evaluated.objetosPosibles.Count);
 
-            } while (iteracion <= maximoIteraciones);
+                    new_best = (MochilaClass)best_evaluated.Clone();
+                    new_best.mutarObjetoEnMochila(locus);
+                    fnew_best = new_best.valorEnMochila;
+
+                    delta =  fbest_evaluated - fnew_best;
+
+
+                    if (new_best.pesoEnMochila <= new_best.pesoMaximoPermitido)
+                    {
+
+                        if (delta <= 0)
+                        {
+                            best_evaluated = (MochilaClass)new_best.Clone();
+                            fbest_evaluated = fnew_best;
+                        }
+                        else {
+                            double locus_dos = new Random().NextDouble();
+                            if (Math.Exp(-delta / temp_ini) > locus_dos) {                                
+                                best_evaluated = (MochilaClass)new_best.Clone();
+                                fbest_evaluated = fnew_best;
+                            }
+                        }
+                    }
+
+
+                } while (iteracion <= maximoIteraciones);
+                temp_ini = temp_ini * a;
+            } while (temp_min <= temp_ini);
+           
 
             return best_evaluated;
         }
