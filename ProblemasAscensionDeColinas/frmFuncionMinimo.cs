@@ -24,7 +24,7 @@ namespace ProblemasAscensionDeColinas
             System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
             MinFuncion.Text = "";
             TBEstadoInicial.Text = "";
-            float[] bestResult = DoRMHC();
+            float[] bestResult = DoSA((float)nupTempMin.Value, (float)nupTemMax.Value, (float)nupAvalue.Value, (int)NumIteracionMax.Value);
             printBestResult(bestResult);
             System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default;
         }
@@ -35,11 +35,11 @@ namespace ProblemasAscensionDeColinas
             Random rand = new Random();
             for (int i = 0; i < listaDeValoresDeX.Length; i++)
             {
-                int ValorX = rand.Next(-10, 10);
+                float ValorX = (float)(rand.NextDouble() * 20) -10;
                 listaDeValoresDeX[i] = ValorX;
-                TBEstadoInicial.Text += "   " + ValorX;
+                //TBEstadoInicial.Text += "   " + ValorX;
             }
-
+            TBEstadoInicial.Text += "" + Sumatoria(listaDeValoresDeX);
             return listaDeValoresDeX;
         }
 
@@ -65,20 +65,22 @@ namespace ProblemasAscensionDeColinas
             {
                 NewListaDeValoresDeX[i] = ValoresdeX[i];
             }
-            //NewListaDeValoresDeX = ValoresdeX;
 
-            float ValorX = rand.Next(-10, 10);
-            NewListaDeValoresDeX[iter] = ValorX;
+            float X = ValoresdeX[iter];
+            X = (float)(X * Math.Sin(X));
+            NewListaDeValoresDeX[iter] = X;
 
             return NewListaDeValoresDeX;
         }
 
         public void printBestResult (float[] bestResult)
         {
-            for (int i = 0; i < bestResult.Length; i++)
+            /*for (int i = 0; i < bestResult.Length; i++)
             {
                 MinFuncion.Text += "   " + bestResult[i];
-            }
+            }*/
+            float f_bestResult = Sumatoria(bestResult);
+            MinFuncion.Text = "" + f_bestResult;
         }
 
         public float[] DoRMHC() {
@@ -116,6 +118,54 @@ namespace ProblemasAscensionDeColinas
             return best_evaluated;
         }
 
+        public float[] DoSA(float temp_ini, float temp_min, float a, int maximoIteraciones)
+        {
+           
+            double valorRandom;
+            int iteracion;
+            Random rand = new Random();
+            float delta;
 
+            float[] best_evaluated = GeneracionAleatoriaEstadoInicial();
+            float f_best_evaluated = Sumatoria(best_evaluated);
+
+
+            do
+            {
+                iteracion = 0;
+                do
+                {
+                    iteracion++;
+
+                    int pos = rand.Next(0, best_evaluated.Length);
+                    float[] solucionPrima = MutarEstadoInicial(best_evaluated, pos);
+                    float fsolucionPrima = Sumatoria(solucionPrima);
+
+                    delta = fsolucionPrima - f_best_evaluated;
+
+                    if (delta <= 0)
+                    {
+                        best_evaluated = solucionPrima;
+                        f_best_evaluated = fsolucionPrima;
+                    }
+                    else
+                    {
+                        valorRandom = new Random().NextDouble();
+                        if (Math.Exp(-delta / temp_ini) > valorRandom)
+                        {
+                            best_evaluated = solucionPrima;
+                            f_best_evaluated = fsolucionPrima;
+                        }
+                    }
+                    
+                } while (iteracion <= maximoIteraciones);
+
+                temp_ini = temp_ini * a;
+            } while (temp_min <= temp_ini);
+
+            return best_evaluated;
+
+           
+        }
     }
 }

@@ -30,14 +30,14 @@ namespace ProblemasAscensionDeColinas.Resources
 
             for (int i = 0; i < matrizAdyacencia.GetLength(0); i++)
             {
-                ciudadesPosibles.Add(i);
+                ciudadesPosibles.Add(i); //0,1,2,3,4,5
             }
 
             while (ciudadesPosibles.Count > 0)
             {
-                pos = randNum.Next(0, ciudadesPosibles.Count );
-                rutaAleatoria.Add(ciudadesPosibles[pos]);
-                ciudadesPosibles.RemoveAt(pos);
+                pos = randNum.Next(0, ciudadesPosibles.Count );//2
+                rutaAleatoria.Add(ciudadesPosibles[pos]);//2,3,5,4,1,0
+                ciudadesPosibles.RemoveAt(pos);//0
             }
 
             ruta =  rutaAleatoria;
@@ -49,13 +49,13 @@ namespace ProblemasAscensionDeColinas.Resources
             distancia = 0;
             for (int i = 1; i < ruta.Count; i++)
             {
-                inicio =  ruta[i - 1];
-                fin = ruta[i];
-                distancia+= matrizAdyacencia[inicio,fin];
+                inicio =  ruta[i - 1];//2
+                fin = ruta[i];//3
+                distancia+= matrizAdyacencia[inicio,fin];//costo de 2 a 3
             }
 
-            inicio = ruta.Count - 1;
-            fin = ruta[0];
+            inicio = ruta.Count - 1;//6-1=5 = pos 5 de la lista de la ruta
+            fin = ruta[0];//2
             distancia += matrizAdyacencia[inicio, fin];
 
             return distancia;
