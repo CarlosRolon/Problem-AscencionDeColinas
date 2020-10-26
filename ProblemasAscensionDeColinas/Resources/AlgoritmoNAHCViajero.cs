@@ -13,7 +13,6 @@ namespace ProblemasAscensionDeColinas.Resources
 
         public Viajero optimizarFuncion(Viajero viajero, int maximoIteraciones)
         {
-
             Viajero new_best, best_evaluated;
             int fbest_evaluated, fnew_best;
             int iteracion, locus;
@@ -27,10 +26,8 @@ namespace ProblemasAscensionDeColinas.Resources
             {
                 iteracion++;
                 locus = new Random().Next(0, best_evaluated.matrizAdyacencia.GetLength(0));
-
                 new_best = (Viajero)best_evaluated.Clone();
                 new_best.mutarCamino(locus);
-
                 if (new_best.caminoValido)
                 {
                     fnew_best = new_best.distanciaRecorrida;
@@ -40,13 +37,8 @@ namespace ProblemasAscensionDeColinas.Resources
                         fbest_evaluated = fnew_best;
                     }
                 }
-
-
             } while (iteracion <= maximoIteraciones);
-
             return best_evaluated;
-
-
         }
     }
 }

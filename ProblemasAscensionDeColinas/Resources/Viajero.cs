@@ -9,13 +9,11 @@ namespace ProblemasAscensionDeColinas.Resources
 {
     public class Viajero
     {
-
         public bool caminoValido { get; private set; }
         private int ciudadInicial { get; set; }
         public int[,] matrizAdyacencia { get; set; }
 
         public Stack<int> ciudadesVisitadas { get; set; }
-
 
         public int distanciaRecorrida { get; private set; }
 

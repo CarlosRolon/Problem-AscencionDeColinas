@@ -11,10 +11,7 @@ namespace ProblemasAscensionDeColinas.Resources
     {
         public ArrayList objetosPosibles { get ;  set; }
 
-        //private List<Boolean> objetosEnMochila;
         public List<Boolean> ObjetosEnMochila  { get; set; }
-        //{  get { return objetosEnMochila.ToList(); } 
-        // set { objetosEnMochila = value.ToList<Boolean>(); }  }
 
         public int pesoMaximoPermitido { get; set; }
 
@@ -33,7 +30,7 @@ namespace ProblemasAscensionDeColinas.Resources
                 return valor;
             }
         }
-
+       
         public int pesoEnMochila
         {
             get
@@ -59,14 +56,11 @@ namespace ProblemasAscensionDeColinas.Resources
             ObjetosEnMochila = new List<bool>();
         }
 
-        /// <summary>
-        /// Saca los objetos dentro de la mochila
-        /// </summary>
-        public void vaciarMochila()
+        public void mutarObjetoEnMochila(int pos)
         {
-            for (int i = 0; i < ObjetosEnMochila.Count ; i++)
+            if (pos < ObjetosEnMochila.Count)
             {
-                ObjetosEnMochila[i] = false;
+                ObjetosEnMochila[pos] = !ObjetosEnMochila[pos];
             }
         }
 
@@ -111,13 +105,7 @@ namespace ProblemasAscensionDeColinas.Resources
         }
 
      
-        public void mutarObjetoEnMochila(int pos)
-        {
-            if (pos < ObjetosEnMochila.Count)
-            {
-                ObjetosEnMochila[pos] = !ObjetosEnMochila[pos];
-            }
-        }
+      
 
 
         public object Clone()
