@@ -1,4 +1,5 @@
 ﻿using ProblemasAscensionDeColinas.Resources;
+using ProblemasAscensionDeColinas.Resources.SA;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +15,7 @@ namespace ProblemasAscensionDeColinas
 {
     public partial class frmViajeroVendedor : Form
     {
-        AlgoritmoNAHCViajero algoritmoNAHCViajero;
+        AlgoritmoSAViajero algoritmoSAViajero;
         Viajero viajero;
         bool subioMatrix;
 
@@ -22,7 +23,7 @@ namespace ProblemasAscensionDeColinas
         {
             InitializeComponent();
             viajero = new Viajero();
-            algoritmoNAHCViajero = new AlgoritmoNAHCViajero();
+            algoritmoSAViajero = new AlgoritmoSAViajero();
             subioMatrix = false;
         }
 
@@ -54,6 +55,7 @@ namespace ProblemasAscensionDeColinas
 
         private int[,] MakeMatrizAdyacencia(string filePad)
         {
+            int maxValue = 1000000;
             int[,] matrizAdyacencia;
             int numCiudades;
 
@@ -66,7 +68,7 @@ namespace ProblemasAscensionDeColinas
                 {
                     for (int j = 0; j < numCiudades; j++)
                     {
-                        matrizAdyacencia[i, j] = 0;
+                        matrizAdyacencia[i, j] = maxValue;
                     }
                 }
                 int ciudadInicio = 0, ciudadLlegada = 0, pesoConexion = 0;
@@ -96,11 +98,18 @@ namespace ProblemasAscensionDeColinas
                 return;
             }
 
-            viajero = algoritmoNAHCViajero.optimizarFuncion(viajero, (int)nupNumeroIteraciones.Value);
+            if (nupTemperaturaMin.Value > nupTemperaturaInicial.Value)
+            {
+                MessageBox.Show("La temperatura inicial debe ser menor a la temperatura final", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-            rtbSolucion.Text = " Distancia: " + viajero.distanciaRecorrida + "  \n Camino: ";
+            viajero = algoritmoSAViajero.optimizarSolucion( viajero,  (int)nupNumeroIteraciones.Value 
+                ,  (float)nupTemperaturaMin.Value, (float)nupTemperaturaInicial.Value, (float)nupA.Value);
 
-            foreach (int ciudad in viajero.ciudadesVisitadas)
+            rtbSolucion.Text = " Distancia: " + viajero.distanciaCamino() + "  \n Camino: ";
+
+            foreach (int ciudad in viajero.ruta)
             {
                 rtbSolucion.Text += (ciudad + 1) + " ,";
             }

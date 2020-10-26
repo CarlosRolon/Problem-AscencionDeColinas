@@ -70,11 +70,14 @@
     <Compile Include="frmViajeroVendedor.Designer.cs">
       <DependentUpon>frmViajeroVendedor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Resources\AlgoritmoNAHCViajero.cs" />
-    <Compile Include="Resources\AlgortimoNAHCMochila.cs" />
+    <Compile Include="Resources\NAHC\AlgoritmoNAHCViajero.cs" />
+    <Compile Include="Resources\NAHC\AlgortimoNAHCMochila.cs" />
     <Compile Include="Resources\MochilaClass.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\NAHC\ViajeroNAHC.cs" />
+    <Compile Include="Resources\SA\AlgoritmoSAViajero.cs" />
+    <Compile Include="Resources\SA\AlgortimoSAMochila.cs" />
     <Compile Include="Resources\Viajero.cs" />
     <EmbeddedResource Include="frmFuncionMinimo.resx">
       <DependentUpon>frmFuncionMinimo.cs</DependentUpon>

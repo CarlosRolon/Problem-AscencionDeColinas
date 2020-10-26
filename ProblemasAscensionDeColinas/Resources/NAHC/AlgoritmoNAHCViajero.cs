@@ -9,14 +9,14 @@ namespace ProblemasAscensionDeColinas.Resources
 {
     public class AlgoritmoNAHCViajero
     {
-        Viajero viajero;
+        ViajeroNAHC viajero;
 
-        public Viajero optimizarFuncion(Viajero viajero, int maximoIteraciones)
+        public ViajeroNAHC optimizarFuncion(ViajeroNAHC viajero, int maximoIteraciones)
         {
-            Viajero new_best, best_evaluated;
+            ViajeroNAHC new_best, best_evaluated;
             int fbest_evaluated, fnew_best;
             int iteracion, locus;
-            new_best = new Viajero();
+            new_best = new ViajeroNAHC();
 
             best_evaluated = viajero;
             best_evaluated.generarRutaValidaAleatoria();
@@ -26,14 +26,14 @@ namespace ProblemasAscensionDeColinas.Resources
             {
                 iteracion++;
                 locus = new Random().Next(0, best_evaluated.matrizAdyacencia.GetLength(0));
-                new_best = (Viajero)best_evaluated.Clone();
+                new_best = (ViajeroNAHC)best_evaluated.Clone();
                 new_best.mutarCamino(locus);
                 if (new_best.caminoValido)
                 {
                     fnew_best = new_best.distanciaRecorrida;
                     if (fnew_best <= fbest_evaluated)
                     {
-                        best_evaluated = (Viajero)new_best.Clone();
+                        best_evaluated = (ViajeroNAHC)new_best.Clone();
                         fbest_evaluated = fnew_best;
                     }
                 }

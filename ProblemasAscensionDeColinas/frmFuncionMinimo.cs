@@ -24,7 +24,7 @@ namespace ProblemasAscensionDeColinas
             System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
             MinFuncion.Text = "";
             TBEstadoInicial.Text = "";
-            int [] bestResult = DoRMHC();
+            float[] bestResult = DoRMHC();
             printBestResult(bestResult);
             System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default;
         }
@@ -43,9 +43,9 @@ namespace ProblemasAscensionDeColinas
             return listaDeValoresDeX;
         }
 
-        public int Sumatoria (int[] listaDeValoresDeX)
+        public float Sumatoria (float[] listaDeValoresDeX)
         {
-            int suma=0;
+            float suma =0;
 
             for (int i = 0; i < listaDeValoresDeX.Length; i++)
             {
@@ -56,10 +56,10 @@ namespace ProblemasAscensionDeColinas
             return suma;
         }
 
-        public int[] MutarEstadoInicial(in int[] ValoresdeX, int iter) {
+        public float[] MutarEstadoInicial(in float[] ValoresdeX, int iter) {
 
             Random rand = new Random();
-            int[] NewListaDeValoresDeX = new int [ValoresdeX.Length];
+            float[] NewListaDeValoresDeX = new float[ValoresdeX.Length];
 
             for (int i = 0; i < ValoresdeX.Length; i++)
             {
@@ -67,13 +67,13 @@ namespace ProblemasAscensionDeColinas
             }
             //NewListaDeValoresDeX = ValoresdeX;
 
-            int ValorX = rand.Next(-10, 10);
+            float ValorX = rand.Next(-10, 10);
             NewListaDeValoresDeX[iter] = ValorX;
 
             return NewListaDeValoresDeX;
         }
 
-        public void printBestResult (int [] bestResult)
+        public void printBestResult (float[] bestResult)
         {
             for (int i = 0; i < bestResult.Length; i++)
             {
@@ -81,10 +81,10 @@ namespace ProblemasAscensionDeColinas
             }
         }
 
-        public int [] DoRMHC() {
+        public float[] DoRMHC() {
 
-            int[] best_evaluated = GeneracionAleatoriaEstadoInicial();
-            int f_best_evaluated = Sumatoria(best_evaluated);
+            float[] best_evaluated = GeneracionAleatoriaEstadoInicial();
+            float f_best_evaluated = Sumatoria(best_evaluated);
 
             Random rand = new Random();
             //int locus = rand.Next(0, best_evaluated.Length-1);
@@ -96,8 +96,8 @@ namespace ProblemasAscensionDeColinas
                 iter++;
                 //int locus = best_evaluated[posicion];
                 int locus = rand.Next(0, best_evaluated.Length);
-                int[] new_best_evaluated = MutarEstadoInicial(best_evaluated, locus);
-                int new_f_best_evaluated = Sumatoria(new_best_evaluated);
+                float[] new_best_evaluated = MutarEstadoInicial(best_evaluated, locus);
+                float new_f_best_evaluated = Sumatoria(new_best_evaluated);
 
                 if (new_f_best_evaluated <= f_best_evaluated)
                 {

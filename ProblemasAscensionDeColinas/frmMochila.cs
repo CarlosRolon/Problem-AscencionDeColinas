@@ -1,4 +1,5 @@
 ﻿using ProblemasAscensionDeColinas.Resources;
+using ProblemasAscensionDeColinas.Resources.SA;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -36,6 +37,12 @@ namespace ProblemasAscensionDeColinas
                 return;
             }
 
+            if (nupTemperaturaMin.Value > nupTemperaturaInicial.Value)
+            {
+                MessageBox.Show("La temperatura inicial debe ser menor a la temperatura final", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             mochila.pesoMaximoPermitido = (int)nupPesoMaximo.Value;
 
             if (!mochila.pesoItemsPosiblesAceptables())
@@ -46,8 +53,9 @@ namespace ProblemasAscensionDeColinas
 
 
 
-            AlgortimoNAHCMochila algortimoNAHC = new AlgortimoNAHCMochila(mochila);
-            MochilaClass solucion = algortimoNAHC.optimizarSolucion( (int) nupNumeroIteraciones.Value  );
+            AlgortimoSAMochila algortimoSAMochila = new AlgortimoSAMochila(mochila);
+            MochilaClass solucion = algortimoSAMochila.optimizarSolucion( (int) nupNumeroIteraciones.Value ,
+                (float)nupTemperaturaMin.Value, (float)nupTemperaturaInicial.Value, (float)nupA.Value);
 
             rtbSolucion.Text =
                 "   Peso:  " + solucion.pesoEnMochila + "\tValor: " + solucion.valorEnMochila +

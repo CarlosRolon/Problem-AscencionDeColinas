@@ -9,181 +9,79 @@ namespace ProblemasAscensionDeColinas.Resources
 {
     public class Viajero
     {
-        public bool caminoValido { get; private set; }
-        private int ciudadInicial { get; set; }
+   
         public int[,] matrizAdyacencia { get; set; }
 
-        public Stack<int> ciudadesVisitadas { get; set; }
+        public List<int> ruta = new List<int>();
 
-        public int distanciaRecorrida { get; private set; }
+
 
         public Viajero()
         {
-            caminoValido = false;
-            ciudadInicial = 0;
-            ciudadesVisitadas = new Stack<int>();
-            distanciaRecorrida = 0;
         }
 
-        public void regresarCamino(int posiciones)
+       
+        public void generarRutaAleatoria()
         {
-            posiciones = ciudadesVisitadas.Count - posiciones;
-            int ciudadOrigen, ciudadDestino;
-            for (int i = 0; i < posiciones; i++)
+            List<int> ciudadesPosibles = new List<int>();
+            List<int> rutaAleatoria = new List<int>();
+            Random randNum = new Random();
+            int pos;
+
+            for (int i = 0; i < matrizAdyacencia.GetLength(0); i++)
             {
-                ciudadDestino = ciudadesVisitadas.Peek();
-                ciudadesVisitadas.Pop();
-                if (ciudadesVisitadas.Count > 0)
-                {
-                    ciudadOrigen = ciudadesVisitadas.Peek();
-                    distanciaRecorrida -= matrizAdyacencia[ciudadOrigen, ciudadDestino];
-                }
-                else
-                {
-                    distanciaRecorrida = 0;
-                    ciudadesVisitadas.Clear();
-                    ciudadesVisitadas.Push(ciudadInicial);
-                }
-             
+                ciudadesPosibles.Add(i);
             }
+
+            while (ciudadesPosibles.Count > 0)
+            {
+                pos = randNum.Next(0, ciudadesPosibles.Count );
+                rutaAleatoria.Add(ciudadesPosibles[pos]);
+                ciudadesPosibles.RemoveAt(pos);
+            }
+
+            ruta =  rutaAleatoria;
         }
 
-        public void generarRutaValidaAleatoria()
+        public int distanciaCamino()
         {
-            Random r = new Random();
-            int ciudadDestino, ciudadActual, posAleatorio;
-            bool solucion = true;
-            ciudadDestino = 0;
-            bool existenCaminos = true;
-
-            do
+            int inicio, fin, distancia;
+            distancia = 0;
+            for (int i = 1; i < ruta.Count; i++)
             {
-                ciudadesVisitadas.Clear();
-                ciudadInicial = r.Next(0, matrizAdyacencia.GetLength(0));
-                ciudadesVisitadas.Push(ciudadInicial);
-                existenCaminos = true;
-                distanciaRecorrida = 0;
-                do
-                {
-                    ciudadActual = ciudadesVisitadas.Peek();
-                    List<int> vecinos = CiudadesVecinas(ciudadActual);
-                   do
-                    {
+                inicio =  ruta[i - 1];
+                fin = ruta[i];
+                distancia+= matrizAdyacencia[inicio,fin];
+            }
 
-                        if (vecinos.Count <= 0)
-                        {
-                            existenCaminos = false;
-                            break;
-                        }
+            inicio = ruta.Count - 1;
+            fin = ruta[0];
+            distancia += matrizAdyacencia[inicio, fin];
 
-                        posAleatorio = r.Next(0, vecinos.Count);
-                        ciudadDestino = vecinos[posAleatorio];
-                        vecinos.RemoveAt(posAleatorio);
+            return distancia;
+        }
 
-                    } while (ciudadesVisitadas.Contains(ciudadDestino) && existenCaminos);
-
-                    if (!existenCaminos)
-                    {
-                        break;
-                    }
-
-                    distanciaRecorrida += matrizAdyacencia[ciudadActual, ciudadDestino];
-                    ciudadesVisitadas.Push(ciudadDestino);
-
-                } while (ciudadesVisitadas.Count < matrizAdyacencia.GetLength(0));
-
-                if (existenCaminos)
-                {
-                    if (matrizAdyacencia[ciudadesVisitadas.Peek(), ciudadInicial] > 0)
-                    {
-                        distanciaRecorrida += matrizAdyacencia[ciudadesVisitadas.Peek(), ciudadInicial];
-                        ciudadesVisitadas.Push(ciudadInicial);
-                        solucion = false;
-                        caminoValido = true;
-                    }
-                   
-                }
-            } while (solucion);
+        public void solucionVecina()
+        {
+            int posRandom1 = new Random().Next(0, ruta.Count);
+            int posRandom2;
             
-        }
-
-        
-        public void mutarCamino(int posicion)
-        {
-            Random r = new Random();
-            int ciudadDestino, ciudadActual, posAleatorio;
-            ciudadDestino = 0;
-            bool existenCaminos = true;
-            regresarCamino(posicion);
-
-            //distanciaRecorrida = 0;
             do
             {
-                ciudadActual = ciudadesVisitadas.Peek();
-                List<int> vecinos = CiudadesVecinas(ciudadActual);
-                do
-                {
+                posRandom2 = new Random().Next(0, ruta.Count);
+            } while (posRandom1 == posRandom2);
 
-                    if (vecinos.Count <= 0)
-                    {
-                        existenCaminos = false;
-                        break;
-                    }
-
-                    posAleatorio = r.Next(0, vecinos.Count);
-                    ciudadDestino = vecinos[posAleatorio];
-                    vecinos.RemoveAt(posAleatorio);
-
-                } while (ciudadesVisitadas.Contains(ciudadDestino) && existenCaminos);
-
-                if (!existenCaminos)
-                {
-                    break;
-                }
-
-                distanciaRecorrida += matrizAdyacencia[ciudadActual, ciudadDestino];
-                ciudadesVisitadas.Push(ciudadDestino);
-
-            } while (ciudadesVisitadas.Count < matrizAdyacencia.GetLength(0));
-
-            if (existenCaminos)
-            {
-                if (matrizAdyacencia[ciudadesVisitadas.Peek(), ciudadInicial] > 0)
-                {
-                    distanciaRecorrida += matrizAdyacencia[ciudadesVisitadas.Peek(), ciudadInicial];
-                    ciudadesVisitadas.Push(ciudadInicial);
-                    caminoValido = true;
-                }
-                else
-                {
-                    caminoValido = false;
-                }
-
-            }
-            else
-            {
-                caminoValido = false;
-            }
+            int valor = ruta[posRandom1];
+            ruta[posRandom1] = ruta[posRandom2];
+            ruta[posRandom2] = valor;
         }
 
-        private List<int> CiudadesVecinas(int ciudadActual)
-        {
-            List<int> vecinos = new List<int>();
-            int maxCiudades = matrizAdyacencia.GetLength(0);
-
-            for (int i = 0; i < maxCiudades; i++)
-            {
-                if (matrizAdyacencia[ciudadActual,i] > 0)
-                    vecinos.Add(i);
-            }
-            return vecinos;
-        }
+          
 
         public object Clone()
         {
             object obj = this.MemberwiseClone();
-           
-            this.ciudadesVisitadas = new Stack<int>(ciudadesVisitadas);
+            this.ruta = new List<int>(ruta);
             return obj;
         }
 

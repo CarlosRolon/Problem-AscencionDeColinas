@@ -64,6 +64,15 @@ namespace ProblemasAscensionDeColinas.Resources
             }
         }
 
+        public void solucionVecina()
+        {
+            int posRandom = new Random().Next(0,  objetosPosibles.Count);
+            if (posRandom < ObjetosEnMochila.Count)
+            {
+                ObjetosEnMochila[posRandom] = !ObjetosEnMochila[posRandom];
+            }
+        }
+
         public void agregarObjetoPosible(int[,] objeto)
         {
             objetosPosibles.Add(objeto);
