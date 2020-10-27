@@ -15,8 +15,7 @@ namespace ProblemasAscensionDeColinas.Resources.SA
         {
             Viajero solucionPrima, solucionInicial;
             double valorRandom;
-            int fsolucion, fsolucionPrima;
-            int iteracion;
+            int fsolucion, fsolucionPrima , iteracion;
             float delta = 0;
             solucionInicial = viajero;
 
@@ -35,7 +34,6 @@ namespace ProblemasAscensionDeColinas.Resources.SA
                     fsolucionPrima = solucionPrima.distanciaCamino();
 
                     delta =  fsolucionPrima - fsolucion ;
-
 
                     if (delta <= 0)
                     {

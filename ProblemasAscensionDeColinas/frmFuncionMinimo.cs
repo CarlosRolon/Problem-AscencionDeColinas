@@ -24,7 +24,7 @@ namespace ProblemasAscensionDeColinas
             System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
             MinFuncion.Text = "";
             TBEstadoInicial.Text = "";
-            float[] bestResult = DoSA((float)nupTempMin.Value, (float)nupTemMax.Value, (float)nupAvalue.Value, (int)NumIteracionMax.Value);
+            float[] bestResult = DoSA((float)nupTemMax.Value, (float)nupTempMin.Value, (float)nupAvalue.Value, (int)NumIteracionMax.Value);
             printBestResult(bestResult);
             System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default;
         }
@@ -73,6 +73,24 @@ namespace ProblemasAscensionDeColinas
             return NewListaDeValoresDeX;
         }
 
+        public float[] solucionVecina(in float[] ValoresdeX)
+        {
+            Random rand = new Random();
+            int iter = rand.Next(0, ValoresdeX.Length);
+            float[] NewListaDeValoresDeX = new float[ValoresdeX.Length];
+
+            for (int i = 0; i < ValoresdeX.Length; i++)
+            {
+                NewListaDeValoresDeX[i] = ValoresdeX[i];
+            }
+
+            float X = ValoresdeX[iter];
+            X = (float)(X * Math.Sin(X));
+            NewListaDeValoresDeX[iter] = X;
+
+            return NewListaDeValoresDeX;
+        }
+
         public void printBestResult (float[] bestResult)
         {
             /*for (int i = 0; i < bestResult.Length; i++)
@@ -89,14 +107,12 @@ namespace ProblemasAscensionDeColinas
             float f_best_evaluated = Sumatoria(best_evaluated);
 
             Random rand = new Random();
-            //int locus = rand.Next(0, best_evaluated.Length-1);
 
             int iter = 0;
 
             do
             {
                 iter++;
-                //int locus = best_evaluated[posicion];
                 int locus = rand.Next(0, best_evaluated.Length);
                 float[] new_best_evaluated = MutarEstadoInicial(best_evaluated, locus);
                 float new_f_best_evaluated = Sumatoria(new_best_evaluated);
@@ -126,35 +142,32 @@ namespace ProblemasAscensionDeColinas
             Random rand = new Random();
             float delta;
 
-            float[] best_evaluated = GeneracionAleatoriaEstadoInicial();
-            float f_best_evaluated = Sumatoria(best_evaluated);
-
+            float[] solucionInicial = GeneracionAleatoriaEstadoInicial();
+            float fsolucionInicial = Sumatoria(solucionInicial);
 
             do
             {
                 iteracion = 0;
                 do
                 {
-                    iteracion++;
-
-                    int pos = rand.Next(0, best_evaluated.Length);
-                    float[] solucionPrima = MutarEstadoInicial(best_evaluated, pos);
+                    iteracion++;                                        
+                    float[] solucionPrima = solucionVecina(solucionInicial);
                     float fsolucionPrima = Sumatoria(solucionPrima);
 
-                    delta = fsolucionPrima - f_best_evaluated;
+                    delta = fsolucionPrima - fsolucionInicial;
 
                     if (delta <= 0)
                     {
-                        best_evaluated = solucionPrima;
-                        f_best_evaluated = fsolucionPrima;
+                        solucionInicial = solucionPrima;
+                        fsolucionInicial = fsolucionPrima;
                     }
                     else
                     {
                         valorRandom = new Random().NextDouble();
                         if (Math.Exp(-delta / temp_ini) > valorRandom)
                         {
-                            best_evaluated = solucionPrima;
-                            f_best_evaluated = fsolucionPrima;
+                            solucionInicial = solucionPrima;
+                            fsolucionInicial = fsolucionPrima;
                         }
                     }
                     
@@ -163,9 +176,7 @@ namespace ProblemasAscensionDeColinas
                 temp_ini = temp_ini * a;
             } while (temp_min <= temp_ini);
 
-            return best_evaluated;
-
-           
+            return solucionInicial;           
         }
     }
 }
