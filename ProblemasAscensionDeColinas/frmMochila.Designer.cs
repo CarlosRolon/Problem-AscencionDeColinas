@@ -163,7 +163,7 @@
             // btnCalcular
             // 
             this.btnCalcular.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCalcular.Location = new System.Drawing.Point(451, 653);
+            this.btnCalcular.Location = new System.Drawing.Point(451, 460);
             this.btnCalcular.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCalcular.Name = "btnCalcular";
             this.btnCalcular.Size = new System.Drawing.Size(119, 32);
@@ -210,7 +210,7 @@
             // nupNumeroIteraciones
             // 
             this.nupNumeroIteraciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nupNumeroIteraciones.Location = new System.Drawing.Point(308, 465);
+            this.nupNumeroIteraciones.Location = new System.Drawing.Point(913, 449);
             this.nupNumeroIteraciones.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nupNumeroIteraciones.Maximum = new decimal(new int[] {
             100000,
@@ -234,7 +234,7 @@
             // lbNumeroIteraciones
             // 
             this.lbNumeroIteraciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNumeroIteraciones.Location = new System.Drawing.Point(12, 467);
+            this.lbNumeroIteraciones.Location = new System.Drawing.Point(617, 451);
             this.lbNumeroIteraciones.Name = "lbNumeroIteraciones";
             this.lbNumeroIteraciones.Size = new System.Drawing.Size(245, 30);
             this.lbNumeroIteraciones.TabIndex = 35;
@@ -244,17 +244,17 @@
             // 
             this.rtbSolucion.BackColor = System.Drawing.SystemColors.HighlightText;
             this.rtbSolucion.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtbSolucion.Location = new System.Drawing.Point(7, 710);
+            this.rtbSolucion.Location = new System.Drawing.Point(16, 517);
             this.rtbSolucion.Name = "rtbSolucion";
             this.rtbSolucion.ReadOnly = true;
-            this.rtbSolucion.Size = new System.Drawing.Size(450, 100);
+            this.rtbSolucion.Size = new System.Drawing.Size(554, 253);
             this.rtbSolucion.TabIndex = 37;
             this.rtbSolucion.Text = "";
             // 
             // lbSolucion
             // 
             this.lbSolucion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSolucion.Location = new System.Drawing.Point(3, 677);
+            this.lbSolucion.Location = new System.Drawing.Point(12, 484);
             this.lbSolucion.Name = "lbSolucion";
             this.lbSolucion.Size = new System.Drawing.Size(245, 30);
             this.lbSolucion.TabIndex = 38;
@@ -264,7 +264,7 @@
             // 
             this.nupTemperaturaInicial.DecimalPlaces = 3;
             this.nupTemperaturaInicial.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nupTemperaturaInicial.Location = new System.Drawing.Point(308, 512);
+            this.nupTemperaturaInicial.Location = new System.Drawing.Point(913, 496);
             this.nupTemperaturaInicial.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nupTemperaturaInicial.Maximum = new decimal(new int[] {
             100000,
@@ -288,7 +288,7 @@
             // lbTemperaturaInicial
             // 
             this.lbTemperaturaInicial.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTemperaturaInicial.Location = new System.Drawing.Point(12, 514);
+            this.lbTemperaturaInicial.Location = new System.Drawing.Point(617, 498);
             this.lbTemperaturaInicial.Name = "lbTemperaturaInicial";
             this.lbTemperaturaInicial.Size = new System.Drawing.Size(245, 30);
             this.lbTemperaturaInicial.TabIndex = 39;
@@ -303,7 +303,7 @@
             0,
             0,
             65536});
-            this.nupTemperaturaMin.Location = new System.Drawing.Point(308, 568);
+            this.nupTemperaturaMin.Location = new System.Drawing.Point(913, 552);
             this.nupTemperaturaMin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nupTemperaturaMin.Maximum = new decimal(new int[] {
             100000,
@@ -327,7 +327,7 @@
             // lbTemperaturaMin
             // 
             this.lbTemperaturaMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTemperaturaMin.Location = new System.Drawing.Point(12, 570);
+            this.lbTemperaturaMin.Location = new System.Drawing.Point(617, 554);
             this.lbTemperaturaMin.Name = "lbTemperaturaMin";
             this.lbTemperaturaMin.Size = new System.Drawing.Size(280, 30);
             this.lbTemperaturaMin.TabIndex = 41;
@@ -336,7 +336,7 @@
             // lbA
             // 
             this.lbA.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbA.Location = new System.Drawing.Point(8, 618);
+            this.lbA.Location = new System.Drawing.Point(613, 602);
             this.lbA.Name = "lbA";
             this.lbA.Size = new System.Drawing.Size(41, 30);
             this.lbA.TabIndex = 43;
@@ -351,7 +351,7 @@
             0,
             0,
             131072});
-            this.nupA.Location = new System.Drawing.Point(72, 618);
+            this.nupA.Location = new System.Drawing.Point(677, 602);
             this.nupA.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nupA.Maximum = new decimal(new int[] {
             99,
@@ -377,7 +377,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MistyRose;
-            this.ClientSize = new System.Drawing.Size(582, 828);
+            this.ClientSize = new System.Drawing.Size(604, 789);
             this.Controls.Add(this.nupA);
             this.Controls.Add(this.lbA);
             this.Controls.Add(this.nupTemperaturaMin);

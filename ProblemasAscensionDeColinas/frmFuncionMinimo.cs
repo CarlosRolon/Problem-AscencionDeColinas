@@ -139,20 +139,22 @@ namespace ProblemasAscensionDeColinas
            
             double valorRandom;
             int iteracion;
+            int contadorInd = 0;
             Random rand = new Random();
             float delta;
 
-            float[] solucionInicial = GeneracionAleatoriaEstadoInicial();
-            float fsolucionInicial = Sumatoria(solucionInicial);
-
+            float[] solucionInicial = GeneracionAleatoriaEstadoInicial(); 
+            float fsolucionInicial = Sumatoria(solucionInicial); //Evaluacion 1
+            contadorInd++;
             do
             {
                 iteracion = 0;
                 do
                 {
                     iteracion++;                                        
-                    float[] solucionPrima = solucionVecina(solucionInicial);
-                    float fsolucionPrima = Sumatoria(solucionPrima);
+                    float[] solucionPrima = solucionVecina(solucionInicial); 
+                    float fsolucionPrima = Sumatoria(solucionPrima); // Evaluacion 2
+                    contadorInd++;
 
                     delta = fsolucionPrima - fsolucionInicial;
 
@@ -171,10 +173,10 @@ namespace ProblemasAscensionDeColinas
                         }
                     }
                     
-                } while (iteracion <= maximoIteraciones);
+                } while (iteracion <= maximoIteraciones && contadorInd <= 500);
 
-                temp_ini = temp_ini * a;
-            } while (temp_min <= temp_ini);
+                temp_ini = temp_ini * a; 
+            } while (temp_min <= temp_ini && contadorInd <= 500);
 
             return solucionInicial;           
         }

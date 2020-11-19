@@ -1,4 +1,5 @@
 ﻿using ProblemasAscensionDeColinas.Resources;
+using ProblemasAscensionDeColinas.Resources.GA;
 using ProblemasAscensionDeColinas.Resources.SA;
 using System;
 using System.Collections;
@@ -52,23 +53,77 @@ namespace ProblemasAscensionDeColinas
             }
 
 
+            AlgortimoGAMochila algortimoGAMochila = new AlgortimoGAMochila(mochila);
 
-            AlgortimoSAMochila algortimoSAMochila = new AlgortimoSAMochila(mochila);
-            MochilaClass solucion = algortimoSAMochila.optimizarSolucion( (int) nupNumeroIteraciones.Value ,
-                (float)nupTemperaturaMin.Value, (float)nupTemperaturaInicial.Value, (float)nupA.Value);
+            List<MochilaClass> poblacion = algortimoGAMochila.generarPoblacion(10);
+
+            List<MochilaClass> NPM = algortimoGAMochila.MetodoSeleccion(poblacion, MetodosSeleccion.NPM);
+            List<MochilaClass> Ruleta = algortimoGAMochila.MetodoSeleccion(poblacion, MetodosSeleccion.Ruleta);
+            List<MochilaClass> Torneo = algortimoGAMochila.MetodoSeleccion(poblacion, MetodosSeleccion.Torneo);
+
+
 
             rtbSolucion.Text =
-                "   Peso:  " + solucion.pesoEnMochila + "\tValor: " + solucion.valorEnMochila +
-                "\n  Items:  ";
+                "  Poblacion Inicial :  \n";
 
-            for (int i = 0; i < solucion.ObjetosEnMochila.Count; i++)
+            foreach (MochilaClass item in poblacion)
             {
-                if (solucion.ObjetosEnMochila[i])
+                for (int i = 0; i < item.ObjetosEnMochila.Count; i++)
                 {
-                    rtbSolucion.Text += (i + 1) + " , ";
+                    if (item.ObjetosEnMochila[i])
+                    {
+                        rtbSolucion.Text += (i + 1) + " , ";
+                    }
                 }
+
+                rtbSolucion.Text += " \n";
             }
-            
+
+            rtbSolucion.Text +=
+                " \n  Padres con metodo NAM :  \n";
+            foreach (MochilaClass item in NPM)
+            {
+                for (int i = 0; i < item.ObjetosEnMochila.Count; i++)
+                {
+                    if (item.ObjetosEnMochila[i])
+                    {
+                        rtbSolucion.Text += (i + 1) + " , ";
+                    }
+                }
+
+                rtbSolucion.Text += " \n";
+            }
+
+            rtbSolucion.Text +=
+                " \n  Padres con metodo Ruleta :  \n";
+            foreach (MochilaClass item in Ruleta)
+            {
+                for (int i = 0; i < item.ObjetosEnMochila.Count; i++)
+                {
+                    if (item.ObjetosEnMochila[i])
+                    {
+                        rtbSolucion.Text += (i + 1) + " , ";
+                    }
+                }
+
+                rtbSolucion.Text += " \n";
+            }
+
+            rtbSolucion.Text +=
+              " \n  Padres con metodo Torneo :  \n";
+            foreach (MochilaClass item in Torneo)
+            {
+                for (int i = 0; i < item.ObjetosEnMochila.Count; i++)
+                {
+                    if (item.ObjetosEnMochila[i])
+                    {
+                        rtbSolucion.Text += (i + 1) + " , ";
+                    }
+                }
+
+                rtbSolucion.Text += " \n";
+            }
+
             return;
         }
 

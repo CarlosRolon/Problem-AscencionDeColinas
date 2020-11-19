@@ -61,14 +61,16 @@ namespace ProblemasAscensionDeColinas.Resources
             return distancia;
         }
 
+        //do
+        //   {
+         //       posRandom2 = new Random().Next(0, ruta.Count);
+        //} while (posRandom1 == posRandom2);
+        
         public void solucionVecina()
         {
             int posRandom1 = new Random().Next(0, ruta.Count);
-            int posRandom2;
-            do
-            {
-                posRandom2 = new Random().Next(0, ruta.Count);
-            } while (posRandom1 == posRandom2);
+            int posRandom2 = new Random().Next(0, ruta.Count);
+            
 
             int valor = ruta[posRandom1];
             ruta[posRandom1] = ruta[posRandom2];
