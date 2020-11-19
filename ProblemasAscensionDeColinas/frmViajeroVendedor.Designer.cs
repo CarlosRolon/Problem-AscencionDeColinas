@@ -66,7 +66,7 @@
             // btnCalcular
             // 
             this.btnCalcular.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCalcular.Location = new System.Drawing.Point(1289, 443);
+            this.btnCalcular.Location = new System.Drawing.Point(581, 296);
             this.btnCalcular.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCalcular.Name = "btnCalcular";
             this.btnCalcular.Size = new System.Drawing.Size(136, 40);
@@ -305,7 +305,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Thistle;
-            this.ClientSize = new System.Drawing.Size(754, 691);
+            this.ClientSize = new System.Drawing.Size(774, 691);
             this.Controls.Add(this.nupA);
             this.Controls.Add(this.lbSolucion);
             this.Controls.Add(this.rtbSolucion);

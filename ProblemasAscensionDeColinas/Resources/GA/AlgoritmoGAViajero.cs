@@ -36,14 +36,14 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             return metodoSeleccion(poblacion);
         }
 
-
+        Random randNum = new Random();
         private Viajero generarSolucionAleatorio(Viajero vendedor)
         {
             Viajero solucion = vendedor;
 
             List<int> ciudadesPosibles = new List<int>();
             List<int> rutaAleatoria = new List<int>();
-            Random randNum = new Random();
+            
             int pos;
 
             for (int i = 0; i < solucion.matrizAdyacencia.GetLength(0); i++)

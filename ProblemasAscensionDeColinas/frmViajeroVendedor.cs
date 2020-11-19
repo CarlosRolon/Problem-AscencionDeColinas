@@ -52,12 +52,7 @@ namespace ProblemasAscensionDeColinas
                 MessageBox.Show("Error: \n" + es.Message, "ERROR ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            AlgoritmoGAViajero algortimoGAViajero = new AlgoritmoGAViajero(viajero);
-            List<Viajero> poblacion = algortimoGAViajero.generarPoblacion(10);
-            List<Viajero> NPM = algortimoGAViajero.MetodoSeleccion(poblacion, MetodosSeleccion.NPM_Viajero);
-            List<Viajero> Ruleta = algortimoGAViajero.MetodoSeleccion(poblacion, MetodosSeleccion.Ruleta_Min_Viajero);
-            List<Viajero> Torneo = algortimoGAViajero.MetodoSeleccion(poblacion, MetodosSeleccion.Torneo_Min_Viajero);
-
+            
         }
 
         private int[,] MakeMatrizAdyacencia(string filePad)
@@ -111,7 +106,66 @@ namespace ProblemasAscensionDeColinas
                 return;
             }
 
-            viajero = algoritmoSAViajero.optimizarSolucion( viajero,  (int)nupNumeroIteraciones.Value 
+
+
+            AlgoritmoGAViajero algortimoGAViajero = new AlgoritmoGAViajero(viajero);
+            List<Viajero> poblacion = algortimoGAViajero.generarPoblacion(10);
+            List<Viajero> NPM = algortimoGAViajero.MetodoSeleccion(poblacion, MetodosSeleccion.NPM_Viajero);
+            List<Viajero> Ruleta = algortimoGAViajero.MetodoSeleccion(poblacion, MetodosSeleccion.Ruleta_Min_Viajero);
+            List<Viajero> Torneo = algortimoGAViajero.MetodoSeleccion(poblacion, MetodosSeleccion.Torneo_Min_Viajero);
+
+            rtbSolucion.Text =
+                "  Poblacion Inicial :  \n";
+
+            foreach (Viajero item in poblacion)
+            {
+                for (int i = 0; i < item.ruta.Count; i++)
+                {
+                    rtbSolucion.Text += item.ruta[i] + " , ";
+
+                }
+
+                rtbSolucion.Text += " \n";
+            }
+
+            rtbSolucion.Text +=
+                " \n  Padres con metodo NAM :  \n";
+            foreach (Viajero item in NPM)
+            {
+                for (int i = 0; i < item.ruta.Count; i++)
+                {
+                    rtbSolucion.Text += item.ruta[i] + " , ";
+                }
+
+                rtbSolucion.Text += " \n";
+            }
+
+            rtbSolucion.Text +=
+                " \n  Padres con metodo Ruleta :  \n";
+            foreach (Viajero item in Ruleta)
+            {
+                for (int i = 0; i < item.ruta.Count; i++)
+                {
+                    rtbSolucion.Text += item.ruta[i] + " , ";
+                }
+
+                rtbSolucion.Text += " \n";
+            }
+
+            rtbSolucion.Text +=
+              " \n  Padres con metodo Torneo :  \n";
+            foreach (Viajero item in Torneo)
+            {
+                for (int i = 0; i < item.ruta.Count; i++)
+                {
+                    rtbSolucion.Text += item.ruta[i] + " , ";
+                }
+
+                rtbSolucion.Text += " \n";
+            }
+
+         
+            /*viajero = algoritmoSAViajero.optimizarSolucion( viajero,  (int)nupNumeroIteraciones.Value 
                 ,  (float)nupTemperaturaMin.Value, (float)nupTemperaturaInicial.Value, (float)nupA.Value);
 
             rtbSolucion.Text = " Distancia: " + viajero.distanciaCamino() + "  \n Camino: ";
@@ -120,8 +174,8 @@ namespace ProblemasAscensionDeColinas
             {
                 rtbSolucion.Text += (ciudad + 1) + " ,";
             }
-            
-            
+            */
+
         }
 
         private void lbSolucion_Click(object sender, EventArgs e)
