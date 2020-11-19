@@ -12,36 +12,34 @@ namespace ProblemasAscensionDeColinas.Resources
         public int NumDimensiones { get; set; }
         public List<float> listaDeValoresDeX { get; set; }
 
-        public float fitness { get; set; }
+        //public float fitness { get; set; }
 
         /*public FuncionMinimos(int numDim) {
             this.NumDimensiones = numDim;
             this.listaDeValoresDeX = new float[numDim];
         }
         */
-        public List<float> GeneracionAleatoriaEstadoInicial()
+        public void GeneracionAleatoriaEstadoInicial()
         {
             //float[] listaDeValoresDeX = new float[NumDimensiones];
             Random rand = new Random();
-            for (int i = 0; i < this.listaDeValoresDeX.Count; i++)
+            for (int i = 0; i < this.NumDimensiones; i++)
             {
                 float ValorX = (float)(rand.NextDouble() * 20) - 10;
-                this.listaDeValoresDeX[i] = ValorX;
+                this.listaDeValoresDeX.Add( ValorX );
                 //TBEstadoInicial.Text += "   " + ValorX;
             }            
-            return this.listaDeValoresDeX;
         }
 
-        public float Sumatoria(float[] listaDeValoresDeX)
+        public float Sumatoria()
         {
             float suma = 0;
 
-            for (int i = 0; i < listaDeValoresDeX.Length; i++)
+            for (int i = 0; i < listaDeValoresDeX.Count; i++)
             {
                 suma += (listaDeValoresDeX[i]) * (listaDeValoresDeX[i]);
             }
 
-            this.fitness = suma;
             return suma;
         }
 

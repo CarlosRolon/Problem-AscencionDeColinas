@@ -237,7 +237,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             bool encontroRegion = false;
 
             // Sumatoria de la funcion fitness de los elementos de la pobliacion
-            float sumaFitness = poblacion.Sum(item => item.fitness);
+            float sumaFitness = poblacion.Sum(item => item.Sumatoria());
 
             // SELECCION PRIMER PADRE 
             // Se obtiene la flecha
@@ -249,7 +249,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             for (int i = 0; i < poblacion.Count && !encontroRegion; i++)
             {
                 //Establece la region
-                region += poblacion[i].fitness / sumaFitness;
+                region += poblacion[i].Sumatoria() / sumaFitness;
                 // Valida si esta dentro de la region
                 if (region > flecha)
                 {
@@ -270,7 +270,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             encontroRegion = false;
             for (int i = 0; i < poblacion.Count && !encontroRegion; i++)
             {
-                region += poblacion[i].fitness / sumaFitness;
+                region += poblacion[i].Sumatoria() / sumaFitness;
                 if (region > flecha)
                 {
                     padres.Add(poblacion[i]);
@@ -304,10 +304,10 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             }
 
             // Se ordena a los competidores 
-            List<FuncionMinimos> ordenados = competidores.OrderBy(o => o.fitness).ToList();
+            List<FuncionMinimos> ordenados = competidores.OrderBy(o => o.Sumatoria()).ToList();
             //Se selecciona a los dos mejores     
-            padres.Add(ordenados[ordenados.Count - 1]);
-            padres.Add(ordenados[ordenados.Count - 2]);
+            padres.Add(ordenados[0]);
+            padres.Add(ordenados[1]);
 
             return padres;
         }

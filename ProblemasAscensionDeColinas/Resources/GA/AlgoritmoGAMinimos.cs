@@ -38,25 +38,27 @@ namespace ProblemasAscensionDeColinas.Resources.GA
         }
 
 
-      /*  public void GenerarSolucion(int tamPoblacion)
-        {
-            List<FuncionMinimos> poblacion = new List<FuncionMinimos>();
-            for (int i = 0; i < tamPoblacion; i++)
-            {
-                poblacion.Add((FuncionMinimos)generarSolucionAleatorio(funcion).Clone());
-            }
-        }*/
+        /*  public void GenerarSolucion(int tamPoblacion)
+          {
+              List<FuncionMinimos> poblacion = new List<FuncionMinimos>();
+              for (int i = 0; i < tamPoblacion; i++)
+              {
+                  poblacion.Add((FuncionMinimos)generarSolucionAleatorio(funcion).Clone());
+              }
+          }*/
+
+        Random rand = new Random();
 
         private FuncionMinimos generarSolucionAleatorio(FuncionMinimos funcion)
         {
             FuncionMinimos solucion = funcion;
-
+            solucion.listaDeValoresDeX = new List<float>();
             //float[] listaDeValoresDeX = new float[NumDimensiones];
-            Random rand = new Random();
-            for (int i = 0; i < solucion.listaDeValoresDeX.Count; i++)
+          
+            for (int i = 0; i < solucion.NumDimensiones; i++)
             {
                 float ValorX = (float)(rand.NextDouble() * 20) - 10;
-                solucion.listaDeValoresDeX[i] = ValorX;
+                solucion.listaDeValoresDeX.Add(ValorX);
                 //TBEstadoInicial.Text += "   " + ValorX;
             }
             return solucion;
