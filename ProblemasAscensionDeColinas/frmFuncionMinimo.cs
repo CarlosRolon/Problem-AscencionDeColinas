@@ -1,4 +1,6 @@
 ﻿using System;
+using ProblemasAscensionDeColinas.Resources;
+using ProblemasAscensionDeColinas.Resources.GA;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,10 +15,11 @@ namespace ProblemasAscensionDeColinas
 {
     public partial class frmFuncionMinimo : Form
     {
+        FuncionMinimos funcion;
         public frmFuncionMinimo()
         {
             InitializeComponent();
-            
+            funcion = new FuncionMinimos();
         }
        
         private void btnCalcular_Click(object sender, EventArgs e)
@@ -24,12 +27,75 @@ namespace ProblemasAscensionDeColinas
             System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
             MinFuncion.Text = "";
             TBEstadoInicial.Text = "";
-            float[] bestResult = DoSA((float)nupTemMax.Value, (float)nupTempMin.Value, (float)nupAvalue.Value, (int)NumIteracionMax.Value);
-            printBestResult(bestResult);
-            System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default;
+            funcion.NumDimensiones = (int)NumDimensiones.Value;
+
+            funcion.listaDeValoresDeX = new List<float>((int)NumDimensiones.Value);
+            AlgoritmoGAMinimos algortimoGAMinimos = new AlgoritmoGAMinimos(funcion);
+
+            List<FuncionMinimos> poblacion = algortimoGAMinimos.generarPoblacion(10);
+
+            List<FuncionMinimos> NPM = algortimoGAMinimos.MetodoSeleccion(poblacion, MetodosSeleccion.NPM_Min);
+            List<FuncionMinimos> Ruleta = algortimoGAMinimos.MetodoSeleccion(poblacion, MetodosSeleccion.Ruleta_Min);
+            List<FuncionMinimos> Torneo = algortimoGAMinimos.MetodoSeleccion(poblacion, MetodosSeleccion.Torneo_Min);
+
+
+
+            rtbMinimos.Text =
+                "  Poblacion Inicial :  \n";
+
+            foreach (FuncionMinimos item in poblacion)
+            {
+               
+                for (int i = 0; i < item.listaDeValoresDeX.Count; i++)
+                {
+                    rtbMinimos.Text += item.listaDeValoresDeX[i] + ", ";
+                }
+
+                rtbMinimos.Text += " \n";
+            }
+
+            rtbMinimos.Text +=
+                " \n  Padres con metodo NAM :  \n";
+            foreach (FuncionMinimos item in NPM)
+            {
+                 for (int i = 0; i < item.listaDeValoresDeX.Count; i++)
+                {
+                    rtbMinimos.Text += item.listaDeValoresDeX[i] + ", ";
+                }
+
+                rtbMinimos.Text += " \n";
+            }
+
+            rtbMinimos.Text +=
+                " \n  Padres con metodo Ruleta :  \n";
+            foreach (FuncionMinimos item in Ruleta)
+            {
+                for (int i = 0; i < item.listaDeValoresDeX.Count; i++)
+                {
+                    rtbMinimos.Text += item.listaDeValoresDeX[i] + ", ";
+                }
+
+                rtbMinimos.Text += " \n";
+            }
+
+            rtbMinimos.Text +=
+              " \n  Padres con metodo Torneo :  \n";
+            foreach (FuncionMinimos item in Torneo)
+            {
+                for (int i = 0; i < item.listaDeValoresDeX.Count; i++)
+                {
+                    rtbMinimos.Text += item.listaDeValoresDeX[i] + ",";
+                }
+
+                rtbMinimos.Text += " \n";
+            }
+        
+        /*float[] bestResult = DoSA((float)nupTemMax.Value, (float)nupTempMin.Value, (float)nupAvalue.Value, (int)NumIteracionMax.Value);
+        printBestResult(bestResult);*/
+        System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default;
         }
 
-        public float [] GeneracionAleatoriaEstadoInicial()
+        /*public float [] GeneracionAleatoriaEstadoInicial()
         {
             float[] listaDeValoresDeX = new float[(int)NumDimensiones.Value];                          
             Random rand = new Random();
@@ -89,19 +155,22 @@ namespace ProblemasAscensionDeColinas
             NewListaDeValoresDeX[iter] = X;
 
             return NewListaDeValoresDeX;
-        }
+        }/*
+        */
 
+        /*
         public void printBestResult (float[] bestResult)
         {
             /*for (int i = 0; i < bestResult.Length; i++)
             {
                 MinFuncion.Text += "   " + bestResult[i];
-            }*/
+            }
             float f_bestResult = Sumatoria(bestResult);
             MinFuncion.Text = "" + f_bestResult;
         }
+        */
 
-        public float[] DoRMHC() {
+       /* public float[] DoRMHC() {
 
             float[] best_evaluated = GeneracionAleatoriaEstadoInicial();
             float f_best_evaluated = Sumatoria(best_evaluated);
@@ -179,6 +248,6 @@ namespace ProblemasAscensionDeColinas
             } while (temp_min <= temp_ini && contadorInd <= 500);
 
             return solucionInicial;           
-        }
+        }*/
     }
 }

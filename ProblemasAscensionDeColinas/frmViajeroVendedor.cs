@@ -1,4 +1,5 @@
 ﻿using ProblemasAscensionDeColinas.Resources;
+using ProblemasAscensionDeColinas.Resources.GA;
 using ProblemasAscensionDeColinas.Resources.SA;
 using System;
 using System.Collections.Generic;
@@ -49,8 +50,16 @@ namespace ProblemasAscensionDeColinas
             catch (Exception es)
             {
                 MessageBox.Show("Error: \n" + es.Message, "ERROR ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }            
-         
+            }
+
+            AlgoritmoGAViajero algortimoGAViajero = new AlgortimoGAMochila(viajero);
+
+            List<MochilaClass> poblacion = algortimoGAViajero.generarPoblacion(10);
+
+            List<MochilaClass> NPM = algortimoGAViajero.MetodoSeleccion(poblacion, MetodosSeleccion.NPM);
+            List<MochilaClass> Ruleta = algortimoGAViajero.MetodoSeleccion(poblacion, MetodosSeleccion.Ruleta);
+            List<MochilaClass> Torneo = algortimoGAViajero.MetodoSeleccion(poblacion, MetodosSeleccion.Torneo);
+
         }
 
         private int[,] MakeMatrizAdyacencia(string filePad)
@@ -115,6 +124,11 @@ namespace ProblemasAscensionDeColinas
             }
             
             
+        }
+
+        private void lbSolucion_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

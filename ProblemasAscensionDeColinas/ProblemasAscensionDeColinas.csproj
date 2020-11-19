@@ -70,7 +70,10 @@
     <Compile Include="frmViajeroVendedor.Designer.cs">
       <DependentUpon>frmViajeroVendedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Resources\FuncionMinimos.cs" />
+    <Compile Include="Resources\GA\AlgoritmoGAViajero.cs" />
     <Compile Include="Resources\GA\AlgortimoGAMochila.cs" />
+    <Compile Include="Resources\GA\AlgoritmoGAMinimos.cs" />
     <Compile Include="Resources\GA\MetodosSeleccion.cs" />
     <Compile Include="Resources\NAHC\AlgoritmoNAHCViajero.cs" />
     <Compile Include="Resources\NAHC\AlgortimoNAHCMochila.cs" />

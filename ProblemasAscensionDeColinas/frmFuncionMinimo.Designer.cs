@@ -49,6 +49,7 @@
             this.nupTemMax = new System.Windows.Forms.NumericUpDown();
             this.nupAvalue = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
+            this.rtbMinimos = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.NumDimensiones)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFuncion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumIteracionMax)).BeginInit();
@@ -60,7 +61,7 @@
             // NumDimensiones
             // 
             this.NumDimensiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NumDimensiones.Location = new System.Drawing.Point(229, 219);
+            this.NumDimensiones.Location = new System.Drawing.Point(167, 226);
             this.NumDimensiones.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.NumDimensiones.Minimum = new decimal(new int[] {
             1,
@@ -68,7 +69,7 @@
             0,
             0});
             this.NumDimensiones.Name = "NumDimensiones";
-            this.NumDimensiones.Size = new System.Drawing.Size(120, 30);
+            this.NumDimensiones.Size = new System.Drawing.Size(135, 30);
             this.NumDimensiones.TabIndex = 12;
             this.NumDimensiones.Value = new decimal(new int[] {
             1,
@@ -79,9 +80,9 @@
             // lbPesoItem
             // 
             this.lbPesoItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPesoItem.Location = new System.Drawing.Point(91, 219);
+            this.lbPesoItem.Location = new System.Drawing.Point(11, 226);
             this.lbPesoItem.Name = "lbPesoItem";
-            this.lbPesoItem.Size = new System.Drawing.Size(132, 30);
+            this.lbPesoItem.Size = new System.Drawing.Size(148, 38);
             this.lbPesoItem.TabIndex = 11;
             this.lbPesoItem.Text = "Dimensiones";
             // 
@@ -89,7 +90,7 @@
             // 
             this.lbTituloPrincipal.AutoSize = true;
             this.lbTituloPrincipal.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTituloPrincipal.Location = new System.Drawing.Point(89, 36);
+            this.lbTituloPrincipal.Location = new System.Drawing.Point(100, 45);
             this.lbTituloPrincipal.Name = "lbTituloPrincipal";
             this.lbTituloPrincipal.Size = new System.Drawing.Size(372, 37);
             this.lbTituloPrincipal.TabIndex = 10;
@@ -98,10 +99,10 @@
             // btnCalcular
             // 
             this.btnCalcular.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCalcular.Location = new System.Drawing.Point(163, 348);
+            this.btnCalcular.Location = new System.Drawing.Point(525, 274);
             this.btnCalcular.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCalcular.Name = "btnCalcular";
-            this.btnCalcular.Size = new System.Drawing.Size(121, 32);
+            this.btnCalcular.Size = new System.Drawing.Size(136, 40);
             this.btnCalcular.TabIndex = 30;
             this.btnCalcular.Text = "Calcular";
             this.btnCalcular.UseVisualStyleBackColor = true;
@@ -110,19 +111,19 @@
             // lbDescripcion
             // 
             this.lbDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDescripcion.Location = new System.Drawing.Point(11, 98);
+            this.lbDescripcion.Location = new System.Drawing.Point(12, 122);
             this.lbDescripcion.Name = "lbDescripcion";
-            this.lbDescripcion.Size = new System.Drawing.Size(305, 30);
+            this.lbDescripcion.Size = new System.Drawing.Size(343, 38);
             this.lbDescripcion.TabIndex = 31;
             this.lbDescripcion.Text = "Calcula el mínimo de la función";
             // 
             // pbFuncion
             // 
             this.pbFuncion.Image = ((System.Drawing.Image)(resources.GetObject("pbFuncion.Image")));
-            this.pbFuncion.Location = new System.Drawing.Point(45, 130);
+            this.pbFuncion.Location = new System.Drawing.Point(51, 162);
             this.pbFuncion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pbFuncion.Name = "pbFuncion";
-            this.pbFuncion.Size = new System.Drawing.Size(381, 31);
+            this.pbFuncion.Size = new System.Drawing.Size(429, 39);
             this.pbFuncion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbFuncion.TabIndex = 32;
             this.pbFuncion.TabStop = false;
@@ -130,7 +131,7 @@
             // NumIteracionMax
             // 
             this.NumIteracionMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NumIteracionMax.Location = new System.Drawing.Point(229, 259);
+            this.NumIteracionMax.Location = new System.Drawing.Point(934, 274);
             this.NumIteracionMax.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.NumIteracionMax.Maximum = new decimal(new int[] {
             100000000,
@@ -143,7 +144,7 @@
             0,
             0});
             this.NumIteracionMax.Name = "NumIteracionMax";
-            this.NumIteracionMax.Size = new System.Drawing.Size(120, 30);
+            this.NumIteracionMax.Size = new System.Drawing.Size(135, 30);
             this.NumIteracionMax.TabIndex = 34;
             this.NumIteracionMax.Value = new decimal(new int[] {
             1,
@@ -154,51 +155,53 @@
             // lbNumeroIteraciones
             // 
             this.lbNumeroIteraciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNumeroIteraciones.Location = new System.Drawing.Point(15, 261);
+            this.lbNumeroIteraciones.Location = new System.Drawing.Point(693, 276);
             this.lbNumeroIteraciones.Name = "lbNumeroIteraciones";
-            this.lbNumeroIteraciones.Size = new System.Drawing.Size(208, 30);
+            this.lbNumeroIteraciones.Size = new System.Drawing.Size(234, 38);
             this.lbNumeroIteraciones.TabIndex = 33;
             this.lbNumeroIteraciones.Text = "Número de Iteraciones";
             // 
             // MinFuncion
             // 
-            this.MinFuncion.Location = new System.Drawing.Point(229, 415);
+            this.MinFuncion.Location = new System.Drawing.Point(1060, 514);
+            this.MinFuncion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MinFuncion.Name = "MinFuncion";
-            this.MinFuncion.Size = new System.Drawing.Size(756, 22);
+            this.MinFuncion.Size = new System.Drawing.Size(850, 26);
             this.MinFuncion.TabIndex = 35;
             // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(11, 415);
+            this.label1.Location = new System.Drawing.Point(814, 514);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(208, 30);
+            this.label1.Size = new System.Drawing.Size(234, 38);
             this.label1.TabIndex = 36;
             this.label1.Text = "Mínimo de la función =";
             // 
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(11, 385);
+            this.label2.Location = new System.Drawing.Point(806, 391);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(208, 30);
+            this.label2.Size = new System.Drawing.Size(234, 38);
             this.label2.TabIndex = 37;
             this.label2.Text = "Estado Inicial =";
             // 
             // TBEstadoInicial
             // 
-            this.TBEstadoInicial.Location = new System.Drawing.Point(229, 385);
+            this.TBEstadoInicial.Location = new System.Drawing.Point(1052, 391);
+            this.TBEstadoInicial.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TBEstadoInicial.Name = "TBEstadoInicial";
-            this.TBEstadoInicial.Size = new System.Drawing.Size(756, 22);
+            this.TBEstadoInicial.Size = new System.Drawing.Size(850, 26);
             this.TBEstadoInicial.TabIndex = 38;
             // 
             // IterRealizadas
             // 
             this.IterRealizadas.Enabled = false;
-            this.IterRealizadas.Location = new System.Drawing.Point(865, 32);
+            this.IterRealizadas.Location = new System.Drawing.Point(973, 40);
             this.IterRealizadas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.IterRealizadas.Name = "IterRealizadas";
-            this.IterRealizadas.Size = new System.Drawing.Size(113, 22);
+            this.IterRealizadas.Size = new System.Drawing.Size(127, 26);
             this.IterRealizadas.TabIndex = 39;
             this.IterRealizadas.Visible = false;
             // 
@@ -206,9 +209,9 @@
             // 
             this.label3.Enabled = false;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(709, 23);
+            this.label3.Location = new System.Drawing.Point(798, 29);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(132, 50);
+            this.label3.Size = new System.Drawing.Size(148, 62);
             this.label3.TabIndex = 40;
             this.label3.Text = "Iteraciones realizadas";
             this.label3.Visible = false;
@@ -216,18 +219,18 @@
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(402, 219);
+            this.label4.Location = new System.Drawing.Point(1128, 224);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(132, 53);
+            this.label4.Size = new System.Drawing.Size(148, 66);
             this.label4.TabIndex = 41;
             this.label4.Text = "Temperatura mínima";
             // 
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(402, 278);
+            this.label5.Location = new System.Drawing.Point(1128, 298);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(132, 54);
+            this.label5.Size = new System.Drawing.Size(148, 68);
             this.label5.TabIndex = 42;
             this.label5.Text = "Temperatura máxima";
             // 
@@ -240,7 +243,7 @@
             0,
             0,
             196608});
-            this.nupTempMin.Location = new System.Drawing.Point(540, 219);
+            this.nupTempMin.Location = new System.Drawing.Point(952, 183);
             this.nupTempMin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nupTempMin.Maximum = new decimal(new int[] {
             1000,
@@ -253,7 +256,7 @@
             0,
             -2147483648});
             this.nupTempMin.Name = "nupTempMin";
-            this.nupTempMin.Size = new System.Drawing.Size(141, 30);
+            this.nupTempMin.Size = new System.Drawing.Size(159, 30);
             this.nupTempMin.TabIndex = 43;
             this.nupTempMin.Value = new decimal(new int[] {
             1,
@@ -270,7 +273,7 @@
             0,
             0,
             65536});
-            this.nupTemMax.Location = new System.Drawing.Point(540, 276);
+            this.nupTemMax.Location = new System.Drawing.Point(1284, 295);
             this.nupTemMax.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nupTemMax.Maximum = new decimal(new int[] {
             1000000,
@@ -283,7 +286,7 @@
             0,
             -2147483648});
             this.nupTemMax.Name = "nupTemMax";
-            this.nupTemMax.Size = new System.Drawing.Size(141, 30);
+            this.nupTemMax.Size = new System.Drawing.Size(159, 30);
             this.nupTemMax.TabIndex = 44;
             this.nupTemMax.Value = new decimal(new int[] {
             100,
@@ -300,7 +303,7 @@
             0,
             0,
             65536});
-            this.nupAvalue.Location = new System.Drawing.Point(757, 219);
+            this.nupAvalue.Location = new System.Drawing.Point(1196, 183);
             this.nupAvalue.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nupAvalue.Maximum = new decimal(new int[] {
             100000,
@@ -313,7 +316,7 @@
             0,
             -2147483648});
             this.nupAvalue.Name = "nupAvalue";
-            this.nupAvalue.Size = new System.Drawing.Size(120, 30);
+            this.nupAvalue.Size = new System.Drawing.Size(135, 30);
             this.nupAvalue.TabIndex = 45;
             this.nupAvalue.Value = new decimal(new int[] {
             8,
@@ -324,18 +327,27 @@
             // label6
             // 
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(709, 217);
+            this.label6.Location = new System.Drawing.Point(1142, 180);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(42, 30);
+            this.label6.Size = new System.Drawing.Size(47, 38);
             this.label6.TabIndex = 46;
             this.label6.Text = "a: ";
             // 
+            // rtbMinimos
+            // 
+            this.rtbMinimos.Location = new System.Drawing.Point(17, 329);
+            this.rtbMinimos.Name = "rtbMinimos";
+            this.rtbMinimos.Size = new System.Drawing.Size(645, 183);
+            this.rtbMinimos.TabIndex = 47;
+            this.rtbMinimos.Text = "";
+            // 
             // frmFuncionMinimo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(997, 453);
+            this.ClientSize = new System.Drawing.Size(688, 566);
+            this.Controls.Add(this.rtbMinimos);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.nupAvalue);
             this.Controls.Add(this.nupTemMax);
@@ -395,5 +407,6 @@
         private System.Windows.Forms.NumericUpDown nupTemMax;
         private System.Windows.Forms.NumericUpDown nupAvalue;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.RichTextBox rtbMinimos;
     }
 }
