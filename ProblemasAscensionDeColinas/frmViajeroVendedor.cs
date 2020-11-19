@@ -52,13 +52,11 @@ namespace ProblemasAscensionDeColinas
                 MessageBox.Show("Error: \n" + es.Message, "ERROR ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            AlgoritmoGAViajero algortimoGAViajero = new AlgortimoGAMochila(viajero);
-
-            List<MochilaClass> poblacion = algortimoGAViajero.generarPoblacion(10);
-
-            List<MochilaClass> NPM = algortimoGAViajero.MetodoSeleccion(poblacion, MetodosSeleccion.NPM);
-            List<MochilaClass> Ruleta = algortimoGAViajero.MetodoSeleccion(poblacion, MetodosSeleccion.Ruleta);
-            List<MochilaClass> Torneo = algortimoGAViajero.MetodoSeleccion(poblacion, MetodosSeleccion.Torneo);
+            AlgoritmoGAViajero algortimoGAViajero = new AlgoritmoGAViajero(viajero);
+            List<Viajero> poblacion = algortimoGAViajero.generarPoblacion(10);
+            List<Viajero> NPM = algortimoGAViajero.MetodoSeleccion(poblacion, MetodosSeleccion.NPM_Viajero);
+            List<Viajero> Ruleta = algortimoGAViajero.MetodoSeleccion(poblacion, MetodosSeleccion.Ruleta_Min_Viajero);
+            List<Viajero> Torneo = algortimoGAViajero.MetodoSeleccion(poblacion, MetodosSeleccion.Torneo_Min_Viajero);
 
         }
 
