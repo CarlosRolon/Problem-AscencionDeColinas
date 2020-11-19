@@ -402,7 +402,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             for (int i = 0; i < poblacion.Count && !encontroRegion; i++)
             {
                 //Establece la region
-                region += poblacion[i].distanciaCamino() / sumaFitness;
+                region += ((double)poblacion[i].distanciaCamino()) / sumaFitness;
                 // Valida si esta dentro de la region
                 if (region > flecha)
                 {
@@ -423,7 +423,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             encontroRegion = false;
             for (int i = 0; i < poblacion.Count && !encontroRegion; i++)
             {
-                region += poblacion[i].distanciaCamino() / sumaFitness;
+                region += ((double)poblacion[i].distanciaCamino()) / sumaFitness;
                 if (region > flecha)
                 {
                     padres.Add(poblacion[i]);
