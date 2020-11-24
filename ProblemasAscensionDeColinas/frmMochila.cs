@@ -58,7 +58,7 @@ namespace ProblemasAscensionDeColinas
             List<MochilaClass> poblacion = algortimoGAMochila.generarPoblacion(10);
 
             List<MochilaClass> NPM = algortimoGAMochila.MetodoSeleccion(poblacion, MetodosSeleccion.NPM);
-            List<MochilaClass> Ruleta = algortimoGAMochila.MetodoSeleccion(poblacion, MetodosSeleccion.Ruleta);
+            List<MochilaClass> Ruleta = algortimoGAMochila.MetodoSeleccion(poblacion, MetodosSeleccion.Proporcional);
             List<MochilaClass> Torneo = algortimoGAMochila.MetodoSeleccion(poblacion, MetodosSeleccion.Torneo);
 
 

@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace ProblemasAscensionDeColinas.Resources.GA
 {
+
     public static class MetodosSeleccion
-    {
+    {       
         public static List<MochilaClass> NPM (List<MochilaClass> poblacionS)
         {
             List<MochilaClass> poblacion = new List<MochilaClass>(poblacionS);
@@ -53,9 +54,9 @@ namespace ProblemasAscensionDeColinas.Resources.GA
                         
 
             // Se calcula distancias entre el padre 1 y cada N
-            dis_P1_N1 = Math.Abs(posPadre1 - p_candidato1);
-            dis_P1_N2 = Math.Abs(posPadre1 - p_candidato2);
-            dis_P1_N3 = Math.Abs(posPadre1 - p_candidato3);
+            dis_P1_N1 = distanciaSolucionesMochila( poblacion[posPadre1] , poblacion[p_candidato1] );
+            dis_P1_N2 = distanciaSolucionesMochila( poblacion[posPadre1] , poblacion[p_candidato2]);
+            dis_P1_N3 = distanciaSolucionesMochila( poblacion[posPadre1] , poblacion[p_candidato3]);
 
             // Se selecciona el mas lejano del padre 1
 
@@ -77,7 +78,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             return padres;
         }
     
-        public static List<MochilaClass> Ruleta(List<MochilaClass> poblacionS)
+        public static List<MochilaClass> Proporcional(List<MochilaClass> poblacionS)
         {
             List<MochilaClass> poblacion = new List<MochilaClass>(poblacionS);
             List<MochilaClass> padres = new List<MochilaClass>();
@@ -88,18 +89,17 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             double sumaFitness = poblacion.Sum(item => item.valorEnMochila);
 
             // SELECCION PRIMER PADRE 
-            // Se obtiene la flecha
-            //double flecha = 2 * Math.PI * new Random().Next();
-            double flecha = new Random().NextDouble();
+            // Se obtiene la region
+            double puntero = new Random().NextDouble();
 
-            // Se busca la region de la fecha
+            // Se busca la region 
             double region = 0;
             for (int i = 0; i < poblacion.Count && !encontroRegion; i++)
             {
                 //Establece la region
                 region += poblacion[i].valorEnMochila / sumaFitness;
                 // Valida si esta dentro de la region
-                if ( region > flecha)
+                if ( region > puntero)
                 {
                     // Guarda padre
                     padres.Add(poblacion[i]);
@@ -109,17 +109,16 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             }        
 
             // SELECCION SEGUNDO PADRE 
-            // Se obtiene la flecha
-            //double flecha = 2 * Math.PI * new Random().Next();
-            flecha = new Random().NextDouble();
+            // Se obtiene la region
+            puntero = new Random().NextDouble();
 
-            // Se busca la region de la fecha
+            // Se busca la region 
             region = 0;
             encontroRegion = false;
             for (int i = 0; i < poblacion.Count && !encontroRegion; i++)
             {
                 region += poblacion[i].valorEnMochila / sumaFitness;
-                if (region > flecha)
+                if (region > puntero)
                 {
                     padres.Add(poblacion[i]);
                     encontroRegion = true;
@@ -160,14 +159,14 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             return padres;
         }
 
-        public static List<FuncionMinimos> NPM_Min(List<FuncionMinimos> poblacionS)
+        public static List<FuncionMinimos> NPM(List<FuncionMinimos> poblacionS)
         {
             List<FuncionMinimos> poblacion = new List<FuncionMinimos>(poblacionS);
             List<FuncionMinimos> padres = new List<FuncionMinimos>();
             FuncionMinimos padre1, padre2;
             List<int> posiciones = new List<int>();
             int posPadre1, p_candidato1, p_candidato2, p_candidato3;
-            int dis_P1_N1, dis_P1_N2, dis_P1_N3;
+            double dis_P1_N1, dis_P1_N2, dis_P1_N3;
             int valAleatorio;
 
             // Genera una lista de las posiciones de la poblacion
@@ -205,9 +204,9 @@ namespace ProblemasAscensionDeColinas.Resources.GA
 
 
             // Se calcula distancias entre el padre 1 y cada N
-            dis_P1_N1 = Math.Abs(posPadre1 - p_candidato1);
-            dis_P1_N2 = Math.Abs(posPadre1 - p_candidato2);
-            dis_P1_N3 = Math.Abs(posPadre1 - p_candidato3);
+            dis_P1_N1 = distanciaSolucionesFuncionMin(poblacion[posPadre1], poblacion[p_candidato1]);
+            dis_P1_N2 = distanciaSolucionesFuncionMin(poblacion[posPadre1], poblacion[p_candidato2]);
+            dis_P1_N3 = distanciaSolucionesFuncionMin(poblacion[posPadre1], poblacion[p_candidato3]);
 
             // Se selecciona el mas lejano del padre 1
 
@@ -229,7 +228,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             return padres;
         }
 
-        public static List<FuncionMinimos> Ruleta_Min(List<FuncionMinimos> poblacionS)
+        public static List<FuncionMinimos> Proporcional(List<FuncionMinimos> poblacionS)
         {
             List<FuncionMinimos> poblacion = new List<FuncionMinimos>(poblacionS);
             List<FuncionMinimos> padres = new List<FuncionMinimos>();
@@ -240,18 +239,17 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             float sumaFitness = poblacion.Sum(item => item.Sumatoria());
 
             // SELECCION PRIMER PADRE 
-            // Se obtiene la flecha
-            //double flecha = 2 * Math.PI * new Random().Next();
-            double flecha = new Random().NextDouble();
+            // Se obtiene la region
+            double puntero = new Random().NextDouble();
 
-            // Se busca la region de la fecha
+            // Se busca la region 
             double region = 0;
             for (int i = 0; i < poblacion.Count && !encontroRegion; i++)
             {
                 //Establece la region
                 region += poblacion[i].Sumatoria() / sumaFitness;
                 // Valida si esta dentro de la region
-                if (region > flecha)
+                if (region > puntero)
                 {
                     // Guarda padre
                     padres.Add(poblacion[i]);
@@ -261,9 +259,8 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             }
 
             // SELECCION SEGUNDO PADRE 
-            // Se obtiene la flecha
-            //double flecha = 2 * Math.PI * new Random().Next();
-            flecha = new Random().NextDouble();
+            // Se obtiene la region
+            puntero = new Random().NextDouble();
 
             // Se busca la region de la fecha
             region = 0;
@@ -271,7 +268,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             for (int i = 0; i < poblacion.Count && !encontroRegion; i++)
             {
                 region += poblacion[i].Sumatoria() / sumaFitness;
-                if (region > flecha)
+                if (region > puntero)
                 {
                     padres.Add(poblacion[i]);
                     encontroRegion = true;
@@ -280,7 +277,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             return padres;
         }
 
-        public static List<FuncionMinimos> Torneo_Min(List<FuncionMinimos> poblacionS)
+        public static List<FuncionMinimos> Torneo(List<FuncionMinimos> poblacionS)
         {
             List<FuncionMinimos> poblacion = new List<FuncionMinimos>(poblacionS);
             List<FuncionMinimos> padres = new List<FuncionMinimos>();
@@ -312,8 +309,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             return padres;
         }
 
-
-        public static List<Viajero> NPM_Viajero(List<Viajero> poblacionS)
+        public static List<Viajero> NPM(List<Viajero> poblacionS)
         {
             List<Viajero> poblacion = new List<Viajero>(poblacionS);
             List<Viajero> padres = new List<Viajero>();
@@ -358,9 +354,9 @@ namespace ProblemasAscensionDeColinas.Resources.GA
 
 
             // Se calcula distancias entre el padre 1 y cada N
-            dis_P1_N1 = Math.Abs(posPadre1 - p_candidato1);
-            dis_P1_N2 = Math.Abs(posPadre1 - p_candidato2);
-            dis_P1_N3 = Math.Abs(posPadre1 - p_candidato3);
+            dis_P1_N1 = distanciaSolucionesViajero( poblacion[posPadre1] , poblacion[p_candidato1] );
+            dis_P1_N2 = distanciaSolucionesViajero( poblacion[posPadre1] , poblacion[p_candidato2] );
+            dis_P1_N3 = distanciaSolucionesViajero( poblacion[posPadre1] , poblacion[p_candidato3] );
 
             // Se selecciona el mas lejano del padre 1
 
@@ -382,7 +378,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             return padres;
         }
 
-        public static List<Viajero> Ruleta_Min_Viajero(List<Viajero> poblacionS)
+        public static List<Viajero> Proporcional(List<Viajero> poblacionS)
         {
             List<Viajero> poblacion = new List<Viajero>(poblacionS);
             List<Viajero> padres = new List<Viajero>();
@@ -393,18 +389,17 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             int sumaFitness = poblacion.Sum(item => item.distanciaCamino());
 
             // SELECCION PRIMER PADRE 
-            // Se obtiene la flecha
-            //double flecha = 2 * Math.PI * new Random().Next();
-            double flecha = new Random().NextDouble();
+            // Se obtiene la region
+            double puntero = new Random().NextDouble();
 
-            // Se busca la region de la fecha
+            // Se busca la region 
             double region = 0;
             for (int i = 0; i < poblacion.Count && !encontroRegion; i++)
             {
                 //Establece la region
                 region += ((double)poblacion[i].distanciaCamino()) / sumaFitness;
                 // Valida si esta dentro de la region
-                if (region > flecha)
+                if (region > puntero)
                 {
                     // Guarda padre
                     padres.Add(poblacion[i]);
@@ -414,17 +409,16 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             }
 
             // SELECCION SEGUNDO PADRE 
-            // Se obtiene la flecha
-            //double flecha = 2 * Math.PI * new Random().Next();
-            flecha = new Random().NextDouble();
+            // Se obtiene la region
+            puntero = new Random().NextDouble();
 
-            // Se busca la region de la fecha
+            // Se busca la region 
             region = 0;
             encontroRegion = false;
             for (int i = 0; i < poblacion.Count && !encontroRegion; i++)
             {
                 region += ((double)poblacion[i].distanciaCamino()) / sumaFitness;
-                if (region > flecha)
+                if (region > puntero)
                 {
                     padres.Add(poblacion[i]);
                     encontroRegion = true;
@@ -433,7 +427,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             return padres;
         }
 
-        public static List<Viajero> Torneo_Min_Viajero(List<Viajero> poblacionS)
+        public static List<Viajero> Torneo(List<Viajero> poblacionS)
         {
             List<Viajero> poblacion = new List<Viajero>(poblacionS);
             List<Viajero> padres = new List<Viajero>();
@@ -464,5 +458,47 @@ namespace ProblemasAscensionDeColinas.Resources.GA
 
             return padres;
         }
+    
+
+        // Distancias NPM
+
+        public static int distanciaSolucionesMochila(MochilaClass m1 , MochilaClass m2)
+        {
+            int distancia = 0;
+
+            for (int i = 0; i < m1.ObjetosEnMochila.Count; i++)
+            {
+                if (m1.ObjetosEnMochila[i] != m2.ObjetosEnMochila[i])
+                {
+                    distancia++;
+                }
+            }
+            return distancia;
+        }
+
+        public static int distanciaSolucionesViajero( Viajero viajero1 , Viajero viajero2)
+        {
+            int distancia = 0;
+
+            for (int i = 0; i < viajero1.ruta.Count; i++)
+            {
+                distancia += Math.Abs ( viajero1.ruta[i] - viajero2.ruta[i] );
+            }
+
+            return distancia;
+        }
+
+   
+        public static double distanciaSolucionesFuncionMin(FuncionMinimos f1, FuncionMinimos f2)
+        {
+            double distancia = 0;
+
+            for (int i = 0; i < f1.listaDeValoresDeX.Count; i++)
+            {
+                distancia += Math.Sqrt( Math.Pow(f1.listaDeValoresDeX[i],2) + Math.Pow(f2.listaDeValoresDeX[i], 2));
+            }
+            return distancia;
+        }
+
     }
 }

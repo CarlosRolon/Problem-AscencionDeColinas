@@ -34,9 +34,9 @@ namespace ProblemasAscensionDeColinas
 
             List<FuncionMinimos> poblacion = algortimoGAMinimos.generarPoblacion(10);
 
-            List<FuncionMinimos> NPM = algortimoGAMinimos.MetodoSeleccion(poblacion, MetodosSeleccion.NPM_Min);
-            List<FuncionMinimos> Ruleta = algortimoGAMinimos.MetodoSeleccion(poblacion, MetodosSeleccion.Ruleta_Min);
-            List<FuncionMinimos> Torneo = algortimoGAMinimos.MetodoSeleccion(poblacion, MetodosSeleccion.Torneo_Min);
+            List<FuncionMinimos> NPM = algortimoGAMinimos.MetodoSeleccion(poblacion, MetodosSeleccion.NPM);
+            List<FuncionMinimos> Ruleta = algortimoGAMinimos.MetodoSeleccion(poblacion, MetodosSeleccion.Proporcional);
+            List<FuncionMinimos> Torneo = algortimoGAMinimos.MetodoSeleccion(poblacion, MetodosSeleccion.Torneo);
 
 
 

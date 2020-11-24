@@ -110,9 +110,9 @@ namespace ProblemasAscensionDeColinas
 
             AlgoritmoGAViajero algortimoGAViajero = new AlgoritmoGAViajero(viajero);
             List<Viajero> poblacion = algortimoGAViajero.generarPoblacion(10);
-            List<Viajero> NPM = algortimoGAViajero.MetodoSeleccion(poblacion, MetodosSeleccion.NPM_Viajero);
-            List<Viajero> Ruleta = algortimoGAViajero.MetodoSeleccion(poblacion, MetodosSeleccion.Ruleta_Min_Viajero);
-            List<Viajero> Torneo = algortimoGAViajero.MetodoSeleccion(poblacion, MetodosSeleccion.Torneo_Min_Viajero);
+            List<Viajero> NPM = algortimoGAViajero.MetodoSeleccion(poblacion, MetodosSeleccion.NPM);
+            List<Viajero> Ruleta = algortimoGAViajero.MetodoSeleccion(poblacion, MetodosSeleccion.Proporcional);
+            List<Viajero> Torneo = algortimoGAViajero.MetodoSeleccion(poblacion, MetodosSeleccion.Torneo);
 
             rtbSolucion.Text =
                 "  Poblacion Inicial :  \n";
