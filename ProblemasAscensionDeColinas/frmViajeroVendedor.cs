@@ -109,10 +109,9 @@ namespace ProblemasAscensionDeColinas
 
 
             AlgoritmoGAViajero algortimoGAViajero = new AlgoritmoGAViajero(viajero);
-            List<Viajero> poblacion = algortimoGAViajero.generarPoblacion(10);
-            List<Viajero> NPM = algortimoGAViajero.MetodoSeleccion(poblacion, MetodosSeleccion.NPM);
-            List<Viajero> Ruleta = algortimoGAViajero.MetodoSeleccion(poblacion, MetodosSeleccion.Proporcional);
-            List<Viajero> Torneo = algortimoGAViajero.MetodoSeleccion(poblacion, MetodosSeleccion.Torneo);
+            List<Viajero> poblacion = algortimoGAViajero.generarPoblacion(10);;
+            List<Viajero> padres = algortimoGAViajero.MetodoSeleccion(poblacion, MetodosSeleccion.Torneo);
+            
 
             rtbSolucion.Text =
                 "  Poblacion Inicial :  \n";
@@ -129,32 +128,8 @@ namespace ProblemasAscensionDeColinas
             }
 
             rtbSolucion.Text +=
-                " \n  Padres con metodo NAM :  \n";
-            foreach (Viajero item in NPM)
-            {
-                for (int i = 0; i < item.ruta.Count; i++)
-                {
-                    rtbSolucion.Text += item.ruta[i] + " , ";
-                }
-
-                rtbSolucion.Text += " \n";
-            }
-
-            rtbSolucion.Text +=
-                " \n  Padres con metodo Ruleta :  \n";
-            foreach (Viajero item in Ruleta)
-            {
-                for (int i = 0; i < item.ruta.Count; i++)
-                {
-                    rtbSolucion.Text += item.ruta[i] + " , ";
-                }
-
-                rtbSolucion.Text += " \n";
-            }
-
-            rtbSolucion.Text +=
               " \n  Padres con metodo Torneo :  \n";
-            foreach (Viajero item in Torneo)
+            foreach (Viajero item in padres)
             {
                 for (int i = 0; i < item.ruta.Count; i++)
                 {
@@ -164,17 +139,21 @@ namespace ProblemasAscensionDeColinas
                 rtbSolucion.Text += " \n";
             }
 
-         
-            /*viajero = algoritmoSAViajero.optimizarSolucion( viajero,  (int)nupNumeroIteraciones.Value 
-                ,  (float)nupTemperaturaMin.Value, (float)nupTemperaturaInicial.Value, (float)nupA.Value);
+            List<Viajero> Hijos = MetodosCruzamiento.CruzamientoDosPuntos(padres);
 
-            rtbSolucion.Text = " Distancia: " + viajero.distanciaCamino() + "  \n Camino: ";
 
-            foreach (int ciudad in viajero.ruta)
+            rtbSolucion.Text +=
+              " \n  Cruce con Dos puntos de corte :  \n";
+            foreach (Viajero item in Hijos)
             {
-                rtbSolucion.Text += (ciudad + 1) + " ,";
+                for (int i = 0; i < item.ruta.Count; i++)
+                {
+                    rtbSolucion.Text += item.ruta[i] + ",";
+                }
+
+                rtbSolucion.Text += " \n";
             }
-            */
+
 
         }
 

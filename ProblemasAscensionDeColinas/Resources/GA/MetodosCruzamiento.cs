@@ -60,11 +60,35 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             return hijos;
         }
 
-        public static List<Viajero> Cruzamiento2(List<Viajero> padresO)
+        public static List<Viajero> CruzamientoDosPuntos(List<Viajero> padresO)
         {
-            List<Viajero> padres = new List<Viajero>(padresO);
+            List<Viajero> padres = padresO.ConvertAll(x => (Viajero)x.Clone());
+            List<Viajero> hijos = padresO.ConvertAll(x => (Viajero)x.Clone());
+            
+            int tamañoSolucion = padres[0].ruta.Count;
+            int r = new Random().Next(0,tamañoSolucion);
+            int r_2 = new Random().Next(0, tamañoSolucion);
 
-            return padres;
+            while (r_2 == r)
+            {
+               r_2 = new Random().Next(0, tamañoSolucion);
+            }
+            if (r_2 < r) {
+                int r_aux = r;
+                r = r_2;
+                r_2 = r_aux;
+            }
+
+            // Se hace el cambio en el intervalo r, r_2
+            for (int i = r; i < r_2+1; i++)
+            {
+                hijos[0].ruta[i] = padres[1].ruta.ElementAt(i);
+                hijos[1].ruta[i] = padres[0].ruta.ElementAt(i);                    
+                   
+            }
+
+
+            return hijos;
         }
 
     }
