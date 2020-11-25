@@ -32,13 +32,9 @@ namespace ProblemasAscensionDeColinas
             funcion.listaDeValoresDeX = new List<float>((int)NumDimensiones.Value);
             AlgoritmoGAMinimos algortimoGAMinimos = new AlgoritmoGAMinimos(funcion);
 
-            List<FuncionMinimos> poblacion = algortimoGAMinimos.generarPoblacion(10);
-
-            List<FuncionMinimos> NPM = algortimoGAMinimos.MetodoSeleccion(poblacion, MetodosSeleccion.NPM);
-            List<FuncionMinimos> Ruleta = algortimoGAMinimos.MetodoSeleccion(poblacion, MetodosSeleccion.Proporcional);
-            List<FuncionMinimos> Torneo = algortimoGAMinimos.MetodoSeleccion(poblacion, MetodosSeleccion.Torneo);
-
-
+            List<FuncionMinimos> poblacion = algortimoGAMinimos.generarPoblacion(10);           
+            List<FuncionMinimos> Padres = algortimoGAMinimos.MetodoSeleccion(poblacion, MetodosSeleccion.Proporcional);
+            //List<FuncionMinimos> Hijos = MetodosCruzamiento.CruzamientoArimetico( Padres );
 
             rtbMinimos.Text =
                 "  Poblacion Inicial :  \n";
@@ -54,21 +50,10 @@ namespace ProblemasAscensionDeColinas
                 rtbMinimos.Text += " \n";
             }
 
-            rtbMinimos.Text +=
-                " \n  Padres con metodo NAM :  \n";
-            foreach (FuncionMinimos item in NPM)
-            {
-                 for (int i = 0; i < item.listaDeValoresDeX.Count; i++)
-                {
-                    rtbMinimos.Text += item.listaDeValoresDeX[i] + ", ";
-                }
-
-                rtbMinimos.Text += " \n";
-            }
-
+            
             rtbMinimos.Text +=
                 " \n  Padres con metodo Ruleta :  \n";
-            foreach (FuncionMinimos item in Ruleta)
+            foreach (FuncionMinimos item in Padres)
             {
                 for (int i = 0; i < item.listaDeValoresDeX.Count; i++)
                 {
@@ -78,9 +63,12 @@ namespace ProblemasAscensionDeColinas
                 rtbMinimos.Text += " \n";
             }
 
+            List<FuncionMinimos> Hijos = MetodosCruzamiento.CruzamientoArimetico(Padres);
+
+
             rtbMinimos.Text +=
-              " \n  Padres con metodo Torneo :  \n";
-            foreach (FuncionMinimos item in Torneo)
+              " \n  Cruce con Arimetico :  \n";
+            foreach (FuncionMinimos item in Hijos)
             {
                 for (int i = 0; i < item.listaDeValoresDeX.Count; i++)
                 {

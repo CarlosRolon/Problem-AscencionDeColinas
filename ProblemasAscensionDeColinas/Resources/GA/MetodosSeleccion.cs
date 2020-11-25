@@ -106,10 +106,11 @@ namespace ProblemasAscensionDeColinas.Resources.GA
                     encontroRegion = true;
                     poblacion.RemoveAt(i);
                 }
-            }        
+            }
 
             // SELECCION SEGUNDO PADRE 
             // Se obtiene la region
+            sumaFitness = poblacion.Sum(item => item.valorEnMochila);
             puntero = new Random().NextDouble();
 
             // Se busca la region 
@@ -117,7 +118,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             encontroRegion = false;
             for (int i = 0; i < poblacion.Count && !encontroRegion; i++)
             {
-                region += poblacion[i].valorEnMochila / sumaFitness;
+                region += 1 -(poblacion[i].valorEnMochila / sumaFitness);
                 if (region > puntero)
                 {
                     padres.Add(poblacion[i]);
@@ -146,15 +147,13 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             for (int i = 0; i < K; i++)
             {
                 posAleatoria = new Random().Next(0, posiciones.Count);
-                competidores.Add(poblacion[ posiciones[posAleatoria]]);
+                competidores.Add(poblacion[posiciones[posAleatoria]]);
                 posiciones.RemoveAt(posAleatoria);
             }
 
-            // Se ordena a los competidores 
-            List<MochilaClass> ordenados = competidores.OrderBy(o => o.valorEnMochila).ToList();
-            //Se selecciona a los dos mejores     
-            padres.Add(ordenados[ordenados.Count - 1]);
-            padres.Add(ordenados[ordenados.Count - 2]);
+            // Se ordena a los competidores y selecciona al mejor
+            padres = competidores.OrderByDescending(o => o.valorEnMochila).Take(2).ToList();
+        
 
             return padres;
         }
