@@ -18,28 +18,35 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             bool valorAleatorio;
 
 
-            // Se crea sobre la mascara
-            List<bool> Mascara = new List<bool>();
+            // Se hace el cruzamiento para el hijo 1
             for (int i = 0; i < dimensionSolucion; i++)
             {
                 valorAleatorio = rand.NextDouble() < .5;
-                Mascara.Add(valorAleatorio);
-            }
-
-            //Se itera sobre la mascara
-            for (int i = 0; i < dimensionSolucion; i++)
-            {
-                if (Mascara[i])
+                if (valorAleatorio)
+                {
+                    hijos[0].ObjetosEnMochila[i] = padres[1].ObjetosEnMochila[i];
+                }
+                else
                 {
                     hijos[0].ObjetosEnMochila[i] = padres[0].ObjetosEnMochila[i];
+                }
+                
+            }
+
+            // Se hace el cruzamiento para el hijo 2
+            for (int i = 0; i < dimensionSolucion; i++)
+            {
+                valorAleatorio = rand.NextDouble() < .5;
+                if (valorAleatorio)
+                {
                     hijos[1].ObjetosEnMochila[i] = padres[1].ObjetosEnMochila[i];
                 }
                 else
                 {
-                    hijos[0].ObjetosEnMochila[i] = padres[1].ObjetosEnMochila[i];
                     hijos[1].ObjetosEnMochila[i] = padres[0].ObjetosEnMochila[i];
                 }
             }
+
 
             return hijos;
         }
@@ -56,38 +63,6 @@ namespace ProblemasAscensionDeColinas.Resources.GA
                 hijos[0].listaDeValoresDeX[i] = w * hijos[0].listaDeValoresDeX[i] + (1 - w) * hijos[1].listaDeValoresDeX[i];
                 hijos[1].listaDeValoresDeX[i] = w * hijos[1].listaDeValoresDeX[i] + (1 - w) * hijos[0].listaDeValoresDeX[i];
             }
-
-            return hijos;
-        }
-
-        public static List<Viajero> CruzamientoDosPuntos(List<Viajero> padresO)
-        {
-            List<Viajero> padres = padresO.ConvertAll(x => (Viajero)x.Clone());
-            List<Viajero> hijos = padresO.ConvertAll(x => (Viajero)x.Clone());
-
-            int tamañoSolucion = padres[0].ruta.Count;
-            int r = rand.Next(0, tamañoSolucion);
-            int r_2 = rand.Next(0, tamañoSolucion);
-
-            while (r_2 == r)
-            {
-                r_2 = rand.Next(0, tamañoSolucion);
-            }
-
-            if (r_2 < r) {
-                int r_aux = r;
-                r = r_2;
-                r_2 = r_aux;
-            }
-
-            // Se hace el cambio en el intervalo r, r_2
-            for (int i = r; i < r_2 + 1; i++)
-            {
-                hijos[0].ruta[i] = padres[1].ruta.ElementAt(i);
-                hijos[1].ruta[i] = padres[0].ruta.ElementAt(i);
-
-            }
-
 
             return hijos;
         }
@@ -120,6 +95,46 @@ namespace ProblemasAscensionDeColinas.Resources.GA
                 hijos[1].ObjetosEnMochila[i] = padres[0].ObjetosEnMochila.ElementAt(i);
 
             }
+
+            return hijos;
+        }
+
+
+
+
+
+
+
+
+        public static List<Viajero> CruzamientoDosPuntos(List<Viajero> padresO)
+        {
+            List<Viajero> padres = padresO.ConvertAll(x => (Viajero)x.Clone());
+            List<Viajero> hijos = padresO.ConvertAll(x => (Viajero)x.Clone());
+
+            int tamañoSolucion = padres[0].ruta.Count;
+            int r = rand.Next(0, tamañoSolucion);
+            int r_2 = rand.Next(0, tamañoSolucion);
+
+            while (r_2 == r)
+            {
+                r_2 = rand.Next(0, tamañoSolucion);
+            }
+
+            if (r_2 < r)
+            {
+                int r_aux = r;
+                r = r_2;
+                r_2 = r_aux;
+            }
+
+            // Se hace el cambio en el intervalo r, r_2
+            for (int i = r; i < r_2 + 1; i++)
+            {
+                hijos[0].ruta[i] = padres[1].ruta.ElementAt(i);
+                hijos[1].ruta[i] = padres[0].ruta.ElementAt(i);
+
+            }
+
 
             return hijos;
         }
