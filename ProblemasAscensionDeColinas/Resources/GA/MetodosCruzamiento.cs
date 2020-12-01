@@ -67,6 +67,83 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             return hijos;
         }
 
+        public static List<Viajero> CruzamientoOrderCrossover(List<Viajero> padresO)
+        {
+            List<Viajero> padres = padresO.ConvertAll(x => (Viajero)x.Clone());
+            List<Viajero> hijos = padresO.ConvertAll(x => (Viajero)x.Clone());
+
+            List<int> posicionesTomadas = new List<int>();
+            List<int> nuevaRuta = new List<int>();
+
+            int tamañoSolucion = padres[0].ruta.Count;
+            int r = rand.Next(0, tamañoSolucion);
+            int r_2 = rand.Next(0, tamañoSolucion);
+
+            while (r_2 == r)
+            {
+                r_2 = rand.Next(0, tamañoSolucion);
+            }
+
+            if (r_2 < r)
+            {
+                int r_aux = r;
+                r = r_2;
+                r_2 = r_aux;
+            }
+
+            // Se genera el hijo 1
+            // Se toma las posiciones
+            posicionesTomadas = padres[0].ruta.GetRange(r, r_2 - r + 1);
+            for (int i = 0; i < padres[1].ruta.Count; i++)
+            {
+                if (!posicionesTomadas.Contains(padres[1].ruta[i]))
+                {
+                    posicionesTomadas.Add(padres[1].ruta[i]);
+                }
+            }
+            
+            // Se asignan
+            for (int i = r; i < hijos[0].ruta.Count; i++)
+            {
+                hijos[0].ruta[i] = posicionesTomadas[0];
+                posicionesTomadas.RemoveAt(0);
+            }
+
+            for (int i = 0; i < r; i++)
+            {
+                hijos[0].ruta[i] = posicionesTomadas[0];
+                posicionesTomadas.RemoveAt(0);
+            }
+
+            // Se genera el hijo 2
+            // Se toma las posiciones
+            posicionesTomadas.Clear();
+            posicionesTomadas = padres[1].ruta.GetRange(r, r_2 - r + 1);
+            for (int i = 0; i < padres[0].ruta.Count; i++)
+            {
+                if (!posicionesTomadas.Contains(padres[0].ruta[i]))
+                {
+                    posicionesTomadas.Add(padres[0].ruta[i]);
+                }
+            }
+
+            // Se asignan
+            for (int i = r; i < hijos[1].ruta.Count; i++)
+            {
+                hijos[1].ruta[i] = posicionesTomadas[0];
+                posicionesTomadas.RemoveAt(0);
+            }
+
+            for (int i = 0; i < r; i++)
+            {
+                hijos[1].ruta[i] = posicionesTomadas[0];
+                posicionesTomadas.RemoveAt(0);
+            }
+
+            return hijos;
+        }
+
+
         public static List<MochilaClass> CruzamientoDosPuntos(List<MochilaClass> padresO)
         {
             List<MochilaClass> padres = padresO.ConvertAll(x => (MochilaClass)x.Clone()); 

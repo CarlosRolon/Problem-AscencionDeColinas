@@ -139,16 +139,16 @@ namespace ProblemasAscensionDeColinas
                 rtbSolucion.Text += " \n";
             }
 
-            List<Viajero> Hijos = MetodosCruzamiento.CruzamientoDosPuntos(padres);
+            List<Viajero> Hijos = MetodosCruzamiento.CruzamientoOrderCrossover(padres);
 
 
             rtbSolucion.Text +=
-              " \n  Cruce con Dos puntos de corte :  \n";
+              " \n  Cruce con Cross Over :  \n";
             foreach (Viajero item in Hijos)
             {
                 for (int i = 0; i < item.ruta.Count; i++)
                 {
-                    rtbSolucion.Text += item.ruta[i] + ",";
+                    rtbSolucion.Text += item.ruta[i] + " , ";
                 }
 
                 rtbSolucion.Text += " \n";
