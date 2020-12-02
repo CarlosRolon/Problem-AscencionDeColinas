@@ -60,6 +60,7 @@ namespace ProblemasAscensionDeColinas
             List<MochilaClass> Padres = algortimoGAMochila.MetodoSeleccion(poblacion, MetodosSeleccion.Proporcional);
             List<MochilaClass> HijosCU = MetodosCruzamiento.CruzamientoUniforme(Padres);
             List<MochilaClass> HijosDPX = MetodosCruzamiento.CruzamientoDosPuntos(Padres);
+            List<MochilaClass> HijosDPXMutados = MetodosMutacion.MutacionBinaria(HijosDPX , .05);
 
             rtbSolucion.Text =
                 "  Poblacion Inicial :  \n";
@@ -114,6 +115,22 @@ namespace ProblemasAscensionDeColinas
             rtbSolucion.Text +=
               " \n  Hijos con Cruzamiento Dos Cortes:  \n";
             foreach (MochilaClass item in HijosDPX)
+            {
+                for (int i = 0; i < item.ObjetosEnMochila.Count; i++)
+                {
+                    if (item.ObjetosEnMochila[i])
+                    {
+                        rtbSolucion.Text += (i + 1) + " , ";
+                    }
+                }
+
+                rtbSolucion.Text += " \n";
+            }
+
+
+            rtbSolucion.Text +=
+             " \n  Hijos con Cruzamiento Dos Cortes Mutados:  \n";
+            foreach (MochilaClass item in HijosDPXMutados)
             {
                 for (int i = 0; i < item.ObjetosEnMochila.Count; i++)
                 {
