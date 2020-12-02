@@ -34,7 +34,8 @@ namespace ProblemasAscensionDeColinas
 
             List<FuncionMinimos> poblacion = algortimoGAMinimos.generarPoblacion(10);           
             List<FuncionMinimos> Padres = algortimoGAMinimos.MetodoSeleccion(poblacion, MetodosSeleccion.Proporcional);
-            //List<FuncionMinimos> Hijos = MetodosCruzamiento.CruzamientoArimetico( Padres );
+            List<FuncionMinimos> Hijos = MetodosCruzamiento.CruzamientoArimetico(Padres);
+            List<FuncionMinimos> HijosMutacion = MetodosMutacion.MutacionEnReales(Hijos,0.9);
 
             rtbMinimos.Text =
                 "  Poblacion Inicial :  \n";
@@ -63,9 +64,6 @@ namespace ProblemasAscensionDeColinas
                 rtbMinimos.Text += " \n";
             }
 
-            List<FuncionMinimos> Hijos = MetodosCruzamiento.CruzamientoArimetico(Padres);
-
-
             rtbMinimos.Text +=
               " \n  Cruce con Arimetico :  \n";
             foreach (FuncionMinimos item in Hijos)
@@ -77,10 +75,22 @@ namespace ProblemasAscensionDeColinas
 
                 rtbMinimos.Text += " \n";
             }
-        
-        /*float[] bestResult = DoSA((float)nupTemMax.Value, (float)nupTempMin.Value, (float)nupAvalue.Value, (int)NumIteracionMax.Value);
-        printBestResult(bestResult);*/
-        System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default;
+
+            rtbMinimos.Text +=
+              " \n  Mutación :  \n";
+            foreach (FuncionMinimos item in HijosMutacion)
+            {
+                for (int i = 0; i < item.listaDeValoresDeX.Count; i++)
+                {
+                    rtbMinimos.Text += item.listaDeValoresDeX[i] + ",";
+                }
+
+                rtbMinimos.Text += " \n";
+            }
+
+            /*float[] bestResult = DoSA((float)nupTemMax.Value, (float)nupTempMin.Value, (float)nupAvalue.Value, (int)NumIteracionMax.Value);
+            printBestResult(bestResult);*/
+            System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default;
         }
 
         /*public float [] GeneracionAleatoriaEstadoInicial()

@@ -47,7 +47,34 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             double probActual;
             int dimension;
 
-            return elementosMutados;            
+            // Realiza la operacion en cada solucion
+            foreach (var item in elementosMutados)
+            {
+                // Obtiene la dimension de la solucion
+                dimension = item.ruta.Count;
+
+                // Realiza la operacion en cada delemento de la solucion
+                for (int i = 0; i < dimension; i++)
+                {
+                    // Obtiene una probabilidad
+                    probActual = rand.NextDouble();
+
+                    //Verifica que este en el rango de probabilidad
+                    if (probActual <= probabilidad)
+                    {
+                        // Muta el valor
+                        int posRandom1 = rand.Next(0,item.ruta.Count);
+                        int posRandom2 = rand.Next(0, item.ruta.Count);
+
+
+                        int valor = item.ruta[posRandom1];
+                        item.ruta[posRandom1] = item.ruta[posRandom2];
+                        item.ruta[posRandom2] = valor;
+                    }
+
+                }
+            }
+            return elementosMutados;
         }
         public static List<FuncionMinimos> MutacionEnReales(List<FuncionMinimos> elementos, double probabilidad)
         {
@@ -55,6 +82,27 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             double probActual;
             int dimension;
 
+            // Realiza la operacion en cada solucion
+            foreach (var item in elementosMutados)
+            {
+                // Obtiene la dimension de la solucion
+                dimension = item.listaDeValoresDeX.Count;
+
+                // Realiza la operacion en cada delemento de la solucion
+                for (int i = 0; i < dimension; i++)
+                {
+                    // Obtiene una probabilidad
+                    probActual = rand.NextDouble();
+
+                    //Verifica que este en el rango de probabilidad
+                    if (probActual <= probabilidad)
+                    {
+                        // Muta el valor
+                        item.listaDeValoresDeX[i] = item.listaDeValoresDeX[i]*(float)Math.Sin(item.listaDeValoresDeX[i]);
+                    }
+
+                }
+            }
             return elementosMutados;
         }
 

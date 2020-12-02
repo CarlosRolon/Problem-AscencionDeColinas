@@ -111,7 +111,8 @@ namespace ProblemasAscensionDeColinas
             AlgoritmoGAViajero algortimoGAViajero = new AlgoritmoGAViajero(viajero);
             List<Viajero> poblacion = algortimoGAViajero.generarPoblacion(10);;
             List<Viajero> padres = algortimoGAViajero.MetodoSeleccion(poblacion, MetodosSeleccion.Torneo);
-            
+            List<Viajero> Hijos = MetodosCruzamiento.CruzamientoOrderCrossover(padres);
+            List<Viajero> HijosMutacion = MetodosMutacion.MutacionEnOrden(Hijos, 0.5);
 
             rtbSolucion.Text =
                 "  Poblacion Inicial :  \n";
@@ -138,13 +139,22 @@ namespace ProblemasAscensionDeColinas
 
                 rtbSolucion.Text += " \n";
             }
-
-            List<Viajero> Hijos = MetodosCruzamiento.CruzamientoOrderCrossover(padres);
-
-
+                 
             rtbSolucion.Text +=
               " \n  Cruce con Cross Over :  \n";
             foreach (Viajero item in Hijos)
+            {
+                for (int i = 0; i < item.ruta.Count; i++)
+                {
+                    rtbSolucion.Text += item.ruta[i] + " , ";
+                }
+
+                rtbSolucion.Text += " \n";
+            }
+
+            rtbSolucion.Text +=
+              " \n  Mutacion:  \n";
+            foreach (Viajero item in HijosMutacion)
             {
                 for (int i = 0; i < item.ruta.Count; i++)
                 {
