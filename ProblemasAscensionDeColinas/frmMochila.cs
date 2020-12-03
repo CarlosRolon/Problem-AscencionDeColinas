@@ -60,7 +60,7 @@ namespace ProblemasAscensionDeColinas
             List<MochilaClass> Padres = algortimoGAMochila.MetodoSeleccion(poblacion, MetodosSeleccion.Proporcional);
             List<MochilaClass> HijosCU = MetodosCruzamiento.CruzamientoUniforme(Padres);
             List<MochilaClass> HijosDPX = MetodosCruzamiento.CruzamientoDosPuntos(Padres);
-            List<MochilaClass> HijosDPXMutados = MetodosMutacion.MutacionBinaria(HijosDPX , .05);
+            List<MochilaClass> HijosDPXMutados = MetodosMutacion.MutacionBinaria(HijosDPX , .5);
 
             rtbSolucion.Text =
                 "  Poblacion Inicial :  \n";

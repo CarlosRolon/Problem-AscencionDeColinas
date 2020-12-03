@@ -46,6 +46,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             List<Viajero> elementosMutados = elementos.ConvertAll(x => (Viajero)x.Clone());
             double probActual;
             int dimension;
+            int posRandom1, posRandom2, valor;
 
             // Realiza la operacion en cada solucion
             foreach (var item in elementosMutados)
@@ -63,11 +64,10 @@ namespace ProblemasAscensionDeColinas.Resources.GA
                     if (probActual <= probabilidad)
                     {
                         // Muta el valor
-                        int posRandom1 = rand.Next(0,item.ruta.Count);
-                        int posRandom2 = rand.Next(0, item.ruta.Count);
+                        posRandom1 = rand.Next(0,item.ruta.Count);
+                        posRandom2 = rand.Next(0, item.ruta.Count);
 
-
-                        int valor = item.ruta[posRandom1];
+                        valor = item.ruta[posRandom1];
                         item.ruta[posRandom1] = item.ruta[posRandom2];
                         item.ruta[posRandom2] = valor;
                     }
@@ -76,6 +76,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             }
             return elementosMutados;
         }
+        
         public static List<FuncionMinimos> MutacionEnReales(List<FuncionMinimos> elementos, double probabilidad)
         {
             List<FuncionMinimos> elementosMutados = elementos.ConvertAll(x => (FuncionMinimos)x.Clone());
