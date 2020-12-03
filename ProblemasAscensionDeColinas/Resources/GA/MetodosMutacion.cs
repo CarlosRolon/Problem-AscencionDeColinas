@@ -64,7 +64,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
                     if (probActual <= probabilidad)
                     {
                         // Muta el valor
-                        posRandom1 = rand.Next(0,item.ruta.Count);
+                        posRandom1 = i;
                         posRandom2 = rand.Next(0, item.ruta.Count);
 
                         valor = item.ruta[posRandom1];
