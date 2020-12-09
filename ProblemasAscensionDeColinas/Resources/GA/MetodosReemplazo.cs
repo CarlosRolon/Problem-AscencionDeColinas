@@ -41,7 +41,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             return poblacion;
         }
 
-        public static List<FuncionMinimos> Fitness(List<FuncionMinimos> poblacionO, List<FuncionMinimos> hijosO)
+        public static List<FuncionMinimos> OtroMetodoXD(List<FuncionMinimos> poblacionO, List<FuncionMinimos> hijosO)
         {
             List<FuncionMinimos> poblacion = poblacionO.ConvertAll(x => (FuncionMinimos)x.Clone());
 
