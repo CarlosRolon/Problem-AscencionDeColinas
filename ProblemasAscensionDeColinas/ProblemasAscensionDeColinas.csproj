@@ -76,6 +76,7 @@
     <Compile Include="Resources\GA\AlgoritmoGAMinimos.cs" />
     <Compile Include="Resources\GA\MetodosCruzamiento.cs" />
     <Compile Include="Resources\GA\MetodosMutacion.cs" />
+    <Compile Include="Resources\GA\MetodosReemplazo.cs" />
     <Compile Include="Resources\GA\MetodosSeleccion.cs" />
     <Compile Include="Resources\NAHC\AlgoritmoNAHCViajero.cs" />
     <Compile Include="Resources\NAHC\AlgortimoNAHCMochila.cs" />

@@ -85,6 +85,20 @@ namespace ProblemasAscensionDeColinas.Resources
             ObjetosEnMochila.Clear();
         }
 
+        public static int CalcularValorEnMochila(List<Boolean> ObjetosEnMochila, ArrayList objetosPosibles)
+        {
+            int valor = 0;
+            for (int i = 0; i < ObjetosEnMochila.Count; i++)
+            {
+                if (ObjetosEnMochila[i])
+                {
+                    int[,] item = (int[,])objetosPosibles[i];
+                    valor += item[0, 1];
+                }
+            }
+            return valor;
+        }
+
         public void eliminarObjetoPosiblePosicion(int pos)
         {
             objetosPosibles.RemoveAt(pos);

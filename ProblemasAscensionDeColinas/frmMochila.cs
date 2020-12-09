@@ -31,7 +31,7 @@ namespace ProblemasAscensionDeColinas
                 MessageBox.Show("No hay Items", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            
+
             if (nupPesoMaximo.Value <= 0)
             {
                 MessageBox.Show("El peso maximo soportado por la mochila debe ser mayor a 0", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -60,7 +60,10 @@ namespace ProblemasAscensionDeColinas
             List<MochilaClass> Padres = algortimoGAMochila.MetodoSeleccion(poblacion, MetodosSeleccion.Proporcional);
             List<MochilaClass> HijosCU = MetodosCruzamiento.CruzamientoUniforme(Padres);
             List<MochilaClass> HijosDPX = MetodosCruzamiento.CruzamientoDosPuntos(Padres);
-            List<MochilaClass> HijosDPXMutados = MetodosMutacion.MutacionBinaria(HijosDPX , .5);
+            List<MochilaClass> HijosDPXMutados = MetodosMutacion.MutacionBinaria(HijosDPX, .5);
+            List<MochilaClass> PoblacionReemplazada = MetodosReemplazo.Aleatorio(poblacion, HijosDPXMutados);
+
+
 
             rtbSolucion.Text =
                 "  Poblacion Inicial :  \n";
@@ -131,6 +134,21 @@ namespace ProblemasAscensionDeColinas
             rtbSolucion.Text +=
              " \n  Hijos con Cruzamiento Dos Cortes Mutados:  \n";
             foreach (MochilaClass item in HijosDPXMutados)
+            {
+                for (int i = 0; i < item.ObjetosEnMochila.Count; i++)
+                {
+                    if (item.ObjetosEnMochila[i])
+                    {
+                        rtbSolucion.Text += (i + 1) + " , ";
+                    }
+                }
+
+                rtbSolucion.Text += " \n";
+            }
+
+            rtbSolucion.Text +=
+             " \n  Reemplazo Aleatorio:  \n";
+            foreach (MochilaClass item in PoblacionReemplazada)
             {
                 for (int i = 0; i < item.ObjetosEnMochila.Count; i++)
                 {

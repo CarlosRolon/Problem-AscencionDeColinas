@@ -243,7 +243,7 @@
             // rtbSolucion
             // 
             this.rtbSolucion.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.rtbSolucion.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtbSolucion.Font = new System.Drawing.Font("Arial Narrow", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtbSolucion.Location = new System.Drawing.Point(16, 517);
             this.rtbSolucion.Name = "rtbSolucion";
             this.rtbSolucion.ReadOnly = true;

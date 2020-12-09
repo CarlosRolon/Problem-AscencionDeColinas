@@ -14,7 +14,26 @@ namespace ProblemasAscensionDeColinas.Resources
 
         public List<int> ruta = new List<int>();
 
+        public int distanciaRuta
+        {
+            get
+            {
+                int inicio, fin, distancia;
+                distancia = 0;
+                for (int i = 1; i < ruta.Count; i++)
+                {
+                    inicio = ruta[i - 1];
+                    fin = ruta[i];
+                    distancia += matrizAdyacencia[inicio, fin];
+                }
 
+                inicio = ruta.Count - 1;
+                fin = ruta[0];
+                distancia += matrizAdyacencia[inicio, fin];
+
+                return distancia;
+            }
+        }
 
         public Viajero()
         {
