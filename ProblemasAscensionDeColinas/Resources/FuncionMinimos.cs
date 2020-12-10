@@ -11,6 +11,18 @@ namespace ProblemasAscensionDeColinas.Resources
 
         public int NumDimensiones { get; set; }
         public List<float> listaDeValoresDeX { get; set; }
+        public float sumatoriaFuncion
+        {
+            get
+            {
+                float suma = 0;
+                for (int i = 0; i < listaDeValoresDeX.Count; i++)
+                {
+                    suma += (listaDeValoresDeX[i]) * (listaDeValoresDeX[i]);
+                }
+                return suma;
+            }
+        }
 
         //public float fitness { get; set; }
 

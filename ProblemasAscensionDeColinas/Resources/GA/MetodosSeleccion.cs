@@ -259,6 +259,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
 
             // SELECCION SEGUNDO PADRE 
             // Se obtiene la region
+            sumaFitness = poblacion.Sum(item => item.Sumatoria());
             puntero = new Random().NextDouble();
 
             // Se busca la region de la fecha
