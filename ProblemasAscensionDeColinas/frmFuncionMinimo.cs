@@ -36,6 +36,7 @@ namespace ProblemasAscensionDeColinas
             List<FuncionMinimos> Padres = algortimoGAMinimos.MetodoSeleccion(poblacion, MetodosSeleccion.Proporcional);
             List<FuncionMinimos> Hijos = MetodosCruzamiento.CruzamientoArimetico(Padres);
             List<FuncionMinimos> HijosMutacion = MetodosMutacion.MutacionEnReales(Hijos,0.9);
+            List<FuncionMinimos> poblacionNueva = MetodosReemplazo.Crowding(poblacion, HijosMutacion, Padres);
 
             rtbMinimos.Text =
                 "  Poblacion Inicial :  \n";
@@ -70,7 +71,7 @@ namespace ProblemasAscensionDeColinas
             {
                 for (int i = 0; i < item.listaDeValoresDeX.Count; i++)
                 {
-                    rtbMinimos.Text += item.listaDeValoresDeX[i] + ",";
+                    rtbMinimos.Text += item.listaDeValoresDeX[i] + ", ";
                 }
 
                 rtbMinimos.Text += " \n";
@@ -82,11 +83,27 @@ namespace ProblemasAscensionDeColinas
             {
                 for (int i = 0; i < item.listaDeValoresDeX.Count; i++)
                 {
-                    rtbMinimos.Text += item.listaDeValoresDeX[i] + ",";
+                    rtbMinimos.Text += item.listaDeValoresDeX[i] + ", ";
                 }
 
                 rtbMinimos.Text += " \n";
             }
+
+
+
+            rtbMinimos.Text +=
+              " \n  Nueva Poblacion :  \n";
+            foreach (FuncionMinimos item in poblacionNueva)
+            {
+                for (int i = 0; i < item.listaDeValoresDeX.Count; i++)
+                {
+                    rtbMinimos.Text += item.listaDeValoresDeX[i] + ", ";
+                }
+
+                rtbMinimos.Text += " \n";
+            }
+
+            
 
             /*float[] bestResult = DoSA((float)nupTemMax.Value, (float)nupTempMin.Value, (float)nupAvalue.Value, (int)NumIteracionMax.Value);
             printBestResult(bestResult);*/

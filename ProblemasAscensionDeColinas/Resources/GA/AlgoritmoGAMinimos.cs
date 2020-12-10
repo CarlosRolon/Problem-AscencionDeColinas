@@ -21,6 +21,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
 
         public delegate List<FuncionMinimos> DelSeleccion(List<FuncionMinimos> poblacion);
 
+
         public List<FuncionMinimos> generarPoblacion(int tamPoblacion)
         {
             List<FuncionMinimos> poblacion = new List<FuncionMinimos>();
