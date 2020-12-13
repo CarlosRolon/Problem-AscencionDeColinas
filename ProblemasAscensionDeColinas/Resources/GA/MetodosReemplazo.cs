@@ -56,16 +56,14 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             if ((distancia_p1_h1 + distancia_p2_h2) < (distancia_p1_h2 + distancia_p2_h1))
             {
                 //Torneo
-                if (padres[0].Sumatoria() < hijos[0].Sumatoria() )
+                if (padres[0].Sumatoria() > hijos[0].Sumatoria() )
                 {
                     //remplaza el hijo 0 al padre en la población; si el hijo no es mejor se queda el padre
-
-    
                     poblacion = poblacion.Where(v => v.sumatoriaFuncion != padres[0].sumatoriaFuncion).ToList();
                     poblacion.Add(hijos[0]);
 
                 }
-                if (padres[1].Sumatoria() < hijos[1].Sumatoria())
+                if (padres[1].Sumatoria() > hijos[1].Sumatoria())
                 {
                     //remplaza el hijo 1 al padre en la población; si el hijo no es mejor se queda el padre
                     poblacion = poblacion.Where(v => v.sumatoriaFuncion != padres[1].sumatoriaFuncion).ToList();
@@ -75,13 +73,13 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             }
             else {
                 //Torneo
-                if (padres[0].Sumatoria() < hijos[1].Sumatoria())
+                if (padres[0].Sumatoria() > hijos[1].Sumatoria())
                 {
                     //remplaza el hijo 0 al padre en la población; si el hijo no es mejor se queda el padre
                     poblacion = poblacion.Where(v => v.sumatoriaFuncion != padres[0].sumatoriaFuncion).ToList();
                     poblacion.Add(hijos[1]);
                 }
-                if (padres[1].Sumatoria() < hijos[0].Sumatoria())
+                if (padres[1].Sumatoria() > hijos[0].Sumatoria())
                 {
                     //remplaza el hijo 1 al padre en la población; si el hijo no es mejor se queda el padre
                     poblacion = poblacion.Where(v => v.sumatoriaFuncion != padres[1].sumatoriaFuncion).ToList();

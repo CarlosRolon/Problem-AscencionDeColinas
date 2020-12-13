@@ -18,6 +18,59 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             this.mochila = mochila;
         }
 
+        public MochilaClass algoritmoGeneticoGeneracional(int iteraciones, int tamPoblacion,
+          double probCruzamiento, double probMutacion)
+        {
+            List<MochilaClass> poblacion;
+            List<MochilaClass> padres;
+            List<MochilaClass> hijos;
+            bool hijosValidos;
+            double probabilidad;
+
+            poblacion = generarPoblacion(tamPoblacion);
+
+            for (int i = 0; i < iteraciones; i++)
+            {
+                // Seleccion            
+                padres = MetodosSeleccion.Proporcional(poblacion);
+
+                //  Cruzamiento
+                probabilidad = new Random().NextDouble();
+                if (probabilidad > probCruzamiento)
+                    continue;
+                hijos = MetodosCruzamiento.CruzamientoUniforme(padres);
+
+                // Mutacion
+                hijos = MetodosMutacion.MutacionBinaria(hijos, probMutacion);
+
+                // Verifica que los hijos son validos
+
+                hijosValidos = true;
+                foreach (var item in hijos)
+                {
+                    if (item.pesoEnMochila > item.pesoMaximoPermitido)
+                    {
+                        hijosValidos = false;
+                        break;
+                    }
+                        
+                }
+
+                if (!hijosValidos)
+                    continue;
+
+                // Reemplazo
+                poblacion = MetodosReemplazo.Aleatorio(poblacion, hijos);
+
+            }
+
+
+            // Obtiene la mejor solucion
+            poblacion = poblacion.OrderBy(p => p.pesoEnMochila).ToList();
+            return poblacion[0];
+        }
+
+
         public delegate List<MochilaClass> DelSeleccion(List<MochilaClass> poblacion);
         public delegate void x();
 

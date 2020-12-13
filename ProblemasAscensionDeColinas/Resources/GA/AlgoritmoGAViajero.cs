@@ -17,6 +17,41 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             this.vendedor = vendedor;
         }
 
+        public Viajero algoritmoGeneticoGeneracional( int iteraciones , int tamPoblacion , 
+            double probCruzamiento , double probMutacion)
+        {
+            List<Viajero> poblacion ;
+            List<Viajero> padres;
+            List<Viajero> hijos ;
+            double probabilidad;
+
+            poblacion = generarPoblacion(tamPoblacion);
+
+            for (int i = 0; i < iteraciones; i++)
+            {
+                // Seleccion            
+                padres =  MetodosSeleccion.Proporcional(poblacion);
+
+                //  Cruzamiento
+                probabilidad = new Random().NextDouble();
+                if (probabilidad > probCruzamiento)
+                    continue;
+                hijos = MetodosCruzamiento.CruzamientoOrderCrossover(padres);
+
+                // Mutacion
+                hijos = MetodosMutacion.MutacionEnOrden(hijos, probMutacion);
+
+                // Reemplazo
+                poblacion = MetodosReemplazo.Fitness(poblacion, hijos);
+
+            }
+
+            // Obtiene la mejor solucion
+            poblacion = poblacion.OrderBy(p => p.distanciaRuta).ToList();
+            return poblacion[0];
+        }
+
+
         public delegate List<Viajero> DelSeleccion(List<Viajero> poblacion);
         public delegate void x();
 

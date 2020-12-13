@@ -109,75 +109,16 @@ namespace ProblemasAscensionDeColinas
 
 
             AlgoritmoGAViajero algortimoGAViajero = new AlgoritmoGAViajero(viajero);
-            List<Viajero> poblacion = algortimoGAViajero.generarPoblacion(10);;
-            List<Viajero> padres = algortimoGAViajero.MetodoSeleccion(poblacion, MetodosSeleccion.Torneo);
-            List<Viajero> Hijos = MetodosCruzamiento.CruzamientoOrderCrossover(padres);
-            List<Viajero> HijosMutacion = MetodosMutacion.MutacionEnOrden(Hijos, 0.5);
-            List<Viajero> PoblacionReemplazada = MetodosReemplazo.Fitness(poblacion, HijosMutacion);
+            Viajero resultado = algortimoGAViajero.algoritmoGeneticoGeneracional(500, 10, .85, .008);
 
             rtbSolucion.Text =
-                "  Poblacion Inicial :  \n";
+              " \n Solucion Final:  \n";
 
-            foreach (Viajero item in poblacion)
+            for (int i = 0; i < resultado.ruta.Count; i++)
             {
-                for (int i = 0; i < item.ruta.Count; i++)
-                {
-                    rtbSolucion.Text += item.ruta[i] + " , ";
-
-                }
-
-                rtbSolucion.Text += " \n";
+                rtbSolucion.Text += resultado.ruta[i] + " , ";
             }
-
-            rtbSolucion.Text +=
-              " \n  Padres con metodo Torneo :  \n";
-            foreach (Viajero item in padres)
-            {
-                for (int i = 0; i < item.ruta.Count; i++)
-                {
-                    rtbSolucion.Text += item.ruta[i] + " , ";
-                }
-
-                rtbSolucion.Text += " \n";
-            }
-                 
-            rtbSolucion.Text +=
-              " \n  Cruce con Cross Over :  \n";
-            foreach (Viajero item in Hijos)
-            {
-                for (int i = 0; i < item.ruta.Count; i++)
-                {
-                    rtbSolucion.Text += item.ruta[i] + " , ";
-                }
-
-                rtbSolucion.Text += " \n";
-            }
-
-            rtbSolucion.Text +=
-              " \n  Mutacion:  \n";
-            foreach (Viajero item in HijosMutacion)
-            {
-                for (int i = 0; i < item.ruta.Count; i++)
-                {
-                    rtbSolucion.Text += item.ruta[i] + " , ";
-                }
-
-                rtbSolucion.Text += " \n";
-            }
-
-
-            rtbSolucion.Text +=
-              " \n  Reemplazo por Fitness:  \n";
-            foreach (Viajero item in PoblacionReemplazada)
-            {
-                for (int i = 0; i < item.ruta.Count; i++)
-                {
-                    rtbSolucion.Text += item.ruta[i] + " , ";
-                }
-
-                rtbSolucion.Text += " \n";
-            }
-
+            rtbSolucion.Text +=  " \n Ditancia: " + resultado.distanciaRuta;
 
         }
 

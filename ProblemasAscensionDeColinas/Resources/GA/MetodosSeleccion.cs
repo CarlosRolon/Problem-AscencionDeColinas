@@ -411,6 +411,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             // SELECCION SEGUNDO PADRE 
             // Se obtiene la region
             puntero = new Random().NextDouble();
+            sumaFitness = poblacion.Sum(item => item.distanciaCamino());
 
             // Se busca la region 
             region = 0;

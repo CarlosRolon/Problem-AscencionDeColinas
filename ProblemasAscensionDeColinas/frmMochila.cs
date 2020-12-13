@@ -54,112 +54,19 @@ namespace ProblemasAscensionDeColinas
 
 
             AlgortimoGAMochila algortimoGAMochila = new AlgortimoGAMochila(mochila);
-
-            List<MochilaClass> poblacion = algortimoGAMochila.generarPoblacion(10);
-
-            List<MochilaClass> Padres = algortimoGAMochila.MetodoSeleccion(poblacion, MetodosSeleccion.Proporcional);
-            List<MochilaClass> HijosCU = MetodosCruzamiento.CruzamientoUniforme(Padres);
-            List<MochilaClass> HijosDPX = MetodosCruzamiento.CruzamientoDosPuntos(Padres);
-            List<MochilaClass> HijosDPXMutados = MetodosMutacion.MutacionBinaria(HijosDPX, .5);
-            List<MochilaClass> PoblacionReemplazada = MetodosReemplazo.Aleatorio(poblacion, HijosDPXMutados);
-
-
+            MochilaClass resultado = algortimoGAMochila.algoritmoGeneticoGeneracional(500 , 10 , .8 , .005);
 
             rtbSolucion.Text =
                 "  Poblacion Inicial :  \n";
-
-            foreach (MochilaClass item in poblacion)
+            for (int i = 0; i < resultado.ObjetosEnMochila.Count; i++)
             {
-                for (int i = 0; i < item.ObjetosEnMochila.Count; i++)
+                if (resultado.ObjetosEnMochila[i])
                 {
-                    if (item.ObjetosEnMochila[i])
-                    {
-                        rtbSolucion.Text += (i + 1) + " , ";
-                    }
+                    rtbSolucion.Text += (i + 1) + " , ";
                 }
-
-                rtbSolucion.Text += " \n";
             }
 
-            
-
-            rtbSolucion.Text +=
-                " \n  Padres con metodo Ruleta  :  \n";
-            foreach (MochilaClass item in Padres)
-            {
-                for (int i = 0; i < item.ObjetosEnMochila.Count; i++)
-                {
-                    if (item.ObjetosEnMochila[i])
-                    {
-                        rtbSolucion.Text += (i + 1) + " , ";
-                    }
-                }
-
-                rtbSolucion.Text += " \n";
-            }
-
-            
-            rtbSolucion.Text +=
-              " \n  Hijos con Cruzamiento Uniforme:  \n";
-            foreach (MochilaClass item in HijosCU)
-            {
-                for (int i = 0; i < item.ObjetosEnMochila.Count; i++)
-                {
-                    if (item.ObjetosEnMochila[i])
-                    {
-                        rtbSolucion.Text += (i + 1) + " , ";
-                    }
-                }
-
-                rtbSolucion.Text += " \n";
-            }
-
-
-            rtbSolucion.Text +=
-              " \n  Hijos con Cruzamiento Dos Cortes:  \n";
-            foreach (MochilaClass item in HijosDPX)
-            {
-                for (int i = 0; i < item.ObjetosEnMochila.Count; i++)
-                {
-                    if (item.ObjetosEnMochila[i])
-                    {
-                        rtbSolucion.Text += (i + 1) + " , ";
-                    }
-                }
-
-                rtbSolucion.Text += " \n";
-            }
-
-
-            rtbSolucion.Text +=
-             " \n  Hijos con Cruzamiento Dos Cortes Mutados:  \n";
-            foreach (MochilaClass item in HijosDPXMutados)
-            {
-                for (int i = 0; i < item.ObjetosEnMochila.Count; i++)
-                {
-                    if (item.ObjetosEnMochila[i])
-                    {
-                        rtbSolucion.Text += (i + 1) + " , ";
-                    }
-                }
-
-                rtbSolucion.Text += " \n";
-            }
-
-            rtbSolucion.Text +=
-             " \n  Reemplazo Aleatorio:  \n";
-            foreach (MochilaClass item in PoblacionReemplazada)
-            {
-                for (int i = 0; i < item.ObjetosEnMochila.Count; i++)
-                {
-                    if (item.ObjetosEnMochila[i])
-                    {
-                        rtbSolucion.Text += (i + 1) + " , ";
-                    }
-                }
-
-                rtbSolucion.Text += " \n";
-            }
+            rtbSolucion.Text += " \n Peso Mochila: " + resultado.pesoEnMochila + " ,Valor Mochila: " + resultado.valorEnMochila;
 
             return;
         }
