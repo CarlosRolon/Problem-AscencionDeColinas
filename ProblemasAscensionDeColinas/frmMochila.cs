@@ -58,7 +58,7 @@ namespace ProblemasAscensionDeColinas
             resultado = algortimoGAMochila.algoritmoGeneticoGeneracional(500, 10, .8, .005);
 
             rtbSolucion.Text =
-                "  Poblacion Inicial :  \n";
+                "  Solución Final :  \n";
             for (int i = 0; i < resultado.ObjetosEnMochila.Count; i++)
             {
                 if (resultado.ObjetosEnMochila[i])

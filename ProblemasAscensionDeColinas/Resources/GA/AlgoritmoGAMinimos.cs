@@ -57,12 +57,16 @@ namespace ProblemasAscensionDeColinas.Resources.GA
 
         public FuncionMinimos algoritmoGeneticoGeneracional(int iteraciones, int tamPoblacion, double probCruzamiento, double probMutacion)
         {
-            List<FuncionMinimos> poblacion;            
+            List<FuncionMinimos> poblacion;
             List<FuncionMinimos> padres;
-            List<FuncionMinimos> hijos;            
+            List<FuncionMinimos> hijos;
+            FuncionMinimos best_solution = new FuncionMinimos();
             double probabilidad;
 
+            //best_solution.sumatoriaFuncion = float.MaxValue;
+
             poblacion = generarPoblacion(tamPoblacion);
+            best_solution = poblacion[0];
 
             for (int i = 0; i < iteraciones; i++)
             {
@@ -84,13 +88,18 @@ namespace ProblemasAscensionDeColinas.Resources.GA
                     nuevaPoblacion.AddRange(hijos);
                 }
 
+                nuevaPoblacion = nuevaPoblacion.OrderBy(p => p.sumatoriaFuncion).ToList();
+                if (nuevaPoblacion[0].sumatoriaFuncion < best_solution.sumatoriaFuncion) {
+                    best_solution = nuevaPoblacion[0];
+                }    
+
                 poblacion = nuevaPoblacion;
 
             }
 
             // Obtiene la mejor solucion
-            poblacion = poblacion.OrderBy(p => p.sumatoriaFuncion).ToList();
-            return poblacion[0];
+            //poblacion = poblacion.OrderBy(p => p.sumatoriaFuncion).ToList();
+            return best_solution;
         }
 
         public List<FuncionMinimos> generarPoblacion(int tamPoblacion)

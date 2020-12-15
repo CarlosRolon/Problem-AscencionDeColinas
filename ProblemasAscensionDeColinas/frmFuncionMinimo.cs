@@ -27,6 +27,7 @@ namespace ProblemasAscensionDeColinas
             System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
             MinFuncion.Text = "";
             TBEstadoInicial.Text = "";
+            rtbMinimos.Text = "";
             funcion.NumDimensiones = (int)NumDimensiones.Value;
 
             funcion.listaDeValoresDeX = new List<float>((int)NumDimensiones.Value);
@@ -34,15 +35,28 @@ namespace ProblemasAscensionDeColinas
             FuncionMinimos resultado = algortimoGAMinimos.algoritmoGeneticoEstacionario(500, 10, .8, .005);
             FuncionMinimos resultado2 = algortimoGAMinimos.algoritmoGeneticoGeneracional(500, 10, .8, .005);
 
-            rtbMinimos.Text =
-                "  Resultado :  \n";
+            rtbMinimos.Text +=
+                "  Resultado Estacionario :  \n";
             for (int i = 0; i < resultado.listaDeValoresDeX.Count; i++)
             {
                 rtbMinimos.Text += resultado.listaDeValoresDeX[i] + " , ";                
             }
 
+            rtbMinimos.Text +=
+                "\n Resultado Sumatoria : " + resultado.sumatoriaFuncion;
+           
+
+            rtbMinimos.Text +=
+                "\n Resultado Generacional :  \n";
+            for (int i = 0; i < resultado2.listaDeValoresDeX.Count; i++)
+            {
+                rtbMinimos.Text += resultado2.listaDeValoresDeX[i] + " , ";
+            }
+
+            rtbMinimos.Text +=
+                "\n Resultado Sumatoria : " + resultado2.sumatoriaFuncion;
             //rtbMinimos.Text += " \n Solución: " + resultado.listaDeValoresDeX.Count;
-            
+
             System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default;
             return;
         }
