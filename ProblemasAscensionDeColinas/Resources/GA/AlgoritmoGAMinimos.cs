@@ -21,6 +21,38 @@ namespace ProblemasAscensionDeColinas.Resources.GA
 
         public delegate List<FuncionMinimos> DelSeleccion(List<FuncionMinimos> poblacion);
 
+        public FuncionMinimos algoritmoGeneticoGeneracional(int iteraciones, int tamPoblacion, double probCruzamiento, double probMutacion)
+        {
+            List<FuncionMinimos> poblacion;
+            List<FuncionMinimos> padres;
+            List<FuncionMinimos> hijos;
+            double probabilidad;
+
+            poblacion = generarPoblacion(tamPoblacion);
+
+            for (int i = 0; i < iteraciones; i++)
+            {
+                // Seleccion            
+                padres = MetodosSeleccion.Proporcional(poblacion);
+
+                //  Cruzamiento
+                probabilidad = new Random().NextDouble();
+                if (probabilidad > probCruzamiento)
+                    continue;
+                hijos = MetodosCruzamiento.CruzamientoArimetico(padres);
+
+                // Mutacion
+                hijos = MetodosMutacion.MutacionEnReales(hijos, probMutacion);
+
+                // Reemplazo
+                poblacion = MetodosReemplazo.Crowding(poblacion, hijos, padres);
+
+            }
+
+            // Obtiene la mejor solucion
+            //poblacion = poblacion.OrderBy(p => p.listaDeValoresDeX).ToList();
+            return poblacion[0];
+        }
 
         public List<FuncionMinimos> generarPoblacion(int tamPoblacion)
         {

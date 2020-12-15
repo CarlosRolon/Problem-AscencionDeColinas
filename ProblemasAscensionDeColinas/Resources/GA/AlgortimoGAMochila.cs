@@ -44,7 +44,6 @@ namespace ProblemasAscensionDeColinas.Resources.GA
                 hijos = MetodosMutacion.MutacionBinaria(hijos, probMutacion);
 
                 // Verifica que los hijos son validos
-
                 hijosValidos = true;
                 foreach (var item in hijos)
                 {
