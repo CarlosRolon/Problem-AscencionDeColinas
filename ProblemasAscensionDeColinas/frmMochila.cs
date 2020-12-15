@@ -54,7 +54,7 @@ namespace ProblemasAscensionDeColinas
 
 
             AlgortimoGAMochila algortimoGAMochila = new AlgortimoGAMochila(mochila);
-            MochilaClass resultado = algortimoGAMochila.algoritmoGeneticoGeneracional(500 , 10 , .8 , .005);
+            MochilaClass resultado = algortimoGAMochila.algoritmoGeneticoEstacionario(500 , 10 , .8 , .005);
 
             rtbSolucion.Text =
                 "  Poblacion Inicial :  \n";

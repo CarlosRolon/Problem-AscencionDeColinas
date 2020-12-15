@@ -94,7 +94,8 @@ namespace ProblemasAscensionDeColinas.Resources
         public object Clone()
         {
             object obj = this.MemberwiseClone();
-            this.listaDeValoresDeX = listaDeValoresDeX.ToList();
+            //this.listaDeValoresDeX = listaDeValoresDeX.ToList();
+            this.listaDeValoresDeX = new List<float>(listaDeValoresDeX);
             return obj;
         }
 

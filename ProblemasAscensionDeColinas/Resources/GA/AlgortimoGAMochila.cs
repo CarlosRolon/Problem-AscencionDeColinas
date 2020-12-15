@@ -11,14 +11,14 @@ namespace ProblemasAscensionDeColinas.Resources.GA
     {
         MochilaClass mochila;
         delegate void seleccion();
-        Random r = new Random();
+        Random rand = new Random();
 
         public AlgortimoGAMochila(MochilaClass mochila)
         {
             this.mochila = mochila;
         }
 
-        public MochilaClass algoritmoGeneticoGeneracional(int iteraciones, int tamPoblacion,
+        public MochilaClass algoritmoGeneticoEstacionario(int iteraciones, int tamPoblacion,
           double probCruzamiento, double probMutacion)
         {
             List<MochilaClass> poblacion;
@@ -35,7 +35,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
                 padres = MetodosSeleccion.Proporcional(poblacion);
 
                 //  Cruzamiento
-                probabilidad = new Random().NextDouble();
+                probabilidad = rand.NextDouble();
                 if (probabilidad > probCruzamiento)
                     continue;
                 hijos = MetodosCruzamiento.CruzamientoUniforme(padres);
@@ -63,9 +63,8 @@ namespace ProblemasAscensionDeColinas.Resources.GA
 
             }
 
-
             // Obtiene la mejor solucion
-            poblacion = poblacion.OrderBy(p => p.pesoEnMochila).ToList();
+            poblacion = poblacion.OrderByDescending(p => p.pesoEnMochila).ToList();
             return poblacion[0];
         }
 
@@ -108,7 +107,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             {                
                 for (int i = 0; i < solucion.ObjetosEnMochila.Count; i++)
                 {
-                    valorAleatorio = r.NextDouble() < .5;
+                    valorAleatorio = rand.NextDouble() < .5;
                     solucion.ObjetosEnMochila[i] = valorAleatorio;
                 }
             } while ( mochila.pesoEnMochila > mochila.pesoMaximoPermitido);

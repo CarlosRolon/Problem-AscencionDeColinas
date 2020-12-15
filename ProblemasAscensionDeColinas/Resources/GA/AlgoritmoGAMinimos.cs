@@ -12,7 +12,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
 
         FuncionMinimos funcion;
         delegate void seleccion();
-        Random r = new Random();
+        Random rand = new Random();
 
         public AlgoritmoGAMinimos(FuncionMinimos funcion)
         {
@@ -21,7 +21,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
 
         public delegate List<FuncionMinimos> DelSeleccion(List<FuncionMinimos> poblacion);
 
-        public FuncionMinimos algoritmoGeneticoGeneracional(int iteraciones, int tamPoblacion, double probCruzamiento, double probMutacion)
+        public FuncionMinimos algoritmoGeneticoEstacionario(int iteraciones, int tamPoblacion, double probCruzamiento, double probMutacion)
         {
             List<FuncionMinimos> poblacion;
             List<FuncionMinimos> padres;
@@ -36,7 +36,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
                 padres = MetodosSeleccion.Proporcional(poblacion);
 
                 //  Cruzamiento
-                probabilidad = new Random().NextDouble();
+                probabilidad = rand.NextDouble();
                 if (probabilidad > probCruzamiento)
                     continue;
                 hijos = MetodosCruzamiento.CruzamientoArimetico(padres);
@@ -50,7 +50,46 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             }
 
             // Obtiene la mejor solucion
-            //poblacion = poblacion.OrderBy(p => p.listaDeValoresDeX).ToList();
+            poblacion = poblacion.OrderBy(p => p.sumatoriaFuncion).ToList();
+            return poblacion[0];
+        }
+
+
+        public FuncionMinimos algoritmoGeneticoGeneracional(int iteraciones, int tamPoblacion, double probCruzamiento, double probMutacion)
+        {
+            List<FuncionMinimos> poblacion;            
+            List<FuncionMinimos> padres;
+            List<FuncionMinimos> hijos;            
+            double probabilidad;
+
+            poblacion = generarPoblacion(tamPoblacion);
+
+            for (int i = 0; i < iteraciones; i++)
+            {
+                List<FuncionMinimos> nuevaPoblacion = new List<FuncionMinimos>();
+                while (nuevaPoblacion.Count < tamPoblacion)
+                {
+                    // Seleccion            
+                    padres = MetodosSeleccion.Proporcional(poblacion);
+
+                    //  Cruzamiento
+                    probabilidad = rand.NextDouble();
+                    if (probabilidad > probCruzamiento)
+                        continue;
+                    hijos = MetodosCruzamiento.CruzamientoArimetico(padres);
+
+                    // Mutacion
+                    hijos = MetodosMutacion.MutacionEnReales(hijos, probMutacion);
+
+                    nuevaPoblacion.AddRange(hijos);
+                }
+
+                poblacion = nuevaPoblacion;
+
+            }
+
+            // Obtiene la mejor solucion
+            poblacion = poblacion.OrderBy(p => p.sumatoriaFuncion).ToList();
             return poblacion[0];
         }
 
@@ -80,7 +119,6 @@ namespace ProblemasAscensionDeColinas.Resources.GA
               }
           }*/
 
-        Random rand = new Random();
 
         private FuncionMinimos generarSolucionAleatorio(FuncionMinimos funcion)
         {

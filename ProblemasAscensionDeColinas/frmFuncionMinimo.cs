@@ -31,7 +31,8 @@ namespace ProblemasAscensionDeColinas
 
             funcion.listaDeValoresDeX = new List<float>((int)NumDimensiones.Value);
             AlgoritmoGAMinimos algortimoGAMinimos = new AlgoritmoGAMinimos(funcion);           
-            FuncionMinimos resultado = algortimoGAMinimos.algoritmoGeneticoGeneracional(500, 10, .8, .005);
+            FuncionMinimos resultado = algortimoGAMinimos.algoritmoGeneticoEstacionario(500, 10, .8, .005);
+            FuncionMinimos resultado2 = algortimoGAMinimos.algoritmoGeneticoGeneracional(500, 10, .8, .005);
 
             rtbMinimos.Text =
                 "  Resultado :  \n";

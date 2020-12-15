@@ -9,6 +9,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
 
     public static class MetodosSeleccion
     {       
+        static Random rand = new Random();
         public static List<MochilaClass> NPM (List<MochilaClass> poblacionS)
         {
             List<MochilaClass> poblacion = new List<MochilaClass>(poblacionS);
@@ -25,7 +26,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
 
             //Proceso para seleccionar el primer padre aleatoriamente
             //  Selecciona una valor aleatoriamente
-            valAleatorio = new Random().Next(0, posiciones.Count);
+            valAleatorio = rand.Next(0, posiciones.Count);
             //   Se selecciona aletatoriamente la posicion
             posPadre1 = posiciones[valAleatorio];
             //   Se accede y almacena el Padre 1
@@ -38,17 +39,17 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             // Selecciona 3 (N=3) posibles posibles candidatas para el segundo padre
 
             // N1
-            valAleatorio = new Random().Next(0, posiciones.Count);
+            valAleatorio = rand.Next(0, posiciones.Count);
             p_candidato1 = posiciones[valAleatorio];
             posiciones.RemoveAt(valAleatorio);
 
             // N2
-            valAleatorio = new Random().Next(0, posiciones.Count);
+            valAleatorio = rand.Next(0, posiciones.Count);
             p_candidato2 = posiciones[valAleatorio];
             posiciones.RemoveAt(valAleatorio);
 
             // N3
-            valAleatorio = new Random().Next(0, posiciones.Count);
+            valAleatorio = rand.Next(0, posiciones.Count);
             p_candidato3 = posiciones[valAleatorio];
             posiciones.RemoveAt(valAleatorio);
                         
@@ -90,7 +91,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
 
             // SELECCION PRIMER PADRE 
             // Se obtiene la region
-            double puntero = new Random().NextDouble();
+            double puntero = rand.NextDouble();
 
             // Se busca la region 
             double region = 0;
@@ -111,7 +112,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             // SELECCION SEGUNDO PADRE 
             // Se obtiene la region
             sumaFitness = poblacion.Sum(item => item.valorEnMochila);
-            puntero = new Random().NextDouble();
+            puntero = rand.NextDouble();
 
             // Se busca la region 
             region = 0;
@@ -146,7 +147,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             // Se selecciona K para el torneo
             for (int i = 0; i < K; i++)
             {
-                posAleatoria = new Random().Next(0, posiciones.Count);
+                posAleatoria = rand.Next(0, posiciones.Count);
                 competidores.Add(poblacion[posiciones[posAleatoria]]);
                 posiciones.RemoveAt(posAleatoria);
             }
@@ -174,7 +175,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
 
             //Proceso para seleccionar el primer padre aleatoriamente
             //  Selecciona una valor aleatoriamente
-            valAleatorio = new Random().Next(0, posiciones.Count);
+            valAleatorio = rand.Next(0, posiciones.Count);
             //   Se selecciona aletatoriamente la posicion
             posPadre1 = posiciones[valAleatorio];
             //   Se accede y almacena el Padre 1
@@ -187,17 +188,17 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             // Selecciona 3 (N=3) posibles posibles candidatas para el segundo padre
 
             // N1
-            valAleatorio = new Random().Next(0, posiciones.Count);
+            valAleatorio = rand.Next(0, posiciones.Count);
             p_candidato1 = posiciones[valAleatorio];
             posiciones.RemoveAt(valAleatorio);
 
             // N2
-            valAleatorio = new Random().Next(0, posiciones.Count);
+            valAleatorio = rand.Next(0, posiciones.Count);
             p_candidato2 = posiciones[valAleatorio];
             posiciones.RemoveAt(valAleatorio);
 
             // N3
-            valAleatorio = new Random().Next(0, posiciones.Count);
+            valAleatorio = rand.Next(0, posiciones.Count);
             p_candidato3 = posiciones[valAleatorio];
             posiciones.RemoveAt(valAleatorio);
 
@@ -239,7 +240,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
 
             // SELECCION PRIMER PADRE 
             // Se obtiene la region
-            double puntero = new Random().NextDouble();
+            double puntero = rand.NextDouble();
 
             // Se busca la region 
             double region = 0;
@@ -260,7 +261,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             // SELECCION SEGUNDO PADRE 
             // Se obtiene la region
             sumaFitness = poblacion.Sum(item => item.Sumatoria());
-            puntero = new Random().NextDouble();
+            puntero = rand.NextDouble();
 
             // Se busca la region de la fecha
             region = 0;
@@ -295,7 +296,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             // Se selecciona K para el torneo
             for (int i = 0; i < K; i++)
             {
-                posAleatoria = new Random().Next(0, posiciones.Count);
+                posAleatoria = rand.Next(0, posiciones.Count);
                 competidores.Add(poblacion[posiciones[posAleatoria]]);
                 posiciones.RemoveAt(posAleatoria);
             }
@@ -325,7 +326,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
 
             //Proceso para seleccionar el primer padre aleatoriamente
             //  Selecciona una valor aleatoriamente
-            valAleatorio = new Random().Next(0, posiciones.Count);
+            valAleatorio = rand.Next(0, posiciones.Count);
             //   Se selecciona aletatoriamente la posicion
             posPadre1 = posiciones[valAleatorio];
             //   Se accede y almacena el Padre 1
@@ -338,17 +339,17 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             // Selecciona 3 (N=3) posibles posibles candidatas para el segundo padre
 
             // N1
-            valAleatorio = new Random().Next(0, posiciones.Count);
+            valAleatorio = rand.Next(0, posiciones.Count);
             p_candidato1 = posiciones[valAleatorio];
             posiciones.RemoveAt(valAleatorio);
 
             // N2
-            valAleatorio = new Random().Next(0, posiciones.Count);
+            valAleatorio = rand.Next(0, posiciones.Count);
             p_candidato2 = posiciones[valAleatorio];
             posiciones.RemoveAt(valAleatorio);
 
             // N3
-            valAleatorio = new Random().Next(0, posiciones.Count);
+            valAleatorio = rand.Next(0, posiciones.Count);
             p_candidato3 = posiciones[valAleatorio];
             posiciones.RemoveAt(valAleatorio);
 
@@ -390,7 +391,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
 
             // SELECCION PRIMER PADRE 
             // Se obtiene la region
-            double puntero = new Random().NextDouble();
+            double puntero = rand.NextDouble();
 
             // Se busca la region 
             double region = 0;
@@ -410,7 +411,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
 
             // SELECCION SEGUNDO PADRE 
             // Se obtiene la region
-            puntero = new Random().NextDouble();
+            puntero = rand.NextDouble();
             sumaFitness = poblacion.Sum(item => item.distanciaCamino());
 
             // Se busca la region 
@@ -446,7 +447,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             // Se selecciona K para el torneo
             for (int i = 0; i < K; i++)
             {
-                posAleatoria = new Random().Next(0, posiciones.Count);
+                posAleatoria = rand.Next(0, posiciones.Count);
                 competidores.Add(poblacion[posiciones[posAleatoria]]);
                 posiciones.RemoveAt(posAleatoria);
             }

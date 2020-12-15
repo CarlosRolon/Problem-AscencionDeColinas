@@ -109,7 +109,8 @@ namespace ProblemasAscensionDeColinas
 
 
             AlgoritmoGAViajero algortimoGAViajero = new AlgoritmoGAViajero(viajero);
-            Viajero resultado = algortimoGAViajero.algoritmoGeneticoGeneracional(500, 10, .85, .008);
+            Viajero resultado = algortimoGAViajero.algoritmoGeneticoEstacionario(500, 10, .85, .008);
+            Viajero resultado1 = algortimoGAViajero.algoritmoGeneticoGeneracional(500, 10, .85, .008);
 
             rtbSolucion.Text =
               " \n Solucion Final:  \n";
