@@ -98,8 +98,8 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             }
 
             // Obtiene la mejor solucion
-            //poblacion = poblacion.OrderBy(p => p.sumatoriaFuncion).ToList();
-            return best_solution;
+            poblacion = poblacion.OrderBy(p => p.sumatoriaFuncion).ToList();
+            return poblacion[0];
         }
 
         public List<FuncionMinimos> generarPoblacion(int tamPoblacion)

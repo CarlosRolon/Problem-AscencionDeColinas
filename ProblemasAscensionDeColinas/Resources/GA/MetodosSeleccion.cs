@@ -247,7 +247,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             for (int i = 0; i < poblacion.Count && !encontroRegion; i++)
             {
                 //Establece la region
-                region += poblacion[i].Sumatoria() / sumaFitness;
+                region += 1 - (poblacion[i].Sumatoria() / sumaFitness);
                 // Valida si esta dentro de la region
                 if (region > puntero)
                 {
@@ -268,7 +268,7 @@ namespace ProblemasAscensionDeColinas.Resources.GA
             encontroRegion = false;
             for (int i = 0; i < poblacion.Count && !encontroRegion; i++)
             {
-                region += poblacion[i].Sumatoria() / sumaFitness;
+                region += 1- ( poblacion[i].Sumatoria() / sumaFitness);
                 if (region > puntero)
                 {
                     padres.Add(poblacion[i]);
