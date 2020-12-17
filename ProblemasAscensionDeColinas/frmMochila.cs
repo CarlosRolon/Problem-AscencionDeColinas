@@ -26,6 +26,7 @@ namespace ProblemasAscensionDeColinas
 
         private void btnCalcular_Click(object sender, EventArgs e)
         {
+            rtbSolucion.Text = "";
             if (mochila.objetosPosibles.Count <= 0)
             {
                 MessageBox.Show("No hay Items", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -55,10 +56,10 @@ namespace ProblemasAscensionDeColinas
 
             AlgortimoGAMochila algortimoGAMochila = new AlgortimoGAMochila(mochila);
             MochilaClass resultado = algortimoGAMochila.algoritmoGeneticoEstacionario(500 , 10 , .8 , .005);
-            resultado = algortimoGAMochila.algoritmoGeneticoGeneracional(500, 10, .8, .005);
+            MochilaClass resultado1 = algortimoGAMochila.algoritmoGeneticoGeneracional(500, 10, .8, .005);
 
-            rtbSolucion.Text =
-                "  Solución Final :  \n";
+            rtbSolucion.Text +=
+                " Objetos en la mochila con modelo Estacionario:  \n";
             for (int i = 0; i < resultado.ObjetosEnMochila.Count; i++)
             {
                 if (resultado.ObjetosEnMochila[i])
@@ -69,6 +70,16 @@ namespace ProblemasAscensionDeColinas
 
             rtbSolucion.Text += " \n Peso Mochila: " + resultado.pesoEnMochila + " ,Valor Mochila: " + resultado.valorEnMochila;
 
+            rtbSolucion.Text +=
+                "\n Objetos en la mochila con modelo Generacional:  \n";
+            for (int i = 0; i < resultado1.ObjetosEnMochila.Count; i++)
+            {
+                if (resultado1.ObjetosEnMochila[i])
+                {
+                    rtbSolucion.Text += (i + 1) + " , ";
+                }
+            }
+            rtbSolucion.Text += " \n Peso Mochila: " + resultado1.pesoEnMochila + " ,Valor Mochila: " + resultado1.valorEnMochila;
             return;
         }
 

@@ -94,6 +94,7 @@ namespace ProblemasAscensionDeColinas
 
         private void btnCalcular_Click(object sender, EventArgs e)
         {
+            rtbSolucion.Text = "";
             if (!subioMatrix)
             {
                 MessageBox.Show("Favor de Agregar Matriz de Adyacencia","ERROR ", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -112,14 +113,23 @@ namespace ProblemasAscensionDeColinas
             Viajero resultado = algortimoGAViajero.algoritmoGeneticoEstacionario(500, 10, .85, .008);
             Viajero resultado1 = algortimoGAViajero.algoritmoGeneticoGeneracional(500, 10, .85, .008);
 
-            rtbSolucion.Text =
-              " \n Solucion Final:  \n";
+            rtbSolucion.Text +=
+              " \n Mejor ruta con modelo Estacionario:  \n";
 
             for (int i = 0; i < resultado.ruta.Count; i++)
             {
                 rtbSolucion.Text += resultado.ruta[i] + " , ";
             }
             rtbSolucion.Text +=  " \n Ditancia: " + resultado.distanciaRuta;
+
+            rtbSolucion.Text +=
+             " \n Mejor ruta con modelo Generacional:  \n";
+
+            for (int i = 0; i < resultado1.ruta.Count; i++)
+            {
+                rtbSolucion.Text += resultado1.ruta[i] + " , ";
+            }
+            rtbSolucion.Text += " \n Ditancia: " + resultado1.distanciaRuta;
 
         }
 
